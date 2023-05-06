@@ -23,5 +23,6 @@
         "unnamedComponents": "arrow-function"
       }
     ]
-  }
+  },
+  "ignorePatterns": ["**/*.config.js"]
 }
