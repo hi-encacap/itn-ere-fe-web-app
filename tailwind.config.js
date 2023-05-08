@@ -21,7 +21,8 @@ module.exports = {
             DEFAULT: "#219EBC",
             dark: "#023047",
           },
-          main: "#FB8500",
+          main: "#F3C22C",
+          secondary: "#4E4637",
           yellow: "#FFB703",
           facebook: "#1877f2",
           zalo: "#03a5fa",
@@ -33,5 +34,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

@@ -1,0 +1,15 @@
+@import "swiper/scss";
+@import "swiper/scss/pagination";
+@import "swiper/scss/autoplay";
+
+swiper-container {
+  @apply w-full;
+
+  swiper-slide {
+    @apply relative aspect-video w-full;
+  }
+
+  .swiper-pagination {
+    @apply bottom-4;
+  }
+}

@@ -1,14 +1,14 @@
-import { BAOLOCRE_SITE_CONFIG_CODE_ENUM, IConfig } from "@encacap-group/types/dist/re";
-import axiosInstance from "@utils/axiosInstance";
-import { ContactInformationType } from "@interfaces/dataTypes";
 import { CONFIG_API_PATH } from "@constants/apis";
+import { BAOLOCRE_SITE_CONFIG_CODE_ENUM, IConfig } from "@encacap-group/types/dist/re";
+import { ContactDataType } from "@interfaces/dataTypes";
+import axiosInstance from "@utils/axiosInstance";
 import { set } from "lodash";
 
 /**
  * Get general contact information
- * @returns {Promise<ContactInformationType>}
+ * @returns {Promise<ContactDataType>}
  */
-const getContactInformation = async (): Promise<ContactInformationType> => {
+const getContact = async (): Promise<ContactDataType> => {
   const response = await axiosInstance.get(CONFIG_API_PATH.CONFIGS_PATH, {
     params: {
       codes: [
@@ -22,10 +22,10 @@ const getContactInformation = async (): Promise<ContactInformationType> => {
     },
   });
 
-  return response.data.data.reduce((config: ContactInformationType, item: IConfig) => {
+  return response.data.data.reduce((config: ContactDataType, item: IConfig) => {
     set(config, item.code, item.value);
     return config;
-  }, {} as ContactInformationType);
+  }, {} as ContactDataType);
 };
 
 const getSiteName = async (): Promise<string> => {
@@ -34,4 +34,4 @@ const getSiteName = async (): Promise<string> => {
   return response.data.data.value;
 };
 
-export { getContactInformation, getSiteName };
+export { getContact, getSiteName };
