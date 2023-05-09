@@ -1,11 +1,24 @@
-import { ReactNode } from "react";
+import { LayoutFooterColorEnum } from "@constants/enums";
+import { HTMLAttributes, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
-interface HomeSectionContainerProps {
+interface HomeSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
+  color?: LayoutFooterColorEnum;
 }
 
-const HomeSectionContainer = ({ children }: HomeSectionContainerProps) => (
-  <section className="flex flex-col space-y-5 py-12 md:space-y-16 md:py-20 lg:px-10 xl:px-48">
+const HomeSectionContainer = ({
+  children,
+  color = LayoutFooterColorEnum.LIGHT,
+  className,
+}: HomeSectionContainerProps) => (
+  <section
+    className={twMerge(
+      "flex flex-col space-y-5 px-4 py-12 md:space-y-16 md:px-6 md:py-20 lg:px-10 xl:px-48",
+      color === LayoutFooterColorEnum.DARK && "bg-gray-100",
+      className
+    )}
+  >
     {children}
   </section>
 );

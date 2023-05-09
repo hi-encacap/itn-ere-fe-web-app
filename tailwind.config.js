@@ -32,6 +32,12 @@ module.exports = {
       fontFamily: {
         sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
+      aspectRatio: {
+        "video-reverse": "9/16",
+      },
+      borderWidth: {
+        12: "12px",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

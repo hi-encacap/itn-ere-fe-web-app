@@ -4,9 +4,9 @@ import HomeSectionTitle from "../components/SectionTitle";
 import HomeServiceItem from "./ServiceItem";
 
 const HomeService = () => (
-  <HomeSectionContainer>
+  <HomeSectionContainer className="px-0">
     <HomeSectionTitle title="Dịch vụ của chúng tôi" subtitle="Mọi thứ bạn cần" />
-    <div className="grid grid-cols-2 px-4 md:gap-6 md:px-6 lg:grid-cols-4 lg:gap-10 lg:px-0">
+    <div className="grid grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-10 lg:px-0">
       <HomeServiceItem
         title="Xây dựng nhà dân dụng"
         icon={<IconHouse className="top-10 -mt-0.5 flex w-20" />}
