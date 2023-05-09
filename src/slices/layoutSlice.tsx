@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configService } from "@services/index";
-import { ContactDataType } from "../types/dataTypes";
+import { SiteConfigDataType } from "../types/dataTypes";
 
 interface LayoutState {
-  contactInformation: ContactDataType | null;
+  contactInformation: SiteConfigDataType | null;
 }
 
 const initialState: LayoutState = {
@@ -20,7 +20,7 @@ export const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    setContactInformation: (state: LayoutState, action: PayloadAction<ContactDataType>) => {
+    setContactInformation: (state: LayoutState, action: PayloadAction<SiteConfigDataType>) => {
       state.contactInformation = action.payload;
     },
   },

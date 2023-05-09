@@ -1,6 +1,6 @@
 import { LayoutFooterColorEnum } from "@constants/enums";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ContactDataType } from "@interfaces/dataTypes";
+import { SiteConfigDataType } from "@interfaces/dataTypes";
 import "@styles/globals.scss";
 import Head from "next/head";
 import LayoutFooter from "./components/Footer/Footer";
@@ -8,25 +8,19 @@ import LayoutHeader from "./components/Header/Header";
 
 interface LayoutProps extends BasePageProps {
   children: React.ReactNode;
-  contact: ContactDataType;
+  siteConfig: SiteConfigDataType;
   footerColor?: LayoutFooterColorEnum;
 }
 
-const Layout = ({
-  children,
-  contact,
-  head,
-  website,
-  footerColor = LayoutFooterColorEnum.DARK,
-}: LayoutProps) => (
+const Layout = ({ children, siteConfig, head, footerColor = LayoutFooterColorEnum.DARK }: LayoutProps) => (
   <>
     <Head>
-      <title>{`${head.title} - ${website.name}`}</title>
+      <title>{`${head.title} - ${siteConfig.name}`}</title>
     </Head>
 
-    <LayoutHeader contact={contact} />
+    <LayoutHeader config={siteConfig} />
     {children}
-    <LayoutFooter contact={contact} color={footerColor} />
+    <LayoutFooter config={siteConfig} color={footerColor} />
   </>
 );
 

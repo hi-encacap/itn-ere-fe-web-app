@@ -13,7 +13,7 @@ const HomeHeroSliderItem = ({ data, isPriority = false }: HomeHeroSliderItemProp
       src={getImageURL(data)}
       alt={data.id}
       fill
-      className="object-cover object-center"
+      className="bg-gray-100 object-cover object-center"
       priority={isPriority}
       sizes="100%"
     />

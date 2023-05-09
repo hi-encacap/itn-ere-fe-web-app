@@ -1,17 +1,17 @@
 import { IconLocation, IconPhoneRing } from "@components/Common/Icon";
 import Logo from "@components/Common/Logo";
 import { LayoutFooterColorEnum } from "@constants/enums";
-import { ContactDataType } from "@interfaces/dataTypes";
+import { SiteConfigDataType } from "@interfaces/dataTypes";
 import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 import LayoutHeaderSocial from "../Header/Social";
 
 interface LayoutFooterProps {
   color: LayoutFooterColorEnum;
-  contact: ContactDataType;
+  config: SiteConfigDataType;
 }
 
-const LayoutFooter = ({ contact, color }: LayoutFooterProps) => (
+const LayoutFooter = ({ config, color }: LayoutFooterProps) => (
   <footer
     className={twMerge(
       "px-4 pt-4 lg:bg-none lg:px-10 lg:pt-10",
@@ -21,7 +21,7 @@ const LayoutFooter = ({ contact, color }: LayoutFooterProps) => (
     <div className="lg:flex">
       <div className="flex items-center justify-between">
         <Logo iShowName />
-        <LayoutHeaderSocial className="flex lg:hidden" contact={contact} />
+        <LayoutHeaderSocial className="flex lg:hidden" config={config} />
       </div>
       <div className="mt-4 block h-0.5 w-full bg-gray-200 lg:hidden" />
       <div className="mt-4 flex-1 items-center justify-end lg:mt-0 lg:flex">
@@ -31,7 +31,7 @@ const LayoutFooter = ({ contact, color }: LayoutFooterProps) => (
           </div>
           <div>
             <div className="text-sm">Điện thoại</div>
-            <div className="font-semibold">{contact?.site_phone_number}</div>
+            <div className="font-semibold">{config?.site_phone_number}</div>
           </div>
         </div>
         <div className="mt-3 flex items-center lg:ml-16 lg:mt-0">
@@ -40,10 +40,10 @@ const LayoutFooter = ({ contact, color }: LayoutFooterProps) => (
           </div>
           <div>
             <div className="text-sm">Địa chỉ</div>
-            <div className="font-semibold">{contact?.site_address}</div>
+            <div className="font-semibold">{config?.site_address}</div>
           </div>
         </div>
-        <LayoutHeaderSocial className="hidden items-center lg:ml-16 lg:flex" contact={contact} />
+        <LayoutHeaderSocial className="hidden items-center lg:ml-16 lg:flex" config={config} />
       </div>
     </div>
     <div className="mt-4 border-t-2 py-4 text-center lg:mt-10">

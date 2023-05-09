@@ -1,8 +1,8 @@
-import { IWebsite } from "@encacap-group/types/dist/re";
-import { ContactDataType } from "./dataTypes";
+import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
+import { SiteConfigDataType } from "./dataTypes";
 
 export interface BasePageProps {
   head: Record<string, string>;
-  website: IWebsite;
-  contact: ContactDataType;
+  siteConfig: SiteConfigDataType;
+  heroImages: ICloudflareImageResponse[];
 }
