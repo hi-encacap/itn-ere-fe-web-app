@@ -17,7 +17,7 @@ const HomeHeroSliderItem = ({ data, isPriority = false }: HomeHeroSliderItemProp
       priority={isPriority}
       sizes="100%"
     />
-    <div className="absolute bottom-5 left-6">
+    <div className="absolute bottom-4 left-6">
       <Logo isPriority={isPriority} />
     </div>
   </>
