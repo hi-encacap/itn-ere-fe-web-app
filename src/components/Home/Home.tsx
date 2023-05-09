@@ -1,5 +1,6 @@
 import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
 import HomeHero from "./Hero/Hero";
+import HomeService from "./Service/Service";
 
 interface HomeProps {
   heroImages: ICloudflareImageResponse[];
@@ -8,7 +9,7 @@ interface HomeProps {
 const Home = ({ heroImages }: HomeProps) => (
   <>
     <HomeHero data={heroImages} />
-    <div>Home</div>
+    <HomeService />
   </>
 );
 

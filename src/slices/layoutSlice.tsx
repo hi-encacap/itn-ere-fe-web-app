@@ -12,7 +12,7 @@ const initialState: LayoutState = {
 };
 
 export const getContact = createAsyncThunk("layout/getContact", async () => {
-  const data = await configService.getContact();
+  const data = await configService.getSiteConfig();
   return data;
 });
 
