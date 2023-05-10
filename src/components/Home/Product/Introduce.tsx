@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
+import Button from "../../Common/Button";
 import HomeSectionTitle from "../components/SectionTitle";
-import HomeProductViewButton from "./ViewButton";
 
 const HomeProductIntroduce = ({ className }: HTMLAttributes<HTMLElement>) => (
   <div
@@ -15,7 +15,7 @@ const HomeProductIntroduce = ({ className }: HTMLAttributes<HTMLElement>) => (
       Công ty TNHH xây dựng An Cường cam kết mang đến cho khách hàng những sản phẩm cách nhiệt chất lượng với
       mức giá cạnh tranh nhất.
     </p>
-    <HomeProductViewButton className="hidden md:block" />
+    <Button title="Xem tất cả sản phẩm" className="hidden md:block" />
   </div>
 );
 

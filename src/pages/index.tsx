@@ -2,7 +2,13 @@ import Layout from "@components/Common/Layout/Layout";
 import Home, { HomeProps } from "@components/Home/Home";
 import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { configService, productService, websiteService } from "@services/index";
+import {
+  configService,
+  productService,
+  projectService,
+  serviceService,
+  websiteService,
+} from "@services/index";
 
 interface MyIndexProps extends BasePageProps, HomeProps {
   heroImages: ICloudflareImageResponse[];
@@ -15,11 +21,13 @@ const MyIndex = (props: MyIndexProps) => (
 );
 
 export const getServerSideProps = async () => {
-  const [website, siteConfig, heroImages, products] = await Promise.all([
+  const [website, siteConfig, heroImages, products, services, projects] = await Promise.all([
     websiteService.getMyWebsite(),
     configService.getSiteConfig(),
     configService.getHeroImages(),
     productService.getProducts(),
+    serviceService.getServices(),
+    projectService.getProjects(),
   ]);
 
   const head = { title: "Trang chủ" };
@@ -31,6 +39,8 @@ export const getServerSideProps = async () => {
       siteConfig,
       heroImages,
       products,
+      services,
+      projects,
     },
   };
 };
