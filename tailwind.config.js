@@ -38,6 +38,9 @@ module.exports = {
       borderWidth: {
         12: "12px",
       },
+      boxShadow: {
+        center: "0px 0px 24px -100px rgba(0, 0, 0, 0.05)",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

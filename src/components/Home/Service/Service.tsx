@@ -1,4 +1,4 @@
-import { IconBuilding, IconCement, IconFoam, IconHouse } from "@components/Common/Icon";
+import { IconBuilding, IconFoam, IconHouse, IconInsulation } from "@components/Common/Icon";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeSectionTitle from "../components/SectionTitle";
 import HomeServiceItem from "./ServiceItem";
@@ -17,11 +17,11 @@ const HomeService = () => (
       />
       <HomeServiceItem
         title="Thi công Foam cách nhiệt"
-        icon={<IconFoam className="top-12 -mt-1 flex w-20" />}
+        icon={<IconFoam className="top-12 -mt-1.5 flex w-20" />}
       />
       <HomeServiceItem
-        title="Phân phối vật liệu xây dựng"
-        icon={<IconCement className="top-12 flex w-16" />}
+        title="Phân phối vật liệu cách nhiệt"
+        icon={<IconInsulation className="top-10 flex w-20" />}
       />
     </div>
   </HomeSectionContainer>
