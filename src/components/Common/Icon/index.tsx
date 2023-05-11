@@ -1,0 +1,11 @@
+export { default as IconBuilding } from "./Building";
+export { default as IconCement } from "./Cement";
+export { default as IconFacebook } from "./Facebook";
+export { default as IconFoam } from "./Foam";
+export { default as IconHomeServiceBorder } from "./HomeServiceBorder";
+export { default as IconHouse } from "./House";
+export { default as IconInsulation } from "./Insulation";
+export { default as IconLocation } from "./Location";
+export { default as IconPhoneBold } from "./PhoneBold";
+export { default as IconPhoneRing } from "./PhoneRing";
+export { default as IconYoutube } from "./Youtube";

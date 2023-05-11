@@ -21,7 +21,8 @@ module.exports = {
             DEFAULT: "#219EBC",
             dark: "#023047",
           },
-          main: "#FB8500",
+          main: "#F3C22C",
+          secondary: "#4E4637",
           yellow: "#FFB703",
           facebook: "#1877f2",
           zalo: "#03a5fa",
@@ -31,7 +32,16 @@ module.exports = {
       fontFamily: {
         sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
+      aspectRatio: {
+        "video-reverse": "9/16",
+      },
+      borderWidth: {
+        12: "12px",
+      },
+      boxShadow: {
+        center: "0px 0px 24px -100px rgba(0, 0, 0, 0.05)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };
