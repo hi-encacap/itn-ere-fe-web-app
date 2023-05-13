@@ -6,7 +6,7 @@ import { getHeroImages } from "./configService";
 const fakeData: Partial<ProjectDataType>[] = [
   {
     id: 1,
-    name: "Dự án thứ nhất",
+    name: "Công ty TNHH Encacap Group",
   },
   {
     id: 2,

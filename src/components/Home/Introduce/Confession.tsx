@@ -5,7 +5,7 @@ import HomeSectionTitle from "../components/SectionTitle";
 const HomeIntroduceConfession = ({ className }: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={twMerge(
-      "flex flex-col items-center justify-center space-y-10 md:pl-6 lg:pl-10 xl:pl-24",
+      "flex flex-col items-center justify-center space-y-4 md:pl-6 lg:pl-10 xl:pl-24",
       className
     )}
   >

@@ -9,10 +9,7 @@ interface HomeServiceProps {
 }
 
 const HomeService = ({ data }: HomeServiceProps) => (
-  <HomeSectionContainer
-    color={LayoutFooterColorEnum.DARK}
-    className="flex flex-col justify-center space-y-10"
-  >
+  <HomeSectionContainer color={LayoutFooterColorEnum.DARK} className="flex flex-col justify-center space-y-8">
     <HomeSectionTitle title="Dịch vụ của chúng tôi" subtitle="Chất lượng & Phải chăng" />
     <HomeServiceList data={data} />
   </HomeSectionContainer>

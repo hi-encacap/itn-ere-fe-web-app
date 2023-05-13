@@ -8,7 +8,7 @@ interface HomeProjectProps {
 }
 
 const HomeProject = ({ data }: HomeProjectProps) => (
-  <HomeSectionContainer className="flex flex-col justify-center space-y-10">
+  <HomeSectionContainer className="flex flex-col justify-center space-y-8">
     <HomeSectionTitle title="Dự án đã thực hiện" subtitle="Uy tín & Chất lượng" />
     <HomeProjectList data={data} />
   </HomeSectionContainer>
