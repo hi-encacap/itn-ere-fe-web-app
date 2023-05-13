@@ -54,7 +54,7 @@ const HomeIntroduceImage = ({ data, className }: HomeIntroduceImageProps) => {
             className="rounded-lg object-cover object-center md:rounded-3xl"
           />
         </div>
-        <div className="h-16 w-full" />
+        <div className="w-full md:h-16" />
       </div>
     </div>
   );

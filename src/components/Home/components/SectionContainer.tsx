@@ -14,7 +14,7 @@ const HomeSectionContainer = ({
 }: HomeSectionContainerProps) => (
   <section
     className={twMerge(
-      "flex flex-col space-y-5 px-4 py-12 md:space-y-16 md:px-6 md:py-20 lg:px-10 xl:px-48",
+      "flex flex-col space-y-4 px-4 py-6 md:space-y-16 md:px-6 md:py-20 lg:px-10 xl:px-48",
       color === LayoutFooterColorEnum.DARK && "bg-gray-100",
       className
     )}

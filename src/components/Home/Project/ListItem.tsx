@@ -7,8 +7,8 @@ interface HomeProjectListItemProps {
 
 const HomeProjectListItem = ({ data }: HomeProjectListItemProps) => (
   <HomeNewsItemContainer data={data}>
-    <div className="px-4 py-4 md:px-6 md:py-4">
-      <h3 className="text-center font-semibold text-encacap-main">{data.name}</h3>
+    <div className="px-4 py-3 md:px-6 md:py-4">
+      <h3 className="text-center">{data.name}</h3>
     </div>
   </HomeNewsItemContainer>
 );
