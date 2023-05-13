@@ -2,10 +2,12 @@
   "name": "encacap_re_acbuiding",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "dev": "dotenv -e ./.env.development node ./server.js",
+    "dev:next": "next dev -p $APP_PORT -H $APP_HOST",
+    "dev": "dotenv -e .env.development -- yarn dev:next",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production SERVER_PORT=22401 node ./server.js",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
