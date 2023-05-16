@@ -11,22 +11,22 @@ const HomeCategory = () => (
       <HomeCategoryItem
         title="Xây dựng nhà dân dụng"
         icon={<IconHouse className="w-20" />}
-        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.HOUSE}`}
+        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.HOUSE}/2`}
       />
       <HomeCategoryItem
         title="Xây dựng nhà tiền chế"
         icon={<IconBuilding className="w-16" />}
-        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.HOUSE_SCRATCH}`}
+        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.HOUSE_SCRATCH}/3`}
       />
       <HomeCategoryItem
         title="Thi công Foam cách nhiệt"
         icon={<IconFoam className="w-20" />}
-        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.CONSTRUCTION_FOAM}`}
+        href={`${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}/${ACBUILDING_CATEGORY_CODE_ENUM.CONSTRUCTION_FOAM}/1`}
       />
       <HomeCategoryItem
         title="Phân phối vật liệu cách nhiệt"
         icon={<IconInsulation className="w-20" />}
-        href={ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}
+        href={`${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}
       />
     </div>
   </HomeSectionContainer>

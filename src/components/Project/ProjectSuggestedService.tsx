@@ -1,21 +1,21 @@
 import { IconChevronRight } from "@components/Common/Icon";
 import PostSidebarCollapsibleBlock from "@components/Common/PostSidebarCollapsibleBlock";
+import ServiceSuggestedProductItem from "@components/Service/ServiceSuggestedProductItem";
 import {
   ACBUILDING_CATEGORY_CODE_ENUM,
   DEFAULT_CLOUDFLARE_VARIANT_ENUM,
   getImageURL,
 } from "@encacap-group/types/dist/re";
-import { ProductDataType } from "@interfaces/dataTypes";
+import { ServiceDataType } from "@interfaces/dataTypes";
 import { getCategoryPageLink } from "@utils/helper";
 import Link from "next/link";
-import ServiceSuggestedProductItem from "./ServiceSuggestedProductItem";
 
-interface ServiceSuggestedProductProps {
-  data: ProductDataType[];
+interface ProjectSuggestedServiceProps {
+  data: ServiceDataType[];
 }
 
-const ServiceSuggestedProduct = ({ data }: ServiceSuggestedProductProps) => (
-  <PostSidebarCollapsibleBlock isCollapsed={false} title="Sản phẩm có thể bạn quan tâm">
+const ProjectSuggestedService = ({ data }: ProjectSuggestedServiceProps) => (
+  <PostSidebarCollapsibleBlock isCollapsed={false} title="Dịch vụ có thể bạn quan tâm">
     <div className="flex flex-col space-y-4 border-gray-200 pb-6 md:border-t-2 md:py-6">
       {data.map((item) => (
         <ServiceSuggestedProductItem
@@ -27,13 +27,13 @@ const ServiceSuggestedProduct = ({ data }: ServiceSuggestedProductProps) => (
       ))}
     </div>
     <Link
-      href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}
-      className="flex items-center space-x-4 border-t-2 border-gray-200 pt-4 duration-100 hover:text-encacap-main md:py-4 md:pb-5"
+      href={`/${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}`}
+      className="flex items-center space-x-4 border-t-2 border-gray-200 pt-4 duration-100 hover:text-encacap-main md:pb-5 md:pt-4"
     >
       <IconChevronRight className="-ml-0.5 w-4" />
-      <span className="text-base font-normal md:text-sm">Xem tất cả sản phẩm</span>
+      <span className="text-base font-normal md:text-sm">Xem tất cả dịch vụ</span>
     </Link>
   </PostSidebarCollapsibleBlock>
 );
 
-export default ServiceSuggestedProduct;
+export default ProjectSuggestedService;

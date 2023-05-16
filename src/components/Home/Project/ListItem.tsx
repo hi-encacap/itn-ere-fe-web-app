@@ -1,4 +1,5 @@
 import { ProjectDataType } from "@interfaces/dataTypes";
+import { getProjectDetailLink } from "@utils/helper";
 import HomeNewsItemContainer from "../components/NewsItemContainer";
 
 interface HomeProjectListItemProps {
@@ -6,9 +7,9 @@ interface HomeProjectListItemProps {
 }
 
 const HomeProjectListItem = ({ data }: HomeProjectListItemProps) => (
-  <HomeNewsItemContainer data={data}>
-    <div className="px-4 py-3 md:px-6 md:py-4">
-      <h3 className="text-center">{data.name}</h3>
+  <HomeNewsItemContainer data={data} href={getProjectDetailLink(data)}>
+    <div className="flex flex-1 items-center justify-center px-4 py-3 md:px-6 md:py-4">
+      <h3 className="line-clamp-2 text-center duration-100 group-hover:text-encacap-main">{data.name}</h3>
     </div>
   </HomeNewsItemContainer>
 );

@@ -9,8 +9,8 @@ interface ProductCategoryProps {
 }
 
 const ProductCategory = ({ isCollapsed = false, data }: ProductCategoryProps) => (
-  <PostSidebarCollapsibleBlock isCollapsed={isCollapsed} title="Danh mục sản phẩm">
-    <div className="border-t-2 border-gray-200 py-3">
+  <PostSidebarCollapsibleBlock isCollapsed={isCollapsed} title="Danh mục sản phẩm" isResponsive={false}>
+    <div className="border-t-2 border-gray-200 py-3 font-normal">
       {(data.children as ICategory[])?.map((item) => (
         <ProductCategoryItem name={item.name} href={getCategoryPageLink(item, data)} key={item.id} />
       ))}

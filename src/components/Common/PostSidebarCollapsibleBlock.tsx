@@ -6,12 +6,14 @@ interface PostSidebarCollapsibleBlockProps {
   isCollapsed: boolean;
   title: string;
   children: ReactNode;
+  isResponsive?: boolean;
 }
 
 const PostSidebarCollapsibleBlock = ({
   isCollapsed: defaultIsCollapsed,
   children,
   title,
+  isResponsive = true,
 }: PostSidebarCollapsibleBlockProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -24,9 +26,19 @@ const PostSidebarCollapsibleBlock = ({
   }, [defaultIsCollapsed]);
 
   return (
-    <div className="rounded-lg px-4 ring-2 ring-gray-200 md:px-5">
+    <div
+      className={twMerge(
+        "rounded-lg px-4 text-base ring-2 ring-gray-200 md:px-5",
+        isResponsive &&
+          "-mx-4 rounded-none border-t-8 border-gray-200 text-xl font-bold ring-0 md:mx-0 md:rounded-lg md:border-t-0 md:text-base md:ring-2"
+      )}
+    >
       <div
-        className="flex cursor-pointer items-center justify-between py-4 md:py-5 md:font-semibold"
+        // "flex cursor-pointer items-center justify-between py-4 md:py-5 md:font-semibold"
+        className={twMerge(
+          "flex cursor-pointer items-center justify-between py-4 md:py-5 md:font-semibold",
+          isResponsive && " pb-6 pt-5 font-bold"
+        )}
         onClick={handleToggleCollapse}
         role="button"
         tabIndex={0}

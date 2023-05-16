@@ -33,4 +33,6 @@ export interface ProjectDataType {
   id: number;
   name: string;
   avatar: ICloudflareImageResponse;
+  description: string;
+  category: ICategory;
 }

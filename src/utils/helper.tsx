@@ -1,5 +1,5 @@
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, slugify } from "@encacap-group/types/dist/re";
-import { ProductDataType, ServiceDataType } from "@interfaces/dataTypes";
+import { ProductDataType, ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
 
 const beautyMoney = (money: number): string => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -36,10 +36,17 @@ const getServiceDetailLink = (data: ServiceDataType): string => {
   return `/${category.code}/${slugify(data.name)}/${data.id}`;
 };
 
+const getProjectDetailLink = (data: ProjectDataType): string => {
+  const { category } = data;
+
+  return `/${category.code}/${slugify(data.name)}/${data.id}`;
+};
+
 export {
   beautyMoney,
   getCategoryPageLink,
   getProductCategoryLink,
   getProductDetailLink,
+  getProjectDetailLink,
   getServiceDetailLink,
 };

@@ -8,11 +8,12 @@ import ServiceSuggestedProduct from "./ServiceSuggestedProduct";
 interface ServiceSidebarProps extends HTMLAttributes<HTMLDivElement> {
   suggestedProducts: ProductDataType[];
   contact?: IContact;
+  contactClassName?: string;
 }
 
-const ServiceSidebar = ({ className, suggestedProducts, contact }: ServiceSidebarProps) => (
+const ServiceSidebar = ({ className, suggestedProducts, contact, contactClassName }: ServiceSidebarProps) => (
   <div className={twMerge(className, "space-y-4 md:space-y-6 lg:space-y-10")}>
-    {contact && <Contact data={contact} />}
+    {contact && <Contact data={contact} className={contactClassName} />}
     <ServiceSuggestedProduct data={suggestedProducts} />
   </div>
 );

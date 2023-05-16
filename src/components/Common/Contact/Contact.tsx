@@ -1,15 +1,16 @@
 import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, IContact, getImageURL } from "@encacap-group/types/dist/re";
 import Image from "next/image";
+import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import { IconPhoneRing } from "../Icon";
 
-interface ContactProps {
+interface ContactProps extends HTMLAttributes<HTMLElement> {
   data: IContact;
   isShowTitle?: boolean;
 }
 
-const Contact = ({ data, isShowTitle = true }: ContactProps) => (
-  <div className="rounded-lg px-4 ring-2 ring-gray-200 md:px-5">
+const Contact = ({ data, isShowTitle = true, className }: ContactProps) => (
+  <div className={twMerge("rounded-lg px-4 ring-2 ring-gray-200 md:px-5", className)}>
     {isShowTitle && (
       <div className="hidden cursor-pointer items-center justify-between border-b-2 border-gray-200 py-4 md:flex md:py-5 md:font-semibold">
         Liên hệ ngay

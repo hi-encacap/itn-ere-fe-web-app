@@ -76,9 +76,9 @@ const ServiceDetail = ({ services, data, suggestedProducts }: ServiceDetailProps
         <Contact data={data.contact} isShowTitle={false} />
       </div>
       {services.length > 0 && (
-        <div className="mt-4 border-t-2 border-gray-100 pt-5 md:mt-3">
-          <div className="text-xl font-bold">Có thể bạn quan tâm</div>
-          <div className="mt-7 grid gap-4 md:col-span-2 md:grid-cols-3 md:gap-6 lg:col-span-3 lg:gap-8">
+        <div className="-mx-4 mt-4 border-t-8 border-gray-100 px-4 pt-5 md:mx-0 md:mt-3 md:border-t-2 md:px-0">
+          <div className="text-xl font-bold">Dịch vụ khác</div>
+          <div className="mt-6 grid gap-4 md:col-span-2 md:grid-cols-3 md:gap-6 lg:col-span-3 lg:gap-8">
             {services.map((item) => (
               <HomeServiceListItem data={item} key={item.id} />
             ))}
@@ -89,7 +89,7 @@ const ServiceDetail = ({ services, data, suggestedProducts }: ServiceDetailProps
     <ServiceSidebar
       suggestedProducts={suggestedProducts}
       contact={data.contact}
-      className="hidden md:block"
+      contactClassName="hidden md:block"
     />
   </>
 );

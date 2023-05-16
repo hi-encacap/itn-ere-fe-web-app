@@ -1,4 +1,5 @@
 import Button from "@components/Common/Button";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
 import { ProjectDataType } from "@interfaces/dataTypes";
 import HomeListItemSkeleton from "../Service/ListItemSkeleton";
 import HomeProjectListItem from "./ListItem";
@@ -22,6 +23,7 @@ const HomeProjectList = ({ data }: HomeProjectListProps) => (
     <Button
       title="Xem tất cả dự án"
       className="mx-auto block w-full rounded-md md:inline-block md:w-fit md:rounded-full"
+      href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PROJECT}`}
     />
   </div>
 );
