@@ -1,7 +1,8 @@
 import {
   BAOLOCRE_SITE_CONFIG_CODE_ENUM,
+  ICategory,
   ICloudflareImageResponse,
-  IUnitPrice,
+  IContact,
   IWebsite,
 } from "@encacap-group/types/dist/re";
 
@@ -12,10 +13,10 @@ export interface ProductDataType {
   name: string;
   avatar: ICloudflareImageResponse;
   description: string;
-  price: number | null;
-  maxPrice: number | null;
-  priceUnit: IUnitPrice | null;
-  quantityUnit: IUnitPrice | null;
+  category: ICategory;
+  categoryId: number;
+  images: ICloudflareImageResponse[];
+  contact: IContact;
 }
 
 export interface ServiceDataType {

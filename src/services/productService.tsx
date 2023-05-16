@@ -1,50 +1,26 @@
 import { IBaseListQuery } from "@encacap-group/types/dist/base";
-import { UNIT_PRICE_TYPE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { sample } from "lodash";
-import { getHeroImages } from "./configService";
+import { getCategoryByCode } from "./categoryService";
+import { getHeroImages, getSiteConfig } from "./configService";
 
 const fakeData: Partial<ProductDataType>[] = [
   {
     id: 1,
-    name: "Foam PU chống cháy cao cấp",
-    price: 100000,
-    maxPrice: 1000000,
-    priceUnit: {
-      id: 1,
-      name: "đồng",
-      type: UNIT_PRICE_TYPE_ENUM.PRICE,
-    },
-    quantityUnit: {
-      id: 2,
-      name: "kg",
-      type: UNIT_PRICE_TYPE_ENUM.AREA,
-    },
+    name: "B-12H POLYOLS tạo xốp PU FOAM cách nhiệt tường nhà, mái nhà, phòng kho lạnh",
   },
   {
     id: 2,
-    name: "Đây là sản phẩm thứ hai",
-    price: null,
+    name: "Bông thủy tinh Glasswool",
   },
   {
     id: 3,
-    name: "Đây là sản phẩm thứ ba",
-    price: null,
+    name: "Cao su biến tính Vinyl - Vật liệu cách âm mới nhất hiện nay",
   },
   {
     id: 4,
     name: "Đây là sản phẩm thứ tư",
-    price: 200000,
-    priceUnit: {
-      id: 1,
-      name: "đồng",
-      type: UNIT_PRICE_TYPE_ENUM.PRICE,
-    },
-    quantityUnit: {
-      id: 3,
-      name: "tấn",
-      type: UNIT_PRICE_TYPE_ENUM.AREA,
-    },
   },
 ];
 
@@ -58,4 +34,34 @@ const getProducts = async (query?: IBaseListQuery) => {
   }));
 };
 
-export { getProducts };
+const getProductById = async (id: number): Promise<ProductDataType> => {
+  const fakeProduct = fakeData.find((item) => item.id === id);
+
+  if (!fakeProduct) throw new Error("Product not found");
+
+  const fakeRootCategory = await getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT);
+  const fakeCategory = sample(fakeRootCategory.children);
+  const images = await getHeroImages();
+  const siteConfig = await getSiteConfig();
+
+  return {
+    ...(fakeProduct as Required<ProductDataType>),
+    avatar: sample(images),
+    category: {
+      ...fakeCategory,
+      parent: fakeRootCategory,
+    },
+    images,
+    contact: {
+      id: 1,
+      avatar: sample(images),
+      avatarId: "1",
+      name: "Nguyễn Khắc Khánh",
+      phone: siteConfig.site_phone_number,
+      zalo: siteConfig.site_zalo || siteConfig.site_phone_number,
+      email: siteConfig.site_facebook || "hello@encacap.com",
+    },
+  };
+};
+
+export { getProductById, getProducts };

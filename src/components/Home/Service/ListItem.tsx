@@ -12,7 +12,7 @@ const HomeServiceListItem = ({ data }: HomeServiceListItemProps) => (
     imageClassName="w-28 md:w-full group-first:w-full"
   >
     <div className="px-4 py-4 md:px-6 md:py-5">
-      <h3 className="font-semibold">{data.name}</h3>
+      <h3 className="font-semibold duration-100 group-hover:text-encacap-main">{data.name}</h3>
       <p className="line-clamp-2 border-gray-100 pt-2 group-first:line-clamp-3 md:mt-4 md:line-clamp-3 md:border-t-2 md:pt-4">
         {data.shortDescription}
       </p>

@@ -1,3 +1,4 @@
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import Button from "../../Common/Button";
@@ -15,7 +16,11 @@ const HomeProductIntroduce = ({ className }: HTMLAttributes<HTMLElement>) => (
       Công ty TNHH xây dựng An Cường cam kết mang đến cho khách hàng những sản phẩm cách nhiệt chất lượng với
       mức giá cạnh tranh nhất.
     </p>
-    <Button title="Xem tất cả sản phẩm" className="hidden md:block" />
+    <Button
+      title="Xem tất cả sản phẩm"
+      className="hidden md:block"
+      href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}
+    />
   </div>
 );
 

@@ -6,3 +6,8 @@ export const CONFIG_API_PATH = {
 export const WEBSITE_API_PATH = {
   ME_PATH: "v1/public/websites/me",
 };
+
+export const CATEGORY_API_PATH = {
+  CATEGORIES_PATH: "v1/public/categories",
+  CATEGORY_PATH: (code: string) => `v1/public/categories/${code}`,
+};

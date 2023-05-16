@@ -6,7 +6,7 @@ import Head from "next/head";
 import LayoutFooter from "./components/Footer/Footer";
 import LayoutHeader from "./components/Header/Header";
 
-interface LayoutProps extends BasePageProps {
+export interface LayoutProps extends BasePageProps {
   children: React.ReactNode;
   siteConfig: SiteConfigDataType;
   footerColor?: LayoutFooterColorEnum;

@@ -30,7 +30,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
+        sans: ["Gilroy", "Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
       aspectRatio: {
         "video-reverse": "9/16",
