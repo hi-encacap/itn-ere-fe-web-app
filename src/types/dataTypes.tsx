@@ -25,6 +25,8 @@ export interface ServiceDataType {
   avatar: ICloudflareImageResponse;
   description: string;
   shortDescription: string;
+  category: ICategory;
+  contact: IContact;
 }
 
 export interface ProjectDataType {

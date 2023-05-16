@@ -41,7 +41,7 @@ const CategoryLayout = ({
         <LayoutBreadcrumb items={breadcrumbItems} />
       </div>
     </div>
-    <div className="grid gap-4 px-4 py-4 md:grid-cols-3 md:px-6 md:py-6 lg:grid-cols-4 lg:gap-10 lg:px-10 lg:py-10 xl:px-48 xl:py-20">
+    <div className="grid gap-4 px-4 py-4 md:grid-cols-3 md:gap-6 md:px-6 md:py-6 lg:grid-cols-4 lg:gap-10 lg:px-10 lg:py-10 xl:px-48 xl:py-20">
       {children}
     </div>
   </Layout>

@@ -27,10 +27,15 @@ const fakeData: Partial<ProductDataType>[] = [
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getProducts = async (query?: IBaseListQuery) => {
   const images = await getHeroImages();
+  const rootCategory = await getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT);
 
   return fakeData.map((item) => ({
     ...item,
     avatar: sample(images),
+    category: {
+      ...item.category,
+      parent: rootCategory,
+    },
   }));
 };
 

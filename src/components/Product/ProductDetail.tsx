@@ -45,9 +45,9 @@ const ProductDetail = ({ data, relatedProducts }: ProductDetailProps) => (
           <span>Hàng luôn sẵn trong kho Hà Nội & Tp. Hồ Chí Minh, đáp ứng nhanh mọi nhu cầu của bạn.</span>
         </div>
       </div>
-      <div className="mt-2 border-t-2 border-gray-100 py-5 md:mt-3 md:hidden">
+      <div className="mt-2 border-t-2 border-gray-100 py-5 md:mt-3">
         <div className="mb-7 text-xl font-bold">Liên hệ ngay</div>
-        <Contact data={data.contact} />
+        <Contact data={data.contact} isShowTitle={false} />
       </div>
       {relatedProducts.length > 0 && (
         <div className="mt-4 border-t-2 border-gray-100 pt-5 md:mt-3">

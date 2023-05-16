@@ -11,7 +11,7 @@ const LayoutHeaderNavbar = ({ className }: LayoutHeaderNavbarProps) => (
   <div className={twMerge(className, "relative")}>
     <LayoutHeaderNavbarContainer className="flex items-center space-x-7 overflow-clip overflow-x-auto overflow-y-hidden scrollbar-none">
       <LayoutHeaderNavbarItem href="/">Trang chủ</LayoutHeaderNavbarItem>
-      <LayoutHeaderNavbarItem href={`${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}>
+      <LayoutHeaderNavbarItem href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}>
         Sản phẩm
       </LayoutHeaderNavbarItem>
       <LayoutHeaderNavbarItem href="/dich-vu">Dịch vụ</LayoutHeaderNavbarItem>

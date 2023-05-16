@@ -38,10 +38,10 @@ const ProductDetailPage = ({ product, relatedProducts, ...props }: ProductDetail
   );
 };
 
-export const getServerSideProps = async (content: GetServerSidePropsContext) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const [siteConfig, product, relatedProducts] = await Promise.all([
     configService.getSiteConfig(),
-    productService.getProductById(Number(content.params?.postId)),
+    productService.getProductById(Number(context.params?.postId)),
     productService.getProducts(),
   ]);
 

@@ -9,7 +9,7 @@ interface HomeNewsItemContainerProps extends HTMLAttributes<HTMLDivElement> {
   data: ProductDataType | ServiceDataType | ProjectDataType;
   children: ReactNode;
   imageClassName?: string;
-  getLink?: (data: ProductDataType | ServiceDataType | ProjectDataType) => string;
+  href?: string;
 }
 
 const HomeNewsItemContainer = ({
@@ -17,14 +17,14 @@ const HomeNewsItemContainer = ({
   className,
   imageClassName,
   data,
-  getLink,
+  href,
 }: HomeNewsItemContainerProps) => (
   <Link
     className={twMerge(
       "group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md shadow-gray-200 duration-100 hover:shadow-gray-300",
       className
     )}
-    href={getLink?.(data) || "/"}
+    href={href || "/"}
   >
     <div className={twMerge("relative aspect-video w-full flex-shrink-0", imageClassName)}>
       <Image

@@ -1,3 +1,4 @@
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
@@ -15,7 +16,11 @@ const HomeProductList = ({ className, data }: HomeProductListProps) => (
         <HomeProductListItem data={item} key={item.id} />
       ))}
     </div>
-    <Button title="Xem tất cả sản phẩm" className="block w-full rounded-md md:hidden" />
+    <Button
+      title="Xem tất cả sản phẩm"
+      className="block w-full rounded-md md:hidden"
+      href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}
+    />
   </div>
 );
 
