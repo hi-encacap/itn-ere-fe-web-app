@@ -6,7 +6,9 @@ import {
   IWebsite,
 } from "@encacap-group/types/dist/re";
 
-export interface SiteConfigDataType extends Record<ACBUILDING_SITE_CONFIG_CODE_ENUM, string>, IWebsite {}
+export interface SiteConfigDataType
+  extends Record<ACBUILDING_SITE_CONFIG_CODE_ENUM | string, string>,
+    Omit<IWebsite, "id"> {}
 
 export interface ProductDataType {
   id: number;
