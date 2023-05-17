@@ -8,7 +8,7 @@ interface HomeProjectListItemProps {
 
 const HomeProjectListItem = ({ data }: HomeProjectListItemProps) => (
   <HomeNewsItemContainer data={data} href={getProjectDetailLink(data)}>
-    <div className="flex flex-1 items-center justify-center px-4 py-3 md:px-6 md:py-4">
+    <div className="items-center justify-center px-4 py-3 md:px-6 md:py-4">
       <h3 className="line-clamp-2 text-center duration-100 group-hover:text-encacap-main">{data.name}</h3>
     </div>
   </HomeNewsItemContainer>

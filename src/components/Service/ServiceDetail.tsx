@@ -25,7 +25,7 @@ const ServiceDetail = ({ services, data, suggestedProducts }: ServiceDetailProps
       </div>
       <div className="pb-6 pt-4 md:pb-8 md:pt-8">
         <div className="text-encacap-main">{data.category.name}</div>
-        <div className="mt-2 text-3xl font-semibold md:mt-1">{data.name}</div>
+        <div className="mt-2 text-xl font-semibold md:mt-1 md:text-3xl">{data.name}</div>
       </div>
       <div className="border-t-2 border-gray-100 py-5">
         <div className="text-steal-700 mt-1">

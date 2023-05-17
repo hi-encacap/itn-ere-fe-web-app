@@ -10,10 +10,12 @@ export interface ProjectProps {
 
 const Project = ({ projects, suggestedProducts, suggestedServices }: ProjectProps) => (
   <>
-    <div className="grid grid-cols-2 gap-4 md:col-span-2 md:gap-6 lg:col-span-3 lg:gap-10">
-      {projects.map((item) => (
-        <HomeProjectListItem data={item} key={item.id} />
-      ))}
+    <div className="md:col-span-2 lg:col-span-3">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:gap-10">
+        {projects.map((item) => (
+          <HomeProjectListItem data={item} key={item.id} />
+        ))}
+      </div>
     </div>
     <ProjectSidebar suggestedProducts={suggestedProducts} suggestedServices={suggestedServices} />
   </>

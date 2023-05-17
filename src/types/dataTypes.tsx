@@ -1,12 +1,12 @@
 import {
-  BAOLOCRE_SITE_CONFIG_CODE_ENUM,
+  ACBUILDING_SITE_CONFIG_CODE_ENUM,
   ICategory,
   ICloudflareImageResponse,
   IContact,
   IWebsite,
 } from "@encacap-group/types/dist/re";
 
-export interface SiteConfigDataType extends Record<BAOLOCRE_SITE_CONFIG_CODE_ENUM, string>, IWebsite {}
+export interface SiteConfigDataType extends Record<ACBUILDING_SITE_CONFIG_CODE_ENUM, string>, IWebsite {}
 
 export interface ProductDataType {
   id: number;
