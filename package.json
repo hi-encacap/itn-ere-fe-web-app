@@ -4,8 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev:next": "next dev -p $APP_PORT",
-    "dev": "dotenv -e .env.development -- yarn dev:next",
+    "dev": "next dev -p $RE_ACB_APP_PORT",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
