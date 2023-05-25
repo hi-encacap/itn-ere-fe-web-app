@@ -15,7 +15,7 @@ export interface LayoutProps extends BasePageProps {
 const Layout = ({ children, siteConfig, head, footerColor = LayoutFooterColorEnum.DARK }: LayoutProps) => (
   <>
     <Head>
-      <title>{`${head.title} - ${siteConfig.name}`}</title>
+      <title>{`${head.title} - ${siteConfig.website.name}`}</title>
     </Head>
 
     <LayoutHeader config={siteConfig} />

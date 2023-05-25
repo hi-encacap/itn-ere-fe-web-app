@@ -1,5 +1,5 @@
 import PostSidebarCollapsibleBlock from "@components/Common/PostSidebarCollapsibleBlock";
-import { ICategory } from "@encacap-group/types/dist/re";
+import { ICategory } from "@encacap-group/common/dist/re";
 import { getCategoryPageLink } from "@utils/helper";
 import ProductCategoryItem from "./ProductCategoryItem";
 

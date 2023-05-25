@@ -1,6 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
 import Search from "@components/Common/Search/Search";
-import { ICategory, IContact } from "@encacap-group/types/dist/re";
+import { ICategory, IContact } from "@encacap-group/common/dist/re";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import ProductCategory from "./ProductCategory";

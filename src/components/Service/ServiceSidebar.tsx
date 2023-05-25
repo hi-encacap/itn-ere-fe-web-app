@@ -1,5 +1,5 @@
 import Contact from "@components/Common/Contact/Contact";
-import { IContact } from "@encacap-group/types/dist/re";
+import { IContact } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";

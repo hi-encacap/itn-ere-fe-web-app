@@ -1,5 +1,5 @@
-import { IBaseListQuery } from "@encacap-group/types/dist/base";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { IBaseListQuery } from "@encacap-group/common/dist/base";
+import { ACBUILDING_CATEGORY_CODE_ENUM, SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { sample } from "lodash";
 import { getCategoryByCode } from "./categoryService";
@@ -62,9 +62,9 @@ const getProductById = async (id: number): Promise<ProductDataType> => {
       avatar: sample(images),
       avatarId: "1",
       name: "Nguyễn Khắc Khánh",
-      phone: siteConfig.site_phone_number,
-      zalo: siteConfig.site_zalo || siteConfig.site_phone_number,
-      email: siteConfig.site_facebook || "hello@encacap.com",
+      phone: siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].site_phone_number as string,
+      zalo: siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].site_zalo as string,
+      email: siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].site_email as string,
     },
   };
 };

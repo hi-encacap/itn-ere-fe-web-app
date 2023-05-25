@@ -1,5 +1,5 @@
 import { LayoutFooterColorEnum } from "@constants/enums";
-import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
+import { ICloudflareImageResponse } from "@encacap-group/common/dist/re";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeIntroduceConfession from "./Confession";
 import HomeIntroduceImage from "./Image";

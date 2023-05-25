@@ -1,7 +1,17 @@
-import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, slugify } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, slugify } from "@encacap-group/common/dist/re";
 import { ProductDataType, ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
 
 const beautyMoney = (money: number): string => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+/**
+ * Beauty phone number from XXXXXXXXXX to XXXX XXX XXX
+ * @param {String} phoneNumber
+ */
+const beautyPhoneNumber = (phoneNumber: string): string => {
+  if (phoneNumber.length !== 10) return phoneNumber;
+
+  return `${phoneNumber.slice(0, 4)} ${phoneNumber.slice(4, 7)} ${phoneNumber.slice(7, 10)}`;
+};
 
 const getProductCategoryLink = (category: ICategory): string =>
   `/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}/${category.code}`;
@@ -44,6 +54,7 @@ const getProjectDetailLink = (data: ProjectDataType): string => {
 
 export {
   beautyMoney,
+  beautyPhoneNumber,
   getCategoryPageLink,
   getProductCategoryLink,
   getProductDetailLink,

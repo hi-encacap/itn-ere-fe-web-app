@@ -1,5 +1,5 @@
 import HomeProductListItem from "@components/Home/Product/ListItem";
-import { ICategory } from "@encacap-group/types/dist/re";
+import { ICategory } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import ProductSidebar from "./ProductSidebar";
 

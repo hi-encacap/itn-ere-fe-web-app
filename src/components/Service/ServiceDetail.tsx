@@ -1,6 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
 import HomeServiceListItem from "@components/Home/Service/ListItem";
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, getImageURL } from "@encacap-group/types/dist/re";
+import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
 import { ProductDataType, ServiceDataType } from "@interfaces/dataTypes";
 import Image from "next/image";
 import ServiceSidebar from "./ServiceSidebar";

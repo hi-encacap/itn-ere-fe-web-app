@@ -2,7 +2,7 @@ import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import { ProjectProps } from "@components/Project/Project";
 import ProjectDetail from "@components/Project/ProjectDetail";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { ProjectDataType } from "@interfaces/dataTypes";
 import {

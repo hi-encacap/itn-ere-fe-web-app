@@ -1,5 +1,5 @@
 import { IconBuilding, IconFoam, IconHouse, IconInsulation } from "@components/Common/Icon";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeSectionTitle from "../components/SectionTitle";
 import HomeCategoryItem from "./Item";

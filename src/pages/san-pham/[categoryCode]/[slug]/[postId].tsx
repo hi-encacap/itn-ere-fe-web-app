@@ -1,7 +1,7 @@
 import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import ProductDetail from "@components/Product/ProductDetail";
-import { ICategory } from "@encacap-group/types/dist/re";
+import { ICategory } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { configService, productService } from "@services/index";
