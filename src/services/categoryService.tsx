@@ -1,5 +1,5 @@
 import { CATEGORY_API_PATH } from "@constants/apis";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import axiosInstance from "@utils/axiosInstance";
 
 const getCategoryByCode = async (code: string = ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT) => {

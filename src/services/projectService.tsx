@@ -1,5 +1,5 @@
-import { IBaseListQuery } from "@encacap-group/types/dist/base";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { IBaseListQuery } from "@encacap-group/common/dist/base";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { ProjectDataType } from "@interfaces/dataTypes";
 import { sample } from "lodash";
 import { getCategoryByCode } from "./categoryService";

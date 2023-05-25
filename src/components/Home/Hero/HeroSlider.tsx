@@ -1,4 +1,4 @@
-import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
+import { ICloudflareImageResponse } from "@encacap-group/common/dist/re";
 import { RefObject, useEffect, useRef } from "react";
 import { SwiperOptions } from "swiper";
 import { register } from "swiper/element/bundle";

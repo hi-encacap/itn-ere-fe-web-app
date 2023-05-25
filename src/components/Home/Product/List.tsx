@@ -1,4 +1,4 @@
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";

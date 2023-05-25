@@ -1,4 +1,4 @@
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { twMerge } from "tailwind-merge";
 import LayoutHeaderNavbarContainer from "./NavbarContainer";
 import LayoutHeaderNavbarItem from "./NavbarItem";
@@ -9,7 +9,7 @@ interface LayoutHeaderNavbarProps {
 }
 
 const LayoutHeaderNavbar = ({ className, onClick }: LayoutHeaderNavbarProps) => (
-  <div className={twMerge(className, "relative")} onClick={onClick} role="button" tabIndex={-1}>
+  <div className={twMerge("relative", className)} onClick={onClick} role="button" tabIndex={-1}>
     <LayoutHeaderNavbarContainer className="flex flex-col items-center overflow-clip overflow-x-auto overflow-y-hidden scrollbar-none md:flex-row md:space-x-7">
       <LayoutHeaderNavbarItem href="/">Trang chủ</LayoutHeaderNavbarItem>
       <LayoutHeaderNavbarItem href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`}>

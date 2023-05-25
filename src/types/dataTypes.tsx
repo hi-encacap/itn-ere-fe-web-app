@@ -3,12 +3,13 @@ import {
   ICategory,
   ICloudflareImageResponse,
   IContact,
-  IWebsite,
-} from "@encacap-group/types/dist/re";
+  SITE_CONFIG_CODE_ENUM,
+} from "@encacap-group/common/dist/re";
 
-export interface SiteConfigDataType
-  extends Record<ACBUILDING_SITE_CONFIG_CODE_ENUM | string, string>,
-    Omit<IWebsite, "id"> {}
+export type SiteConfigDataType = Record<
+  SITE_CONFIG_CODE_ENUM | ACBUILDING_SITE_CONFIG_CODE_ENUM | string,
+  Record<string, unknown>
+>;
 
 export interface ProductDataType {
   id: number;

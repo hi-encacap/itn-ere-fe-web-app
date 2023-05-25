@@ -1,4 +1,4 @@
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, ICategory, getImageURL } from "@encacap-group/types/dist/re";
+import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, ICategory, getImageURL } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import Image from "next/image";
 import Layout, { LayoutProps } from "./Layout";

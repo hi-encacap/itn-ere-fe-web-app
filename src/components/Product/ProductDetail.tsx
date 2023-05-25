@@ -1,6 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
 import HomeProductListItem from "@components/Home/Product/ListItem";
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, ICategory, getImageURL } from "@encacap-group/types/dist/re";
+import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, ICategory, getImageURL } from "@encacap-group/common/dist/re";
 import { ProductDataType } from "@interfaces/dataTypes";
 import Image from "next/image";
 import ProductSidebar from "./ProductSidebar";

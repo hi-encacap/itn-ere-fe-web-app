@@ -1,5 +1,5 @@
 import Button from "@components/Common/Button";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { ServiceDataType } from "@interfaces/dataTypes";
 import HomeServiceListItem from "./ListItem";
 import HomeListItemSkeleton from "./ListItemSkeleton";

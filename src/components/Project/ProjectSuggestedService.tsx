@@ -5,7 +5,7 @@ import {
   ACBUILDING_CATEGORY_CODE_ENUM,
   DEFAULT_CLOUDFLARE_VARIANT_ENUM,
   getImageURL,
-} from "@encacap-group/types/dist/re";
+} from "@encacap-group/common/dist/re";
 import { ServiceDataType } from "@interfaces/dataTypes";
 import { getCategoryPageLink } from "@utils/helper";
 import Link from "next/link";

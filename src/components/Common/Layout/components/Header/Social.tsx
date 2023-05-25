@@ -1,8 +1,8 @@
+import { SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import _ from "lodash";
 import { twMerge } from "tailwind-merge";
 import LayoutIconFacebook from "../Icon/Facebook";
-import LayoutIconYoutube from "../Icon/Youtube";
 
 interface LayoutHeaderSocialProps {
   config: SiteConfigDataType;
@@ -11,16 +11,18 @@ interface LayoutHeaderSocialProps {
 }
 
 const LayoutHeaderSocial = ({ config, className, wrapperClassName }: LayoutHeaderSocialProps) => {
-  if (_.isEmpty(config?.site_facebook) && _.isEmpty(config?.site_youtube)) {
+  if (_.isEmpty(config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.site_facebook)) {
     return null;
   }
 
   return (
     <div className={twMerge("space-x-2", className)}>
-      {config?.site_facebook && (
-        <LayoutIconFacebook href={config.site_facebook} className={wrapperClassName} />
+      {Boolean(config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].site_facebook) && (
+        <LayoutIconFacebook
+          href={config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].site_facebook as string}
+          className={wrapperClassName}
+        />
       )}
-      {config?.site_youtube && <LayoutIconYoutube href={config.site_youtube} className={wrapperClassName} />}
     </div>
   );
 };

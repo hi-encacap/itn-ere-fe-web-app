@@ -203,9 +203,17 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@encacap-group/types@^1.6.18":
+"@encacap-group/common@^1.6.23":
+  version "1.6.23"
+  resolved "https://registry.yarnpkg.com/@encacap-group/common/-/common-1.6.23.tgz#96f7f104986d177742304b7b16c04fe43787e813"
+  integrity sha512-tTdqSqOW61sgFQRqm7ZgHG/FbgazSShExj2ToX1ksQNVhUAO8rm31DtTN006/oUoog0Ppcuk0tOqsh0bB1UXlg==
+  dependencies:
+    axios "^1.4.0"
+    react-hook-form "^7.43.9"
+
+"@encacap-group/common@^1.6.18":
   version "1.6.18"
-  resolved "https://registry.yarnpkg.com/@encacap-group/types/-/types-1.6.18.tgz#332c20f5e9a081ce758f38f87aace7a981d7c45c"
+  resolved "https://registry.yarnpkg.com/@encacap-group/common/-/types-1.6.18.tgz#332c20f5e9a081ce758f38f87aace7a981d7c45c"
   integrity sha512-o6YXrgNEmGXkJK3YEGqMIIp6E7kMB7m0kN0gVveocbMy6HaiRLQpM4TSTHeWPprRo7nTXSyeUaFl5wOudY3zwg==
   dependencies:
     axios "^1.4.0"
