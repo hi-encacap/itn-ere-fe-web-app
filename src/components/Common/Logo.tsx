@@ -11,8 +11,8 @@ const Logo = ({ isPriority = true, isShowName = false }: LogoProps) => (
   <Link href="/" className="flex items-center space-x-4">
     <div
       className={twMerge(
-        "p-[1.5px]",
-        isShowName && "h-14 w-16 bg-gradient-to-b from-orange-500 via-yellow-300 to-orange-500"
+        "h-14 p-[1.5px]",
+        isShowName && "w-16 bg-gradient-to-b from-orange-500 via-yellow-300 to-orange-500"
       )}
     >
       <div
@@ -27,7 +27,7 @@ const Logo = ({ isPriority = true, isShowName = false }: LogoProps) => (
       </div>
     </div>
     {isShowName && (
-      <div className="ml-2 pt-0.5 uppercase text-encacap-main">
+      <div className="ml-2 pt-1.5 uppercase text-encacap-main md:pt-0.5">
         <div className="ml-px mt-0.5 bg-gradient-to-b from-orange-500 via-yellow-300 to-orange-500 bg-clip-text text-xs font-semibold text-transparent">
           Công ty TNHH xây dựng
         </div>
