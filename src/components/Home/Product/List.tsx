@@ -2,6 +2,7 @@ import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import Button from "../../Common/Button";
+import HomeListItemSkeleton from "../Service/ListItemSkeleton";
 import HomeProductListItem from "./ListItem";
 
 interface HomeProductListProps extends HTMLAttributes<HTMLElement> {
@@ -14,6 +15,11 @@ const HomeProductList = ({ className, data }: HomeProductListProps) => (
       {data.map((item) => (
         <HomeProductListItem data={item} key={item.id} />
       ))}
+      {data.length < 6 &&
+        Array.from({ length: 6 - data.length }).map((_, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <HomeListItemSkeleton className="min-h-[14rem] bg-gray-100 shadow-none" key={index} />
+        ))}
     </div>
     <Button
       title="Xem tất cả sản phẩm"

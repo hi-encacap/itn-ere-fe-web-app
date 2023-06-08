@@ -16,7 +16,7 @@ const HomeServiceList = ({ data }: HomeServiceListProps) => (
       {data.length < 6 &&
         Array.from({ length: 6 - data.length }).map((_, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <HomeListItemSkeleton key={index} />
+          <HomeListItemSkeleton key={index} className="shadow-none" />
         ))}
     </div>
     <Button
