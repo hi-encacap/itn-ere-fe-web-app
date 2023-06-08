@@ -1,9 +1,10 @@
 import {
   ACBUILDING_SITE_CONFIG_CODE_ENUM,
+  ICategory,
   ICloudflareImageResponse,
+  IPost,
   SITE_CONFIG_CODE_ENUM,
 } from "@encacap-group/common/dist/re";
-import { ProductDataType, ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
 import HomeCategory from "./Category/Category";
 import HomeHero from "./Hero/Hero";
 import HomeIntroduce from "./Introduce/Introduce";
@@ -12,16 +13,18 @@ import HomeProject from "./Project/Project";
 import HomeService from "./Service/Service";
 
 export interface HomeProps {
-  products: ProductDataType[];
-  services: ServiceDataType[];
-  projects: ProjectDataType[];
+  products: IPost[];
+  services: IPost[];
+  projects: IPost[];
+  featuredServices: IPost[];
+  productCategory: ICategory;
   siteConfig: Record<string, unknown>;
 }
 
-const Home = ({ siteConfig, products, services, projects }: HomeProps) => (
+const Home = ({ siteConfig, products, services, featuredServices, projects, productCategory }: HomeProps) => (
   <>
     <HomeHero data={siteConfig[SITE_CONFIG_CODE_ENUM.HOMEPAGE_SLIDER_IMAGE] as ICloudflareImageResponse[]} />
-    <HomeCategory />
+    <HomeCategory services={featuredServices} productCategory={productCategory} />
     <HomeIntroduce
       images={
         siteConfig[ACBUILDING_SITE_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_IMAGE] as ICloudflareImageResponse[]

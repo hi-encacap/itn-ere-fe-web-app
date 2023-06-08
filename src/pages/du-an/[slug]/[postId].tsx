@@ -2,21 +2,14 @@ import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import { ProjectProps } from "@components/Project/Project";
 import ProjectDetail from "@components/Project/ProjectDetail";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ProjectDataType } from "@interfaces/dataTypes";
-import {
-  configService,
-  productService,
-  projectService,
-  serviceService,
-  websiteService,
-} from "@services/index";
+import { configService, postService } from "@services/index";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
 
 interface ServicePageProps extends BasePageProps, ProjectProps {
-  project: ProjectDataType;
+  project: IPost;
 }
 
 const ServicePage = ({
@@ -37,7 +30,12 @@ const ServicePage = ({
   );
 
   return (
-    <CategoryLayout data={project.category} title={project.name} breadcrumbItems={breadcrumbItems} {...props}>
+    <CategoryLayout
+      data={project.category}
+      title={project.title}
+      breadcrumbItems={breadcrumbItems}
+      {...props}
+    >
       <ProjectDetail
         data={project}
         projects={projects}
@@ -49,21 +47,19 @@ const ServicePage = ({
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const [website, siteConfig, projects, suggestedProducts, suggestedServices, project] = await Promise.all([
-    websiteService.getMyWebsite(),
+  const [siteConfig, projects, suggestedProducts, suggestedServices, project] = await Promise.all([
     configService.getSiteConfig(),
-    projectService.getProjects(),
-    productService.getProducts(),
-    serviceService.getServices(),
-    projectService.getProjectById(Number(context.params?.postId)),
+    postService.getProjects(),
+    postService.getProducts(),
+    postService.getServices(),
+    postService.getPostById(Number(context.params?.postId)),
   ]);
 
-  const head = { title: project.name };
+  const head = { title: project.title };
 
   return {
     props: {
       head,
-      website,
       siteConfig,
       project,
       projects,

@@ -1,22 +1,15 @@
 import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import Service from "@components/Service/Service";
-import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ProductDataType, ServiceDataType } from "@interfaces/dataTypes";
-import {
-  categoryService,
-  configService,
-  productService,
-  serviceService,
-  websiteService,
-} from "@services/index";
+import { categoryService, configService, postService } from "@services/index";
 import { useMemo } from "react";
 
 interface ServicePageProps extends BasePageProps {
   category: ICategory;
-  services: ServiceDataType[];
-  suggestedProducts: ProductDataType[];
+  services: IPost[];
+  suggestedProducts: IPost[];
 }
 
 const ServicePage = ({ category, services, suggestedProducts, ...props }: ServicePageProps) => {
@@ -38,12 +31,11 @@ const ServicePage = ({ category, services, suggestedProducts, ...props }: Servic
 };
 
 export const getServerSideProps = async () => {
-  const [website, siteConfig, category, services, suggestedProducts] = await Promise.all([
-    websiteService.getMyWebsite(),
+  const [siteConfig, category, services, suggestedProducts] = await Promise.all([
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.SERVICE),
-    serviceService.getServices(),
-    productService.getProducts(),
+    postService.getServices(),
+    postService.getProducts(),
   ]);
 
   const head = { title: category.name };
@@ -51,7 +43,6 @@ export const getServerSideProps = async () => {
   return {
     props: {
       head,
-      website,
       siteConfig,
       category,
       services,

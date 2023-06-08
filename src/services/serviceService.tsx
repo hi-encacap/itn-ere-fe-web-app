@@ -1,6 +1,7 @@
-import { IBaseListQuery } from "@encacap-group/common/dist/base";
-import { ACBUILDING_CATEGORY_CODE_ENUM, SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { POST_API_PATH } from "@constants/apis";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost, SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { ServiceDataType } from "@interfaces/dataTypes";
+import axiosInstance from "@utils/axiosInstance";
 import { sample } from "lodash";
 import { getCategoryByCode } from "./categoryService";
 import { getHeroImages, getSiteConfig } from "./configService";
@@ -32,16 +33,20 @@ const fakeData: Partial<ServiceDataType>[] = [
   },
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getServices = async (query?: IBaseListQuery) => {
-  const images = await getHeroImages();
-  const rootCategory = await getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.SERVICE);
+const getFeaturedServices = async (): Promise<IPost> => {
+  const codes = [
+    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE,
+    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE_SCRATCH,
+    ACBUILDING_CATEGORY_CODE_ENUM.CONSTRUCTION_FOAM,
+  ];
 
-  return fakeData.map((item) => ({
-    ...item,
-    avatar: sample(images),
-    category: rootCategory,
-  }));
+  const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH, {
+    params: {
+      codes,
+    },
+  });
+
+  return response.data.data;
 };
 
 const getServiceById = async (id: number) => {
@@ -65,4 +70,4 @@ const getServiceById = async (id: number) => {
   };
 };
 
-export { getServiceById, getServices };
+export { getFeaturedServices, getServiceById };

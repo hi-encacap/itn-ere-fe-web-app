@@ -1,10 +1,10 @@
-import { ProjectDataType } from "@interfaces/dataTypes";
+import { IPost } from "@encacap-group/common/dist/re";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeSectionTitle from "../components/SectionTitle";
 import HomeProjectList from "./List";
 
 interface HomeProjectProps {
-  data: ProjectDataType[];
+  data: IPost[];
 }
 
 const HomeProject = ({ data }: HomeProjectProps) => (

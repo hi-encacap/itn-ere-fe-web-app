@@ -3,14 +3,7 @@ import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/B
 import Project, { ProjectProps } from "@components/Project/Project";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import {
-  categoryService,
-  configService,
-  productService,
-  projectService,
-  serviceService,
-  websiteService,
-} from "@services/index";
+import { categoryService, configService, postService } from "@services/index";
 import { useMemo } from "react";
 
 interface ServicePageProps extends BasePageProps, ProjectProps {
@@ -46,21 +39,19 @@ const ServicePage = ({
 };
 
 export const getServerSideProps = async () => {
-  const [website, siteConfig, category, projects, suggestedProducts, suggestedServices] = await Promise.all([
-    websiteService.getMyWebsite(),
+  const [siteConfig, category, projects, suggestedProducts, suggestedServices] = await Promise.all([
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PROJECT),
-    projectService.getProjects(),
-    productService.getProducts(),
-    serviceService.getServices(),
+    postService.getProjects(),
+    postService.getProducts(),
+    postService.getServices(),
   ]);
 
-  const head = { title: category.name };
+  const head = { title: category.name ?? "Hihi" };
 
   return {
     props: {
       head,
-      website,
       siteConfig,
       category,
       projects,

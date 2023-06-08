@@ -1,12 +1,11 @@
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
-import { ProductDataType } from "@interfaces/dataTypes";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import Button from "../../Common/Button";
 import HomeProductListItem from "./ListItem";
 
 interface HomeProductListProps extends HTMLAttributes<HTMLElement> {
-  data: ProductDataType[];
+  data: IPost[];
 }
 
 const HomeProductList = ({ className, data }: HomeProductListProps) => (

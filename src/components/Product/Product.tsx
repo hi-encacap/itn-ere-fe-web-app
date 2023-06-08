@@ -1,22 +1,21 @@
 import HomeProductListItem from "@components/Home/Product/ListItem";
-import { ICategory } from "@encacap-group/common/dist/re";
-import { ProductDataType } from "@interfaces/dataTypes";
+import { ICategory, IPost } from "@encacap-group/common/dist/re";
 import ProductSidebar from "./ProductSidebar";
 
 interface ProductProps {
-  products: ProductDataType[];
-  category: ICategory;
+  products: IPost[];
+  categories: ICategory[];
 }
 
-const Product = ({ products, category }: ProductProps) => (
+const Product = ({ products, categories }: ProductProps) => (
   <>
-    <ProductSidebar className="block md:hidden" isSidebarCollapsed category={category} />
+    <ProductSidebar className="block md:hidden" isSidebarCollapsed categories={categories} />
     <div className="grid gap-4 md:col-span-2 md:grid-cols-3 md:gap-6 lg:col-span-3 lg:gap-10">
       {products.map((item) => (
         <HomeProductListItem data={item} key={item.id} />
       ))}
     </div>
-    <ProductSidebar className="hidden flex-col md:flex" category={category} />
+    <ProductSidebar className="hidden flex-col md:flex" categories={categories} />
   </>
 );
 

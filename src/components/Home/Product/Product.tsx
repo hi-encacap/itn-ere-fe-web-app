@@ -1,10 +1,10 @@
-import { ProductDataType } from "@interfaces/dataTypes";
+import { IPost } from "@encacap-group/common/dist/re";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeProductIntroduce from "./Introduce";
 import HomeProductList from "./List";
 
 interface HomeProductProps {
-  data: ProductDataType[];
+  data: IPost[];
 }
 
 const HomeProduct = ({ data }: HomeProductProps) => (

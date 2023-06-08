@@ -1,11 +1,11 @@
 import HomeProjectListItem from "@components/Home/Project/ListItem";
-import { ProductDataType, ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
+import { IPost } from "@encacap-group/common/dist/re";
 import ProjectSidebar from "./ProjectSidebar";
 
 export interface ProjectProps {
-  projects: ProjectDataType[];
-  suggestedProducts: ProductDataType[];
-  suggestedServices: ServiceDataType[];
+  projects: IPost[];
+  suggestedProducts: IPost[];
+  suggestedServices: IPost[];
 }
 
 const Project = ({ projects, suggestedProducts, suggestedServices }: ProjectProps) => (

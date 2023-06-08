@@ -1,12 +1,12 @@
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
-import { ProductDataType, ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
+import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, IPost, getImageURL } from "@encacap-group/common/dist/re";
+import { ProjectDataType, ServiceDataType } from "@interfaces/dataTypes";
 import Image from "next/image";
 import Link from "next/link";
 import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface HomeNewsItemContainerProps extends HTMLAttributes<HTMLDivElement> {
-  data: ProductDataType | ServiceDataType | ProjectDataType;
+  data: IPost | ServiceDataType | ProjectDataType;
   children: ReactNode;
   imageClassName?: string;
   href?: string;
@@ -29,7 +29,7 @@ const HomeNewsItemContainer = ({
     <div className={twMerge("relative aspect-video w-full flex-shrink-0", imageClassName)}>
       <Image
         src={getImageURL(data.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL)}
-        alt={data.name}
+        alt={"name" in data ? data.name : data.title}
         fill
         sizes="100%"
         className="object-cover object-center"

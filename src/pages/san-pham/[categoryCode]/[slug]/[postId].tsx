@@ -1,19 +1,25 @@
 import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import ProductDetail from "@components/Product/ProductDetail";
-import { ICategory } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ProductDataType } from "@interfaces/dataTypes";
-import { configService, productService } from "@services/index";
+import { categoryService, configService, postService } from "@services/index";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
 
 interface ProductDetailPageProps extends BasePageProps {
-  product: ProductDataType;
-  relatedProducts: ProductDataType[];
+  product: IPost;
+  relatedProducts: IPost[];
+  categories: ICategory[];
 }
 
-const ProductDetailPage = ({ product, relatedProducts, ...props }: ProductDetailPageProps) => {
+const ProductDetailPage = ({
+  product,
+  relatedProducts,
+  siteConfig,
+  categories,
+  ...props
+}: ProductDetailPageProps) => {
   const { category } = product;
   const parentCategory = category.parent as ICategory;
 
@@ -28,24 +34,32 @@ const ProductDetailPage = ({ product, relatedProducts, ...props }: ProductDetail
         href: `/${parentCategory.code}/${category.code}`,
       },
     ],
-    [category.code, category.name, parentCategory.code, parentCategory.name]
+    [category, parentCategory]
   );
 
   return (
-    <CategoryLayout data={product} breadcrumbItems={breadcrumbItems} {...props}>
-      <ProductDetail data={product} relatedProducts={relatedProducts} />
+    <CategoryLayout data={product} breadcrumbItems={breadcrumbItems} siteConfig={siteConfig} {...props}>
+      <ProductDetail
+        data={product}
+        relatedProducts={relatedProducts}
+        siteConfig={siteConfig}
+        categories={categories}
+      />
     </CategoryLayout>
   );
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const [siteConfig, product, relatedProducts] = await Promise.all([
+  const postId = Number(context.params?.postId);
+
+  const [siteConfig, product, relatedProducts, categories] = await Promise.all([
     configService.getSiteConfig(),
-    productService.getProductById(Number(context.params?.postId)),
-    productService.getProducts(),
+    postService.getPostById(postId),
+    postService.getProducts(),
+    categoryService.getChildCategoryParentByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
   ]);
 
-  const head = { title: product.name };
+  const head = { title: product.title };
 
   return {
     props: {
@@ -53,6 +67,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       siteConfig,
       product,
       relatedProducts,
+      categories,
     },
   };
 };

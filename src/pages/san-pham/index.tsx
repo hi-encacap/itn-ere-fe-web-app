@@ -1,16 +1,14 @@
 import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import Product from "@components/Product/Product";
-import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ProductDataType } from "@interfaces/dataTypes";
-import { categoryService, configService, productService, websiteService } from "@services/index";
-import { sample } from "lodash";
+import { categoryService, configService, postService } from "@services/index";
 import { useMemo } from "react";
 
 interface ProductPageProps extends BasePageProps {
   category: ICategory;
-  products: ProductDataType[];
+  products: IPost[];
 }
 
 const ProductPage = ({ category, products, ...props }: ProductPageProps) => {
@@ -26,17 +24,16 @@ const ProductPage = ({ category, products, ...props }: ProductPageProps) => {
 
   return (
     <CategoryLayout data={category} breadcrumbItems={breadcrumbItems} {...props}>
-      <Product products={products} category={category} />
+      <Product products={products} categories={category.children as ICategory[]} />
     </CategoryLayout>
   );
 };
 
 export const getServerSideProps = async () => {
-  const [website, siteConfig, category, products] = await Promise.all([
-    websiteService.getMyWebsite(),
+  const [siteConfig, category, products] = await Promise.all([
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
-    productService.getProducts(),
+    postService.getProducts(),
   ]);
 
   const head = { title: category.name };
@@ -44,13 +41,9 @@ export const getServerSideProps = async () => {
   return {
     props: {
       head,
-      website,
       siteConfig,
       category,
-      products: products.map((item) => ({
-        ...item,
-        category: sample(category.children),
-      })),
+      products,
     },
   };
 };

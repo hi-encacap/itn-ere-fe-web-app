@@ -1,15 +1,14 @@
 import Button from "@components/Common/Button";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
-import { ServiceDataType } from "@interfaces/dataTypes";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import HomeServiceListItem from "./ListItem";
 import HomeListItemSkeleton from "./ListItemSkeleton";
 
 interface HomeServiceListProps {
-  data: ServiceDataType[];
+  data: IPost[];
 }
 
 const HomeServiceList = ({ data }: HomeServiceListProps) => (
-  <div className="flex flex-col space-y-6 md:space-y-10 lg:space-y-16">
+  <div className="flex flex-col space-y-6 md:space-y-10 lg:space-y-20">
     <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10">
       {data.map((item) => (
         <HomeServiceListItem key={item.id} data={item} />

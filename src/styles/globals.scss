@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./content.scss";
+
 @font-face {
   font-family: "Gilroy";
   src: url("../assets/fonts/gilroyRegular.otf") format("opentype");

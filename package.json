@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@encacap-group/common": "^1.6.23",
+    "@encacap-group/common": "^1.7.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.1.0",
     "@types/react": "18.2.5",
@@ -22,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
+    "striptags": "^3.2.0",
     "swiper": "^9.2.4",
     "tailwind-merge": "^1.12.0"
   },

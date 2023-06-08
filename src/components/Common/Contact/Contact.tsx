@@ -1,11 +1,19 @@
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, IContact, getImageURL } from "@encacap-group/common/dist/re";
+import {
+  ACBUILDING_SITE_CONFIG_CODE_ENUM,
+  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
+  ICloudflareImageResponse,
+  SITE_CONFIG_CODE_ENUM,
+  getImageURL,
+} from "@encacap-group/common/dist/re";
+import { SiteConfigDataType } from "@interfaces/dataTypes";
+import { beautyPhoneNumber } from "@utils/helper";
 import Image from "next/image";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import { IconPhoneRing } from "../Icon";
 
 interface ContactProps extends HTMLAttributes<HTMLElement> {
-  data: IContact;
+  data: SiteConfigDataType;
   isShowTitle?: boolean;
 }
 
@@ -26,24 +34,33 @@ const Contact = ({ data, isShowTitle = true, className }: ContactProps) => (
         className={twMerge("relative h-32 w-32 rounded-full bg-gray-200", !isShowTitle && "md:h-20 md:w-20")}
       >
         <Image
-          src={getImageURL(data.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.SMALL)}
-          alt={data.name}
+          src={getImageURL(
+            data[ACBUILDING_SITE_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_IMAGE][0] as ICloudflareImageResponse,
+            DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL
+          )}
+          alt={data.website.name as string}
           fill
           className="rounded-full object-cover object-center"
         />
       </div>
       <div className="mb-5 mt-4 flex-1">
-        <div className="font-semibold">{data.name}</div>
+        <div className={twMerge("font-semibold", isShowTitle && "text-center")}>
+          {data.website.name as string}
+        </div>
         {!isShowTitle && (
           <div className="mt-1 hidden text-sm md:block">
             <span className="font-semibold">Điện thoại:</span>
-            <span className="ml-2">{data.phone}</span>
+            <span className="ml-2">
+              {beautyPhoneNumber(data[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone as string)}
+            </span>
           </div>
         )}
       </div>
       <div className="flex cursor-pointer items-center justify-center space-x-4 rounded-full bg-gray-200 px-6 py-3 duration-100 hover:bg-encacap-main hover:text-white">
         <IconPhoneRing className="w-5" />
-        <span className={twMerge("ml-2", !isShowTitle && "md:hidden")}>{data.phone}</span>
+        <span className={twMerge("ml-2", !isShowTitle && "md:hidden")}>
+          {beautyPhoneNumber(data[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone as string)}
+        </span>
       </div>
     </div>
   </div>

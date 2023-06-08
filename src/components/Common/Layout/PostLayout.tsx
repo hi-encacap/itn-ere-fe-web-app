@@ -1,5 +1,9 @@
-import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, ICategory, getImageURL } from "@encacap-group/common/dist/re";
-import { ProductDataType } from "@interfaces/dataTypes";
+import {
+  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
+  ICategory,
+  IPost,
+  getImageURL,
+} from "@encacap-group/common/dist/re";
 import Image from "next/image";
 import Layout, { LayoutProps } from "./Layout";
 import LayoutBreadcrumb from "./components/Breadcrumb/Breadcrumb";
@@ -7,7 +11,7 @@ import { LayoutBreadcrumbItemType } from "./components/Breadcrumb/BreadcrumbItem
 
 export interface CategoryLayoutProps extends LayoutProps {
   title?: string;
-  data: ICategory | ProductDataType;
+  data: ICategory | IPost;
   breadcrumbItems: LayoutBreadcrumbItemType[];
 }
 
@@ -27,7 +31,7 @@ const CategoryLayout = ({
             "thumbnail" in data ? data.thumbnail : data.avatar,
             DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL
           )}
-          alt={data.name}
+          alt={"title" in data ? data.title : data.name}
           fill
           sizes="100%"
           quality={100}
@@ -36,7 +40,7 @@ const CategoryLayout = ({
       </div>
       <div className="relative flex h-full w-full flex-col items-center justify-center bg-encacap-secondary bg-opacity-95 px-4 py-8 md:py-10 lg:py-16">
         <div className="text-center text-2xl font-bold uppercase leading-10 text-white md:text-3xl">
-          {title ?? data.name}
+          {title ?? ("title" in data ? data.title : data.name)}
         </div>
         <LayoutBreadcrumb items={breadcrumbItems} />
       </div>

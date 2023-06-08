@@ -1,20 +1,25 @@
 import CategoryLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import ServiceDetail from "@components/Service/ServiceDetail";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { ProductDataType, ServiceDataType } from "@interfaces/dataTypes";
-import { configService, productService, serviceService, websiteService } from "@services/index";
+import { configService, postService } from "@services/index";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
 
 interface ServiceDetailPageProps extends BasePageProps {
-  service: ServiceDataType;
-  services: ServiceDataType[];
-  suggestedProducts: ProductDataType[];
+  service: IPost;
+  services: IPost[];
+  suggestedProducts: IPost[];
 }
 
-const ServiceDetailPage = ({ service, services, suggestedProducts, ...props }: ServiceDetailPageProps) => {
+const ServiceDetailPage = ({
+  service,
+  services,
+  suggestedProducts,
+  siteConfig,
+  ...props
+}: ServiceDetailPageProps) => {
   const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
     () => [
       {
@@ -26,27 +31,36 @@ const ServiceDetailPage = ({ service, services, suggestedProducts, ...props }: S
   );
 
   return (
-    <CategoryLayout data={service.category} title={service.name} breadcrumbItems={breadcrumbItems} {...props}>
-      <ServiceDetail data={service} services={services} suggestedProducts={suggestedProducts} />
+    <CategoryLayout
+      data={service.category}
+      title={service.title}
+      breadcrumbItems={breadcrumbItems}
+      siteConfig={siteConfig}
+      {...props}
+    >
+      <ServiceDetail
+        data={service}
+        services={services}
+        suggestedProducts={suggestedProducts}
+        siteConfig={siteConfig}
+      />
     </CategoryLayout>
   );
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const [website, siteConfig, service, services, suggestedProducts] = await Promise.all([
-    websiteService.getMyWebsite(),
+  const [siteConfig, service, services, suggestedProducts] = await Promise.all([
     configService.getSiteConfig(),
-    serviceService.getServiceById(Number(context.params?.postId)),
-    serviceService.getServices(),
-    productService.getProducts(),
+    postService.getPostById(Number(context.params?.postId)),
+    postService.getServices(),
+    postService.getProducts(),
   ]);
 
-  const head = { title: service.name };
+  const head = { title: service.title };
 
   return {
     props: {
       head,
-      website,
       siteConfig,
       service,
       services,

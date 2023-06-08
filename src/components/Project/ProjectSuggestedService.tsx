@@ -4,14 +4,14 @@ import ServiceSuggestedProductItem from "@components/Service/ServiceSuggestedPro
 import {
   ACBUILDING_CATEGORY_CODE_ENUM,
   DEFAULT_CLOUDFLARE_VARIANT_ENUM,
+  IPost,
   getImageURL,
 } from "@encacap-group/common/dist/re";
-import { ServiceDataType } from "@interfaces/dataTypes";
 import { getCategoryPageLink } from "@utils/helper";
 import Link from "next/link";
 
 interface ProjectSuggestedServiceProps {
-  data: ServiceDataType[];
+  data: IPost[];
 }
 
 const ProjectSuggestedService = ({ data }: ProjectSuggestedServiceProps) => (
@@ -19,7 +19,7 @@ const ProjectSuggestedService = ({ data }: ProjectSuggestedServiceProps) => (
     <div className="flex flex-col space-y-4 border-gray-200 pb-6 md:border-t-2 md:py-6">
       {data.map((item) => (
         <ServiceSuggestedProductItem
-          name={item.name}
+          name={item.title}
           href={getCategoryPageLink(item.category)}
           image={getImageURL(item.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL)}
           key={item.id}

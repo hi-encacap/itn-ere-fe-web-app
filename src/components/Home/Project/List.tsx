@@ -1,15 +1,14 @@
 import Button from "@components/Common/Button";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
-import { ProjectDataType } from "@interfaces/dataTypes";
+import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import HomeListItemSkeleton from "../Service/ListItemSkeleton";
 import HomeProjectListItem from "./ListItem";
 
 interface HomeProjectListProps {
-  data: ProjectDataType[];
+  data: IPost[];
 }
 
 const HomeProjectList = ({ data }: HomeProjectListProps) => (
-  <div className="flex flex-col space-y-6 md:space-y-10 lg:space-y-16">
+  <div className="flex flex-col space-y-6 md:space-y-10 lg:space-y-20">
     <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10">
       {data.map((item) => (
         <HomeProjectListItem key={item.id} data={item} />
@@ -17,7 +16,7 @@ const HomeProjectList = ({ data }: HomeProjectListProps) => (
       {data.length < 6 &&
         Array.from({ length: 6 - data.length }).map((_, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <HomeListItemSkeleton key={index} />
+          <HomeListItemSkeleton key={index} className="bg-gray-100 shadow-none" />
         ))}
     </div>
     <Button

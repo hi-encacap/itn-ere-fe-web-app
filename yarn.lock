@@ -203,18 +203,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@encacap-group/common@^1.6.23":
-  version "1.6.23"
-  resolved "https://registry.yarnpkg.com/@encacap-group/common/-/common-1.6.23.tgz#96f7f104986d177742304b7b16c04fe43787e813"
-  integrity sha512-tTdqSqOW61sgFQRqm7ZgHG/FbgazSShExj2ToX1ksQNVhUAO8rm31DtTN006/oUoog0Ppcuk0tOqsh0bB1UXlg==
-  dependencies:
-    axios "^1.4.0"
-    react-hook-form "^7.43.9"
-
-"@encacap-group/common@^1.6.18":
-  version "1.6.18"
-  resolved "https://registry.yarnpkg.com/@encacap-group/common/-/types-1.6.18.tgz#332c20f5e9a081ce758f38f87aace7a981d7c45c"
-  integrity sha512-o6YXrgNEmGXkJK3YEGqMIIp6E7kMB7m0kN0gVveocbMy6HaiRLQpM4TSTHeWPprRo7nTXSyeUaFl5wOudY3zwg==
+"@encacap-group/common@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@encacap-group/common/-/common-1.7.2.tgz#076896d8090d6ac692afee29c857e76a5e44dbc0"
+  integrity sha512-IFEBCFBQTHhe32/QLl1rvJ77hAOlV520mZrgAmqOnwfKuGUrfH3qJt3krfq169sEqMhu20CTm7xAZt6kJZVvCw==
   dependencies:
     axios "^1.4.0"
     react-hook-form "^7.43.9"
@@ -3688,6 +3680,11 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+
+striptags@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/striptags/-/striptags-3.2.0.tgz#cc74a137db2de8b0b9a370006334161f7dd67052"
+  integrity sha512-g45ZOGzHDMe2bdYMdIvdAfCQkCTDMGBazSw1ypMowwGIee7ZQ5dU0rBJ8Jqgl+jAKIv4dbeE1jscZq9wid1Tkw==
 
 styled-jsx@5.1.1:
   version "5.1.1"
