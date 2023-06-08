@@ -1,5 +1,6 @@
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { useMemo } from "react";
+import HomeListItemSkeleton from "../Service/ListItemSkeleton";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeSectionTitle from "../components/SectionTitle";
 import CategoryAvatar from "./CategoryAvatar";
@@ -30,12 +31,14 @@ const HomeCategory = ({ services, productCategory }: HomeCategoryProps) => {
     <HomeSectionContainer className="px-0">
       <HomeSectionTitle title="Dịch vụ của chúng tôi" subtitle="Mọi thứ bạn cần" />
       <div className="grid grid-cols-2 gap-y-2 px-2 md:gap-6 lg:grid-cols-4 lg:gap-10 lg:px-0">
-        {housePost && (
+        {housePost ? (
           <HomeCategoryItem
             title={housePost.title}
             icon={<CategoryAvatar image={housePost.avatar} title={housePost.title} />}
             href={`${housePost.category.code}/${housePost.code}/${housePost.id}`}
           />
+        ) : (
+          <HomeListItemSkeleton />
         )}
         {houseScratchPost && (
           <HomeCategoryItem
@@ -53,7 +56,7 @@ const HomeCategory = ({ services, productCategory }: HomeCategoryProps) => {
         )}
         {productCategory && (
           <HomeCategoryItem
-            title={productCategory.name}
+            title="Phân phối sản phẩm cách nhiệt"
             icon={<CategoryAvatar image={productCategory.thumbnail} title={productCategory.name} />}
             href={`${productCategory.code}`}
           />
