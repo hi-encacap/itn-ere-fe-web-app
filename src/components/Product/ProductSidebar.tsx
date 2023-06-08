@@ -9,7 +9,7 @@ import ProductCategory from "./ProductCategory";
 interface ProductSidebarProps extends HTMLAttributes<HTMLDivElement> {
   isSidebarCollapsed?: boolean;
   categories: ICategory[];
-  siteConfig: SiteConfigDataType;
+  siteConfig?: SiteConfigDataType;
 }
 
 const ProductSidebar = ({ isSidebarCollapsed, className, siteConfig, categories }: ProductSidebarProps) => (
