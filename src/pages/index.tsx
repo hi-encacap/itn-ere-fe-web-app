@@ -11,14 +11,16 @@ const MyIndex = (props: BasePageProps & HomeProps) => (
 );
 
 export const getServerSideProps = async () => {
-  const [siteConfig, products, services, featuredServices, projects, productCategory] = await Promise.all([
-    configService.getSiteConfig(),
-    postService.getProducts({ limit: 6 }),
-    postService.getServices(),
-    serviceService.getFeaturedServices(),
-    postService.getProjects(),
-    categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
-  ]);
+  const [siteConfig, products, services, featuredServices, projects, productCategory, introducePost] =
+    await Promise.all([
+      configService.getSiteConfig(),
+      postService.getProducts({ limit: 6 }),
+      postService.getServices(),
+      serviceService.getFeaturedServices(),
+      postService.getProjects(),
+      categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
+      postService.getPostById(4),
+    ]);
 
   const head = { title: "Trang chủ" };
 
@@ -31,6 +33,7 @@ export const getServerSideProps = async () => {
       featuredServices,
       projects,
       productCategory,
+      introducePost,
     },
   };
 };
