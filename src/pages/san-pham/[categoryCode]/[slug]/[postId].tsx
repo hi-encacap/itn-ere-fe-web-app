@@ -4,8 +4,11 @@ import ProductDetail from "@components/Product/ProductDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
+import { decode } from "html-entities";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
+import striptags from "striptags";
 
 interface ProductDetailPageProps extends BasePageProps {
   product: IPost;
@@ -59,7 +62,11 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     categoryService.getChildCategoryParentByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
   ]);
 
-  const head = { title: product.title };
+  const head = {
+    title: product.title,
+    requestURL: getRequestURL(context.req),
+    description: decode(striptags(product.content)).substring(0, 150),
+  };
 
   return {
     props: {

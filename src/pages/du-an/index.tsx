@@ -4,6 +4,8 @@ import Project, { ProjectProps } from "@components/Project/Project";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
+import { GetServerSideProps } from "next";
 import { useMemo } from "react";
 
 interface ServicePageProps extends BasePageProps, ProjectProps {
@@ -38,7 +40,7 @@ const ServicePage = ({
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const [siteConfig, category, projects, suggestedProducts, suggestedServices] = await Promise.all([
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PROJECT),
@@ -47,7 +49,7 @@ export const getServerSideProps = async () => {
     postService.getServices(),
   ]);
 
-  const head = { title: category.name ?? "Hihi" };
+  const head = { title: category.name, requestURL: getRequestURL(req), description: category.name };
 
   return {
     props: {

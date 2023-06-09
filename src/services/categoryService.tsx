@@ -1,5 +1,5 @@
 import { CATEGORY_API_PATH } from "@constants/apis";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
 import axiosInstance from "@utils/axiosInstance";
 
 const getCategoryByCode = async (code: string = ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT) => {
@@ -18,4 +18,10 @@ const getChildCategoryParentByCode = async (code: string) => {
   return response.data.data;
 };
 
-export { getCategoryByCode, getChildCategoryParentByCode };
+const getCategories = async (): Promise<ICategory[]> => {
+  const response = await axiosInstance.get(CATEGORY_API_PATH.CATEGORIES_PATH);
+
+  return response.data.data;
+};
+
+export { getCategories, getCategoryByCode, getChildCategoryParentByCode };

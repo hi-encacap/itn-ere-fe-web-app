@@ -38,4 +38,4 @@ const getPostById = async (postId: number): Promise<IPost> => {
   return response.data.data;
 };
 
-export { getPostById, getProducts, getProjects, getServices };
+export { getPostById, getPosts, getProducts, getProjects, getServices };

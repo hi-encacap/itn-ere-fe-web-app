@@ -1,5 +1,6 @@
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost, slugify } from "@encacap-group/common/dist/re";
 import { ProjectDataType } from "@interfaces/dataTypes";
+import { IncomingMessage } from "http";
 
 const beautyMoney = (money: number): string => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -55,7 +56,18 @@ const getProjectDetailLink = (data: ProjectDataType): string => {
 const getPostDetailLink = (data: IPost): string => {
   const { category, code } = data;
 
-  return `/${category.code}/${code}/${data.id}`;
+  const categoryLink = getCategoryPageLink(category);
+
+  return `${categoryLink}/${code}/${data.id}`;
+};
+
+const getRequestURL = (req: IncomingMessage) => {
+  const rawRequestHost = req.headers.host;
+  const requestHostWithWWW = rawRequestHost?.includes("www") ? rawRequestHost : `www.${rawRequestHost}`;
+  const requestHost = `https://${requestHostWithWWW}`;
+  const requestURL = req.url && `${requestHost}${req.url}`;
+
+  return requestURL;
 };
 
 export {
@@ -66,5 +78,6 @@ export {
   getProductCategoryLink,
   getProductDetailLink,
   getProjectDetailLink,
+  getRequestURL,
   getServiceDetailLink,
 };

@@ -4,6 +4,7 @@ import Product from "@components/Product/Product";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
 
@@ -35,8 +36,8 @@ const ChildProductPage = ({ category, products, categories, ...props }: ChildPro
   );
 };
 
-export const getServerSideProps = async (content: GetServerSidePropsContext) => {
-  const categoryCode = content.params?.categoryCode as string;
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const categoryCode = context.params?.categoryCode as string;
 
   const [siteConfig, category, products, categories] = await Promise.all([
     configService.getSiteConfig(),
@@ -45,7 +46,11 @@ export const getServerSideProps = async (content: GetServerSidePropsContext) => 
     categoryService.getChildCategoryParentByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
   ]);
 
-  const head = { title: category.name };
+  const head = {
+    title: category.name,
+    requestURL: getRequestURL(context.req),
+    description: `${category.name} - ${category.parent.name}`,
+  };
 
   return {
     props: {
