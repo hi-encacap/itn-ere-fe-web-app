@@ -4,6 +4,7 @@ import { BasePageProps } from "@interfaces/baseTypes";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import "@styles/globals.scss";
 import Head from "next/head";
+import Script from "next/script";
 import LayoutFooter from "./components/Footer/Footer";
 import LayoutHeader from "./components/Header/Header";
 
@@ -33,6 +34,17 @@ const Layout = ({ children, siteConfig, head, footerColor = LayoutFooterColorEnu
     <LayoutHeader config={siteConfig} />
     {children}
     <LayoutFooter config={siteConfig} color={footerColor} />
+
+    <Script src="https://www.googletagmanager.com/gtag/js?id=G-L3Q4WX1T0N" strategy="afterInteractive" />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-L3Q4WX1T0N');
+      `}
+    </Script>
   </>
 );
 
