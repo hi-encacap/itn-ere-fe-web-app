@@ -41,13 +41,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
 
   const categoryItems: SiteMapLinkItemType[] = categories.map((category) => ({
     link: getCategoryPageLink(category),
-    lastModified: dayjs(category.updatedAt).format("YYYY-MM-DDThh:mm:ssTZD"),
+    lastModified: dayjs(category.updatedAt).format("YYYY-MM-DD"),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
   const postItems: SiteMapLinkItemType[] = posts.map((post) => ({
     link: getPostDetailLink(post),
-    lastModified: dayjs(post.updatedAt).format("YYYY-MM-DDThh:mm:ssTZD"),
+    lastModified: dayjs(post.updatedAt).format("YYYY-MM-DD"),
     changeFrequency: "weekly",
     priority: 0.9,
   }));
