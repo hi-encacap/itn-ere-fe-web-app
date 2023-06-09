@@ -4,8 +4,11 @@ import ServiceDetail from "@components/Service/ServiceDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
+import { decode } from "html-entities";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
+import striptags from "striptags";
 
 interface ServiceDetailPageProps extends BasePageProps {
   service: IPost;
@@ -56,7 +59,11 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     postService.getProducts(),
   ]);
 
-  const head = { title: service.title };
+  const head = {
+    title: service.title,
+    requestURL: getRequestURL(context.req),
+    description: decode(striptags(service.content)).substring(0, 150),
+  };
 
   return {
     props: {

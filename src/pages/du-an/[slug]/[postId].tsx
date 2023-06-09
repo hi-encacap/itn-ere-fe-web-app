@@ -5,8 +5,11 @@ import ProjectDetail from "@components/Project/ProjectDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
+import { decode } from "html-entities";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
+import striptags from "striptags";
 
 interface ServicePageProps extends BasePageProps, ProjectProps {
   project: IPost;
@@ -55,7 +58,11 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     postService.getPostById(Number(context.params?.postId)),
   ]);
 
-  const head = { title: project.title };
+  const head = {
+    title: project.title,
+    requestURL: getRequestURL(context.req),
+    description: decode(striptags(project.content)).substring(0, 150),
+  };
 
   return {
     props: {

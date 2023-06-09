@@ -1,4 +1,5 @@
 import { LayoutFooterColorEnum } from "@constants/enums";
+import { SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import "@styles/globals.scss";
@@ -16,6 +17,17 @@ const Layout = ({ children, siteConfig, head, footerColor = LayoutFooterColorEnu
   <>
     <Head>
       <title>{`${head.title} - ${siteConfig.website.name}`}</title>
+      <meta
+        name="description"
+        content={`${
+          head.description
+            ? `${head.description} - ${siteConfig.website.name}`
+            : siteConfig.website.description
+        }. Địa chỉ liên hệ: ${siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].address}`}
+      />
+      <meta property="og:title" content={`${head.title} - ${siteConfig.website.name}`} />
+      <meta property="og:type" content="website" />
+      <link rel="canonical" href={head.requestURL} />
     </Head>
 
     <LayoutHeader config={siteConfig} />

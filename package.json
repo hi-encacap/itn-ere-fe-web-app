@@ -10,13 +10,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@encacap-group/common": "^1.7.2",
+    "@encacap-group/common": "^1.7.4",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.1.0",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.4",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
+    "html-entities": "^2.3.5",
     "lodash": "^4.17.21",
     "next": "13.4.1",
     "react": "18.2.0",
