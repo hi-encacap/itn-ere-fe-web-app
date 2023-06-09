@@ -59,3 +59,15 @@
     }
   }
 }
+
+.introduce-content {
+  @apply relative line-clamp-8;
+
+  &::after {
+    @apply absolute inset-x-0 bottom-0 h-2 bg-white content-none;
+  }
+
+  p {
+    @apply my-4 first:mt-0;
+  }
+}

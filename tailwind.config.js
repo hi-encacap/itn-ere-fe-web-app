@@ -41,6 +41,12 @@ module.exports = {
       boxShadow: {
         center: "0px 0px 24px -100px rgba(0, 0, 0, 0.05)",
       },
+      lineClamp: {
+        7: "7",
+        8: "8",
+        9: "9",
+        10: "10",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

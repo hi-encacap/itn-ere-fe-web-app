@@ -19,9 +19,18 @@ export interface HomeProps {
   featuredServices: IPost[];
   productCategory: ICategory;
   siteConfig: Record<string, unknown>;
+  introducePost: IPost;
 }
 
-const Home = ({ siteConfig, products, services, featuredServices, projects, productCategory }: HomeProps) => (
+const Home = ({
+  siteConfig,
+  products,
+  services,
+  featuredServices,
+  projects,
+  productCategory,
+  introducePost,
+}: HomeProps) => (
   <>
     <HomeHero data={siteConfig[SITE_CONFIG_CODE_ENUM.HOMEPAGE_SLIDER_IMAGE] as ICloudflareImageResponse[]} />
     <HomeCategory services={featuredServices} productCategory={productCategory} />
@@ -29,6 +38,7 @@ const Home = ({ siteConfig, products, services, featuredServices, projects, prod
       images={
         siteConfig[ACBUILDING_SITE_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_IMAGE] as ICloudflareImageResponse[]
       }
+      data={introducePost}
     />
     <HomeProduct data={products} />
     <HomeService data={services} />
