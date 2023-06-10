@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import { IPost } from "@encacap-group/common/dist/re";
 import { getPostDetailLink } from "@utils/helper";
-import { useMemo } from "react";
+import { decode } from "html-entities";
 import striptags from "striptags";
 import { twMerge } from "tailwind-merge";
 import HomeNewsItemContainer from "../components/NewsItemContainer";
@@ -12,8 +12,6 @@ interface HomeServiceListItemProps {
 }
 
 const HomeServiceListItem = ({ data, isHighlighFirst = true }: HomeServiceListItemProps) => {
-  const content = useMemo(() => striptags(data.content), [data.content]);
-
   return (
     <HomeNewsItemContainer
       data={data}
@@ -26,11 +24,9 @@ const HomeServiceListItem = ({ data, isHighlighFirst = true }: HomeServiceListIt
         <div className="flex-1 border-gray-100 pt-2 md:mt-5 md:line-clamp-3 md:border-t-2 md:pt-4">
           <p
             className={twMerge("line-clamp-2", isHighlighFirst ? "group-first:line-clamp-3" : "line-clamp-3")}
-            // #skipcq: JS-0440
-            dangerouslySetInnerHTML={{
-              __html: content,
-            }}
-          />
+          >
+            {decode(striptags(data.content))}
+          </p>
         </div>
         <div className="mt-5 hidden border-t-2 border-gray-100 pt-4 text-blue-500 hover:underline hover:underline-offset-4 md:block">
           Xem chi tiết

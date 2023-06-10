@@ -27,7 +27,7 @@ const HomeIntroduceConfession = ({ className, data }: HomeIntroduceConfessionPro
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: content }}
       />
-      <p className="hidden">{decode(striptags(data.content))}</p>
+      <p className="hidden">{decode(striptags(data.content)).slice(0, 500)}</p>
       <div className="flex items-center space-x-6">
         <Button title="Xem thêm" href={getPostDetailLink(data)} />
       </div>

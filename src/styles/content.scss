@@ -1,6 +1,10 @@
 .post-content {
   @apply flex flex-col space-y-4 text-black;
 
+  div {
+    @apply flex flex-col space-y-4 text-black;
+  }
+
   strong {
     @apply font-bold;
   }
@@ -34,7 +38,7 @@
   }
 
   img {
-    @apply my-3;
+    @apply my-3 w-full aspect-video;
   }
 
   table {

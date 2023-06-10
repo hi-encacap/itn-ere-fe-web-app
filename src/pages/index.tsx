@@ -4,7 +4,9 @@ import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService, serviceService } from "@services/index";
 import { getRequestURL } from "@utils/helper";
+import { decode } from "html-entities";
 import { GetServerSideProps } from "next";
+import striptags from "striptags";
 
 const MyIndex = (props: BasePageProps & HomeProps) => (
   <Layout {...props}>
@@ -24,7 +26,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       postService.getPostById(4),
     ]);
 
-  const head = { title: "Trang chủ", requestURL: getRequestURL(req) };
+  const description = decode(striptags(introducePost.content));
+
+  const head = {
+    title: "Trang chủ",
+    requestURL: getRequestURL(req),
+    description: description.substring(0, description.indexOf("giới thiệu", 100) + 10),
+  };
 
   return {
     props: {

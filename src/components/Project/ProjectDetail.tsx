@@ -1,6 +1,8 @@
 import HomeProjectListItem from "@components/Home/Project/ListItem";
 import { DEFAULT_CLOUDFLARE_VARIANT_ENUM, IPost, getImageURL } from "@encacap-group/common/dist/re";
+import { decode } from "html-entities";
 import Image from "next/image";
+import striptags from "striptags";
 import ProjectSidebar from "./ProjectSidebar";
 
 interface ProjectDetailProps {
@@ -32,6 +34,7 @@ const ProjectDetail = ({ projects, data, suggestedProducts, suggestedServices }:
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: data.content }}
         />
+        <p className="hidden">{decode(striptags(data.content))}</p>
       </div>
       {projects.length > 0 && (
         <div className="-mx-4 mt-4 border-t-8 border-gray-100 px-4 pt-5 md:mx-0 md:mt-3 md:border-t-2 md:px-0">
