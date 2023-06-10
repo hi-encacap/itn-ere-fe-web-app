@@ -23,8 +23,10 @@ const Layout = ({ children, siteConfig, head, footerColor = LayoutFooterColorEnu
         content={`${
           head.description
             ? `${head.description} - ${siteConfig.website.name}`
-            : siteConfig.website.description
-        }. Địa chỉ liên hệ: ${siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].address}`}
+            : `${siteConfig.website.description}. Địa chỉ liên hệ: ${
+                siteConfig[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION].address
+              }`
+        }`}
       />
       <meta property="og:title" content={`${head.title} - ${siteConfig.website.name}`} />
       <meta property="og:type" content="website" />

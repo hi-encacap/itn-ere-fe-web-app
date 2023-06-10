@@ -7,7 +7,9 @@ import {
   getImageURL,
 } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
+import { decode } from "html-entities";
 import Image from "next/image";
+import striptags from "striptags";
 import ProductSidebar from "./ProductSidebar";
 
 interface ProductDetailProps {
@@ -40,6 +42,7 @@ const ProductDetail = ({ data, relatedProducts, siteConfig, categories }: Produc
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: data.content }}
         />
+        <p className="hidden">{decode(striptags(data.content))}</p>
       </div>
       <div className="mt-2 border-t-2 border-gray-100 py-5 md:mt-3">
         <div className="mb-7 text-xl font-bold">Liên hệ ngay</div>
