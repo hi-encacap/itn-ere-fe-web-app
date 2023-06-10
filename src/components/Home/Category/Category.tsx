@@ -33,7 +33,7 @@ const HomeCategory = ({ services, productCategory }: HomeCategoryProps) => {
       <div className="grid grid-cols-2 gap-y-2 px-2 md:gap-6 lg:grid-cols-4 lg:gap-10 lg:px-0">
         {housePost ? (
           <HomeCategoryItem
-            title={housePost.title}
+            title="Xây dựng nhà dân dụng"
             icon={<CategoryAvatar image={housePost.avatar} title={housePost.title} />}
             href={`${housePost.category.code}/${housePost.code}/${housePost.id}`}
           />
@@ -42,14 +42,14 @@ const HomeCategory = ({ services, productCategory }: HomeCategoryProps) => {
         )}
         {houseScratchPost && (
           <HomeCategoryItem
-            title={houseScratchPost.title}
+            title="Thi công nhà thép tiền chế"
             icon={<CategoryAvatar image={houseScratchPost.avatar} title={houseScratchPost.title} />}
             href={`${houseScratchPost.category.code}/${houseScratchPost.code}/${houseScratchPost.id}`}
           />
         )}
         {foamConstructionPost && (
           <HomeCategoryItem
-            title={foamConstructionPost.title}
+            title="Thi công xốp cách âm cách nhiệt"
             icon={<CategoryAvatar image={foamConstructionPost.avatar} title={foamConstructionPost.title} />}
             href={`${foamConstructionPost.category.code}/${foamConstructionPost.code}/${foamConstructionPost.id}`}
           />
