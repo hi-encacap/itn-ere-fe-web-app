@@ -4,7 +4,7 @@ import ProductDetail from "@components/Product/ProductDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
-import { getRequestURL } from "@utils/helper";
+import { getProductCategoryLink, getRequestURL } from "@utils/helper";
 import { decode } from "html-entities";
 import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
@@ -28,13 +28,13 @@ const ProductDetailPage = ({
 
   const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
     () => [
-      {
+      parentCategory && {
         name: parentCategory.name,
         href: `/${parentCategory.code}`,
       },
       {
         name: category.name,
-        href: `/${parentCategory.code}/${category.code}`,
+        href: getProductCategoryLink(category),
       },
     ],
     [category, parentCategory]

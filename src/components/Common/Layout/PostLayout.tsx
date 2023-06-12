@@ -12,7 +12,7 @@ import { LayoutBreadcrumbItemType } from "./components/Breadcrumb/BreadcrumbItem
 export interface CategoryLayoutProps extends LayoutProps {
   title?: string;
   data: ICategory | IPost;
-  breadcrumbItems: LayoutBreadcrumbItemType[];
+  breadcrumbItems: Array<LayoutBreadcrumbItemType | boolean>;
 }
 
 const CategoryLayout = ({

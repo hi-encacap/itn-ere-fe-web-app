@@ -15,9 +15,9 @@ interface ChildProductPageProps extends BasePageProps {
 }
 
 const ChildProductPage = ({ category, products, categories, ...props }: ChildProductPageProps) => {
-  const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
+  const breadcrumbItems: Array<LayoutBreadcrumbItemType | boolean> = useMemo(
     () => [
-      {
+      Boolean(category.parent) && {
         name: (category.parent as ICategory).name,
         href: `/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}`,
       },
@@ -49,7 +49,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const head = {
     title: category.name,
     requestURL: getRequestURL(context.req),
-    description: `${category.name} - ${category.parent.name}`,
+    description: category.parent ? `${category.name} - ${category.parent.name}` : category.name,
   };
 
   return {

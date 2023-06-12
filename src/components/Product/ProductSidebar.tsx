@@ -16,7 +16,7 @@ const ProductSidebar = ({ isSidebarCollapsed, className, siteConfig, categories 
   <div className={twMerge(className, "space-y-4 md:space-y-6 lg:space-y-10")}>
     {siteConfig && <Contact data={siteConfig} />}
     <Search />
-    <ProductCategory isCollapsed={isSidebarCollapsed} data={categories} />
+    {Boolean(categories.length) && <ProductCategory isCollapsed={isSidebarCollapsed} data={categories} />}
   </div>
 );
 
