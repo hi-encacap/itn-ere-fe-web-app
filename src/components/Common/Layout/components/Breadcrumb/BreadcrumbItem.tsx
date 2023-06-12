@@ -6,16 +6,20 @@ export interface LayoutBreadcrumbItemType {
 }
 
 interface LayoutBreadcrumbItemProps {
-  data: LayoutBreadcrumbItemType;
+  data: LayoutBreadcrumbItemType | boolean;
 }
 
-const LayoutBreadcrumbItem = ({ data }: LayoutBreadcrumbItemProps) => (
-  <>
-    <div className="mx-3 first:hidden">/</div>
-    <Link className="last:text-encacap-main" href={data.href}>
-      {data.name}
-    </Link>
-  </>
-);
+const LayoutBreadcrumbItem = ({ data }: LayoutBreadcrumbItemProps) => {
+  if (typeof data === "boolean") return null;
+
+  return (
+    <>
+      <div className="mx-3 first:hidden">/</div>
+      <Link className="last:text-encacap-main" href={data.href}>
+        {data.name}
+      </Link>
+    </>
+  );
+};
 
 export default LayoutBreadcrumbItem;

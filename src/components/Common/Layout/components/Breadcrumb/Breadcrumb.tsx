@@ -3,11 +3,11 @@ import { twMerge } from "tailwind-merge";
 import LayoutBreadcrumbItem, { LayoutBreadcrumbItemType } from "./BreadcrumbItem";
 
 export interface LayoutBreadcrumbProps extends HTMLAttributes<HTMLDivElement> {
-  items: LayoutBreadcrumbItemType[];
+  items: Array<LayoutBreadcrumbItemType | boolean>;
 }
 
 const LayoutBreadcrumb = ({ items, className }: LayoutBreadcrumbProps) => {
-  const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
+  const breadcrumbItems = useMemo(
     () => [
       {
         name: "Trang chủ",
@@ -20,7 +20,7 @@ const LayoutBreadcrumb = ({ items, className }: LayoutBreadcrumbProps) => {
 
   return (
     <div className={twMerge("mt-4 flex flex-wrap items-center justify-center text-white", className)}>
-      {breadcrumbItems.map((item, index) => (
+      {breadcrumbItems.filter(Boolean).map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <LayoutBreadcrumbItem key={index} data={item} />
       ))}

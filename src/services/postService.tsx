@@ -13,8 +13,8 @@ const getPosts = async (query: IBaseListQuery): Promise<IPost[]> => {
 
 const getProducts = async (query?: IBaseListQuery) => {
   return getPosts({
-    rootCategoryCode: ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT,
     ...query,
+    rootCategoryCode: ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT,
   });
 };
 

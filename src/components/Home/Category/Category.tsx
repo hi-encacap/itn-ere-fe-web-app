@@ -56,7 +56,7 @@ const HomeCategory = ({ services, productCategory }: HomeCategoryProps) => {
         )}
         {productCategory && (
           <HomeCategoryItem
-            title="Phân phối sản phẩm cách nhiệt"
+            title="Phân phối sản phẩm gỗ, nhựa"
             icon={<CategoryAvatar image={productCategory.thumbnail} title={productCategory.name} />}
             href={`${productCategory.code}`}
           />
