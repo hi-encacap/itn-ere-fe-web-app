@@ -11,7 +11,7 @@ const HomeProductIntroduce = ({ className }: HTMLAttributes<HTMLElement>) => (
       className
     )}
   >
-    <HomeSectionTitle title="Sản phẩm cách nhiệt" subtitle="Chất lượng tốt nhất" />
+    <HomeSectionTitle title="Sản phẩm gỗ, nhựa" subtitle="Chất lượng tốt nhất" />
     <p className="hidden text-center leading-6 md:block">
       Công ty TNHH xây dựng An Cường cam kết mang đến cho khách hàng những sản phẩm cách nhiệt chất lượng với
       mức giá cạnh tranh nhất.
