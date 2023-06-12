@@ -58,7 +58,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const [siteConfig, product, relatedProducts, categories] = await Promise.all([
     configService.getSiteConfig(),
     postService.getPostById(postId),
-    postService.getProducts(),
+    postService.getProducts({ limit: 6 }),
     categoryService.getChildCategoryParentByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
   ]);
 

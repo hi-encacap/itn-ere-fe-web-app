@@ -56,7 +56,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     configService.getSiteConfig(),
     postService.getPostById(Number(context.params?.postId)),
     postService.getServices(),
-    postService.getProducts(),
+    postService.getProducts({ limit: 5 }),
   ]);
 
   const head = {

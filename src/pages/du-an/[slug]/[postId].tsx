@@ -52,9 +52,9 @@ const ServicePage = ({
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const [siteConfig, projects, suggestedProducts, suggestedServices, project] = await Promise.all([
     configService.getSiteConfig(),
-    postService.getProjects(),
-    postService.getProducts(),
-    postService.getServices(),
+    postService.getProjects({ limit: 6 }),
+    postService.getProducts({ limit: 5 }),
+    postService.getServices({ limit: 5 }),
     postService.getPostById(Number(context.params?.postId)),
   ]);
 
