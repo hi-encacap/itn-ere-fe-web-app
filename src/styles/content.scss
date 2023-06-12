@@ -38,7 +38,7 @@
   }
 
   img {
-    @apply my-3 aspect-video w-full;
+    @apply my-3 bg-gray-100 object-contain object-center;
   }
 
   table {

@@ -22,13 +22,13 @@ interface ProductDetailProps {
 const ProductDetail = ({ data, relatedProducts, siteConfig, categories }: ProductDetailProps) => (
   <>
     <div className="md:col-span-2 lg:col-span-3">
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-gray-100">
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
         <Image
           src={getImageURL(data.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.PUBLIC)}
           alt={data.title}
           fill
           sizes="100%"
-          className="oject-center object-cover"
+          className="oject-center object-contain"
         />
       </div>
       <div className="pb-6 pt-4 md:pb-8 md:pt-8">

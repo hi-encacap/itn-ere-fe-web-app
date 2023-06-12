@@ -16,5 +16,6 @@ export const CATEGORY_API_PATH = {
 
 export const POST_API_PATH = {
   POSTS_PATH: "v1/public/posts",
+  RANDOM_POSTS_PATH: "v1/public/posts/random",
   POST_PATH: (code: Key) => `v1/public/posts/${code}`,
 };

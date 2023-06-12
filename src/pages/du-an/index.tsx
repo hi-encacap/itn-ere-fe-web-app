@@ -45,8 +45,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PROJECT),
     postService.getProjects(),
-    postService.getProducts(),
-    postService.getServices(),
+    postService.getProducts({ limit: 5 }),
+    postService.getServices({ limit: 5 }),
   ]);
 
   const head = { title: category.name, requestURL: getRequestURL(req), description: category.name };
