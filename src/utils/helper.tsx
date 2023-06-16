@@ -1,5 +1,4 @@
-import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost, slugify } from "@encacap-group/common/dist/re";
-import { ProjectDataType } from "@interfaces/dataTypes";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
 import { IncomingMessage } from "http";
 
 const beautyMoney = (money: number): string => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -25,10 +24,10 @@ const getProductDetailLink = (product: IPost): string => {
   const parent = category?.parent as ICategory;
 
   if (!parent) {
-    return `/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}/${category.code}/day-la-slug-cua-bai-viet/${product.id}`;
+    return `/${ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT}/${category.code}/${product.code}/${product.id}`;
   }
 
-  return `/${parent.code}/${category.code}/day-la-slug-cua-bai-viet/${product.id}`;
+  return `/${parent.code}/${category.code}/${product.code}/${product.id}`;
 };
 
 const getCategoryPageLink = (category: ICategory, parentParam?: ICategory): string => {
@@ -39,18 +38,6 @@ const getCategoryPageLink = (category: ICategory, parentParam?: ICategory): stri
   }
 
   return `/${category.code}`;
-};
-
-const getServiceDetailLink = (data: IPost): string => {
-  const { category } = data;
-
-  return `/${category.code}/${data.code}/${data.id}`;
-};
-
-const getProjectDetailLink = (data: ProjectDataType): string => {
-  const { category } = data;
-
-  return `/${category.code}/${slugify(data.name)}/${data.id}`;
 };
 
 const getPostDetailLink = (data: IPost): string => {
@@ -77,7 +64,5 @@ export {
   getPostDetailLink,
   getProductCategoryLink,
   getProductDetailLink,
-  getProjectDetailLink,
   getRequestURL,
-  getServiceDetailLink,
 };
