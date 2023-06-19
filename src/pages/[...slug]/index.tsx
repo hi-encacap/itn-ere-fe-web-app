@@ -1,51 +1,39 @@
-import PostLayout from "@components/Common/Layout/PostLayout";
-import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
-import PostCategory, { PostCategoryProps } from "@components/Post/PostCategory";
+import PostCategoryPage, { PostCategoryPageProps } from "@components/Post/PostCategoryPage";
+import PostDetailPage, { PostDetailPageProps } from "@components/Post/PostDetailPage";
 import { ICategory } from "@encacap-group/common/dist/re";
-import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
-import { getCategoryPageLink, getRequestURL } from "@utils/helper";
+import { getRequestURL } from "@utils/helper";
+import { decode } from "html-entities";
 import { IncomingMessage } from "http";
-import { isNumber } from "lodash";
+import { isInteger } from "lodash";
 import { GetServerSideProps } from "next";
+import striptags from "striptags";
 
-interface CategoryOrDetailPageProps extends BasePageProps, PostCategoryProps {
-  category: ICategory;
+interface GetCategoryPageParam {
+  categoryCode: string;
+  rootCategoryCode: string;
 }
 
-const CategoryOrDetailPage = ({
-  category,
-  categories,
-  posts,
-  suggestionCategories,
-  ...props
-}: CategoryOrDetailPageProps) => {
-  const getCategoryBreadcrumbItems = (data: ICategory): LayoutBreadcrumbItemType[] => {
-    const breadcrumbItems: LayoutBreadcrumbItemType[] = [];
-    let currentCategory = data;
+interface GetDetailPageParam extends GetCategoryPageParam {
+  postId: number;
+}
 
-    while (currentCategory) {
-      breadcrumbItems.push({
-        name: currentCategory.name,
-        href: getCategoryPageLink(currentCategory),
-      });
-      currentCategory = currentCategory.parent as ICategory;
-    }
+interface CategoryOrDetailPageProps extends PostCategoryPageProps, PostDetailPageProps {
+  type: "category" | "detail";
+}
 
-    return breadcrumbItems.reverse();
-  };
+const PostCategoryOrDetailPage = ({ type, ...props }: CategoryOrDetailPageProps) => {
+  if (type === "category") {
+    return <PostCategoryPage {...props} />;
+  }
 
-  return (
-    <PostLayout data={category} breadcrumbItems={getCategoryBreadcrumbItems(category)} {...props}>
-      <PostCategory categories={categories} suggestionCategories={suggestionCategories} posts={posts} />
-    </PostLayout>
-  );
+  return <PostDetailPage {...props} />;
 };
 
-const getSuggestionCategory = async (category: ICategory) => {
+const getSuggestionCategory = async (category: ICategory, limit: number) => {
   const suggestionPosts = await postService.getPosts({
     categoryCode: category.code,
-    limit: 5,
+    limit,
     expand: "category.parent",
   });
 
@@ -55,7 +43,10 @@ const getSuggestionCategory = async (category: ICategory) => {
   };
 };
 
-const getCategoryPageProps = async (categoryCode: string, req: IncomingMessage, rootCategoryCode: string) => {
+const getCategoryPageProps = async (
+  { categoryCode, rootCategoryCode }: GetCategoryPageParam,
+  req: IncomingMessage
+) => {
   const [siteConfig, category, posts, rootCategory, otherRootCategories] = await Promise.all([
     configService.getSiteConfig(),
     categoryService.getCategoryByCode(categoryCode),
@@ -68,7 +59,9 @@ const getCategoryPageProps = async (categoryCode: string, req: IncomingMessage, 
     }),
   ]);
 
-  const suggestionCategories = await Promise.all(otherRootCategories.map(getSuggestionCategory));
+  const suggestionCategories = await Promise.all(
+    otherRootCategories.map((item) => getSuggestionCategory(item, 5))
+  );
 
   const head = { title: category.name, requestURL: getRequestURL(req), description: category.name };
 
@@ -80,6 +73,48 @@ const getCategoryPageProps = async (categoryCode: string, req: IncomingMessage, 
       posts,
       categories: rootCategory.children as ICategory[],
       suggestionCategories,
+      type: "category",
+    },
+  };
+};
+
+const getDetailPageProps = async (
+  { categoryCode, postId, rootCategoryCode }: GetDetailPageParam,
+  req: IncomingMessage
+) => {
+  const [siteConfig, category, posts, post, rootCategory, otherRootCategories] = await Promise.all([
+    configService.getSiteConfig(),
+    categoryService.getCategoryByCode(categoryCode),
+    postService.getRandomPosts({ categoryCode: rootCategoryCode, expand: "category.parent", limit: 6 }),
+    postService.getPostById(postId),
+    categoryService.getCategoryByCode(rootCategoryCode, {
+      expand: "children, children.parent, children.avatar",
+    }),
+    categoryService.getRootCategories({
+      excludedCodes: [rootCategoryCode],
+    }),
+  ]);
+
+  const suggestionCategories = await Promise.all(
+    otherRootCategories.map((item) => getSuggestionCategory(item, 6))
+  );
+
+  const head = {
+    title: post.title,
+    requestURL: getRequestURL(req),
+    description: decode(striptags(post.content)).slice(0, 200),
+  };
+
+  return {
+    props: {
+      head,
+      siteConfig,
+      category,
+      posts,
+      post,
+      categories: rootCategory.children as ICategory[],
+      suggestionCategories,
+      type: "detail",
     },
   };
 };
@@ -88,15 +123,26 @@ export const getServerSideProps: GetServerSideProps = async ({ params, req }) =>
   const { slug } = params as Record<string, string[]>;
   const firstSlug = slug.at(0);
   const lastSlug = slug.at(-1);
+  const secondLastSlug = slug.at(-3);
 
-  if (isNumber(lastSlug)) {
-    // TODO: WILL UPDATE LATER.
-    return {
-      props: {},
-    };
+  if (isInteger(Number(lastSlug))) {
+    return getDetailPageProps(
+      {
+        categoryCode: secondLastSlug as string,
+        rootCategoryCode: firstSlug as string,
+        postId: Number(lastSlug),
+      },
+      req
+    );
   }
 
-  return getCategoryPageProps(lastSlug as string, req, firstSlug as string);
+  return getCategoryPageProps(
+    {
+      categoryCode: lastSlug as string,
+      rootCategoryCode: firstSlug as string,
+    },
+    req
+  );
 };
 
-export default CategoryOrDetailPage;
+export default PostCategoryOrDetailPage;
