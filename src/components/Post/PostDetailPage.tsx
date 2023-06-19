@@ -4,11 +4,13 @@ import { ICategory, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { getCategoryPageLink } from "@utils/helper";
 import { PostCategoryProps } from "./PostCategory";
+import { PostCategorySidebarSuggestionItemType } from "./PostCategorySidebarSuggestion";
 import PostDetail from "./PostDetail";
 
 export interface PostDetailPageProps extends BasePageProps, PostCategoryProps {
   category: ICategory;
   post: IPost;
+  suggestionCategories: PostCategorySidebarSuggestionItemType[];
 }
 
 const PostDetailPage = ({

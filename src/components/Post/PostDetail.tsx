@@ -2,7 +2,7 @@ import PostCategorySidebar, { PostCategorySidebarProps } from "./PostCategorySid
 import PostDetailContent, { PostDetailContentProps } from "./PostDetailContent";
 
 export interface PostDetailProps
-  extends Pick<PostCategorySidebarProps, "categories" | "suggestionCategories">,
+  extends Pick<PostCategorySidebarProps, "categories">,
     PostDetailContentProps {}
 
 const PostDetail = ({ categories, suggestionCategories, posts, post, siteConfig }: PostDetailProps) => {
@@ -19,7 +19,6 @@ const PostDetail = ({ categories, suggestionCategories, posts, post, siteConfig 
         categories={categories}
         isCollapsed={false}
         siteConfig={siteConfig}
-        suggestionCategories={suggestionCategories}
       />
     </>
   );
