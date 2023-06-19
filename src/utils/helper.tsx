@@ -30,14 +30,17 @@ const getProductDetailLink = (product: IPost): string => {
   return `/${parent.code}/${category.code}/${product.code}/${product.id}`;
 };
 
-const getCategoryPageLink = (category: ICategory, parentParam?: ICategory): string => {
-  const parent = (category.parent as ICategory) ?? parentParam;
+const getCategoryPageLink = (category: ICategory): string => {
+  const { code } = category;
+  let { parent } = category;
+  let link = `/${code}`;
 
-  if (parent) {
-    return `/${parent.code}/${category.code}`;
+  while (parent) {
+    link = `/${parent.code}${link}`;
+    parent = parent.parent;
   }
 
-  return `/${category.code}`;
+  return link;
 };
 
 const getPostDetailLink = (data: IPost): string => {

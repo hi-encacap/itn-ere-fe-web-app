@@ -1,9 +1,15 @@
 import { CATEGORY_API_PATH } from "@constants/apis";
-import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
+import { IBaseListQuery } from "@encacap-group/common/dist/base";
+import { ICategory } from "@encacap-group/common/dist/re";
 import axiosInstance from "@utils/axiosInstance";
 
-const getCategoryByCode = async (code: string = ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT) => {
-  const response = await axiosInstance.get(CATEGORY_API_PATH.CATEGORY_PATH(code));
+const getCategoryByCode = async (code: string, query?: IBaseListQuery) => {
+  const response = await axiosInstance.get(CATEGORY_API_PATH.CATEGORY_PATH(code), {
+    params: {
+      expand: "avatar, parent",
+      ...query,
+    },
+  });
 
   return response.data.data;
 };
@@ -18,10 +24,20 @@ const getChildCategoryParentByCode = async (code: string) => {
   return response.data.data;
 };
 
-const getCategories = async (): Promise<ICategory[]> => {
-  const response = await axiosInstance.get(CATEGORY_API_PATH.CATEGORIES_PATH);
+const getCategories = async (query?: IBaseListQuery): Promise<ICategory[]> => {
+  const response = await axiosInstance.get(CATEGORY_API_PATH.CATEGORIES_PATH, {
+    params: query,
+  });
 
   return response.data.data;
 };
 
-export { getCategories, getCategoryByCode, getChildCategoryParentByCode };
+const getRootCategories = async (query?: IBaseListQuery): Promise<ICategory[]> => {
+  const response = await axiosInstance.get(CATEGORY_API_PATH.ROOT_CATEGORIES_PATH, {
+    params: query,
+  });
+
+  return response.data.data;
+};
+
+export { getCategories, getCategoryByCode, getChildCategoryParentByCode, getRootCategories };

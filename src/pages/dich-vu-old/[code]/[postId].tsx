@@ -1,7 +1,6 @@
-import CategoryLayout from "@components/Common/Layout/PostLayout";
+import PostLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
-import { ProjectProps } from "@components/Project/Project";
-import ProjectDetail from "@components/Project/ProjectDetail";
+import ServiceDetail from "@components/Service/ServiceDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { configService, postService } from "@services/index";
@@ -11,69 +10,70 @@ import { GetServerSidePropsContext } from "next";
 import { useMemo } from "react";
 import striptags from "striptags";
 
-interface ServicePageProps extends BasePageProps, ProjectProps {
-  project: IPost;
+interface ServiceDetailPageProps extends BasePageProps {
+  service: IPost;
+  services: IPost[];
+  suggestedProducts: IPost[];
 }
 
-const ServicePage = ({
-  project,
-  projects,
+const ServiceDetailPage = ({
+  service,
+  services,
   suggestedProducts,
-  suggestedServices,
+  siteConfig,
   ...props
-}: ServicePageProps) => {
+}: ServiceDetailPageProps) => {
   const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
     () => [
       {
-        name: project.category.name,
-        href: `/${ACBUILDING_CATEGORY_CODE_ENUM.PROJECT}`,
+        name: service.category.name,
+        href: `/${ACBUILDING_CATEGORY_CODE_ENUM.SERVICE}`,
       },
     ],
-    [project]
+    [service]
   );
 
   return (
-    <CategoryLayout
-      data={project.category}
-      title={project.title}
+    <PostLayout
+      data={service.category}
+      title={service.title}
       breadcrumbItems={breadcrumbItems}
+      siteConfig={siteConfig}
       {...props}
     >
-      <ProjectDetail
-        data={project}
-        projects={projects}
+      <ServiceDetail
+        data={service}
+        services={services}
         suggestedProducts={suggestedProducts}
-        suggestedServices={suggestedServices}
+        siteConfig={siteConfig}
       />
-    </CategoryLayout>
+    </PostLayout>
   );
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const [siteConfig, projects, suggestedProducts, suggestedServices, project] = await Promise.all([
+  const [siteConfig, service, services, suggestedProducts] = await Promise.all([
     configService.getSiteConfig(),
-    postService.getProjects({ limit: 6 }),
-    postService.getProducts({ limit: 5 }),
-    postService.getServices({ limit: 5 }),
     postService.getPostById(Number(context.params?.postId)),
+    postService.getServices(),
+    postService.getProducts({ limit: 5 }),
   ]);
 
   const head = {
-    title: project.title,
+    title: service.title,
     requestURL: getRequestURL(context.req),
-    description: decode(striptags(project.content)).substring(0, 150),
+    description: decode(striptags(service.content)).substring(0, 150),
   };
 
   return {
     props: {
       head,
       siteConfig,
-      project,
-      projects,
+      service,
+      services,
       suggestedProducts,
-      suggestedServices,
     },
   };
 };
 
-export default ServicePage;
+export default ServiceDetailPage;

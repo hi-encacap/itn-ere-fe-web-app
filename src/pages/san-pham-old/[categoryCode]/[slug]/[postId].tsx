@@ -1,4 +1,4 @@
-import CategoryLayout from "@components/Common/Layout/PostLayout";
+import PostLayout from "@components/Common/Layout/PostLayout";
 import { LayoutBreadcrumbItemType } from "@components/Common/Layout/components/Breadcrumb/BreadcrumbItem";
 import ProductDetail from "@components/Product/ProductDetail";
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
@@ -41,14 +41,14 @@ const ProductDetailPage = ({
   );
 
   return (
-    <CategoryLayout data={product} breadcrumbItems={breadcrumbItems} siteConfig={siteConfig} {...props}>
+    <PostLayout data={product} breadcrumbItems={breadcrumbItems} siteConfig={siteConfig} {...props}>
       <ProductDetail
         data={product}
         relatedProducts={relatedProducts}
         siteConfig={siteConfig}
         categories={categories}
       />
-    </CategoryLayout>
+    </PostLayout>
   );
 };
 
