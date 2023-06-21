@@ -2,7 +2,7 @@ import { IconChevronRight } from "@components/Common/Icon";
 import PostSidebarCollapsibleBlock from "@components/Common/PostSidebarCollapsibleBlock";
 import {
   ACBUILDING_CATEGORY_CODE_ENUM,
-  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
+  IMAGE_VARIANT_ENUM,
   IPost,
   getImageURL,
 } from "@encacap-group/common/dist/re";
@@ -21,7 +21,7 @@ const ServiceSuggestedProduct = ({ data }: ServiceSuggestedProductProps) => (
         <ServiceSuggestedProductItem
           name={item.title}
           href={getCategoryPageLink(item.category)}
-          image={getImageURL(item.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL)}
+          image={getImageURL(item.avatar, IMAGE_VARIANT_ENUM.THUMBNAIL)}
           key={item.id}
         />
       ))}

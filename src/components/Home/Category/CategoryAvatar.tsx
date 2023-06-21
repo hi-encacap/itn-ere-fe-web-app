@@ -1,8 +1,4 @@
-import {
-  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
-  ICloudflareImageResponse,
-  getImageURL,
-} from "@encacap-group/common/dist/re";
+import { ICloudflareImageResponse, IMAGE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
 import Image from "next/image";
 
 interface CategoryAvatarProps {
@@ -14,7 +10,7 @@ const CategoryAvatar = ({ image, title }: CategoryAvatarProps) => {
   return (
     <div className="relative aspect-square w-24 overflow-hidden rounded-full">
       <Image
-        src={getImageURL(image, DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL)}
+        src={getImageURL(image, IMAGE_VARIANT_ENUM.THUMBNAIL)}
         alt={title}
         fill
         sizes="128px"
