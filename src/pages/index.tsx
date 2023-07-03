@@ -2,7 +2,7 @@ import Layout from "@components/Common/Layout/Layout";
 import Home, { HomeProps } from "@components/Home/Home";
 import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import { categoryService, configService, postService, serviceService } from "@services/index";
+import { categoryService, configService, postService } from "@services/index";
 import { getRequestURL } from "@utils/helper";
 import { GetServerSideProps } from "next";
 
@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       configService.getHomepageConfigs(),
       postService.getProducts({ limit: 6 }),
       postService.getServices(),
-      serviceService.getFeaturedServices(),
+      postService.getFeaturedPosts(),
       postService.getProjects(),
       categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
     ]);

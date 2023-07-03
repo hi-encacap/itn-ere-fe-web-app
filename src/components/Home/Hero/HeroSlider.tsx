@@ -1,11 +1,11 @@
-import { ICloudflareImageResponse } from "@encacap-group/common/dist/re";
+import { IImageResponse } from "@encacap-group/common/dist/re";
 import { RefObject, useEffect, useRef } from "react";
 import { SwiperOptions } from "swiper";
 import { register } from "swiper/element/bundle";
 import HomeHeroSliderItem from "./HeroSliderItem";
 
 interface HomeHeroProps {
-  data: ICloudflareImageResponse[];
+  data: IImageResponse[];
 }
 
 const HomeHeroSlider = ({ data }: HomeHeroProps) => {
