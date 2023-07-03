@@ -47,8 +47,8 @@ const getCategoryPageProps = async (
   { categoryCode, rootCategoryCode }: GetCategoryPageParam,
   req: IncomingMessage
 ) => {
-  const [siteConfig, category, posts, rootCategory, otherRootCategories] = await Promise.all([
-    configService.getSiteConfig(),
+  const [websiteConfig, category, posts, rootCategory, otherRootCategories] = await Promise.all([
+    configService.getCommonWebsiteConfig(),
     categoryService.getCategoryByCode(categoryCode),
     postService.getPosts({ categoryCode, expand: "category.parent" }),
     categoryService.getCategoryByCode(rootCategoryCode, {
@@ -68,7 +68,7 @@ const getCategoryPageProps = async (
   return {
     props: {
       head,
-      siteConfig,
+      websiteConfig,
       category,
       posts,
       categories: rootCategory.children as ICategory[],
@@ -82,8 +82,8 @@ const getDetailPageProps = async (
   { categoryCode, postId, rootCategoryCode }: GetDetailPageParam,
   req: IncomingMessage
 ) => {
-  const [siteConfig, category, posts, post, rootCategory, otherRootCategories] = await Promise.all([
-    configService.getSiteConfig(),
+  const [websiteConfig, category, posts, post, rootCategory, otherRootCategories] = await Promise.all([
+    configService.getCommonWebsiteConfig(),
     categoryService.getCategoryByCode(categoryCode),
     postService.getRandomPosts({ categoryCode: rootCategoryCode, expand: "category.parent", limit: 6 }),
     postService.getPostById(postId),
@@ -108,7 +108,7 @@ const getDetailPageProps = async (
   return {
     props: {
       head,
-      siteConfig,
+      websiteConfig,
       category,
       posts,
       post,

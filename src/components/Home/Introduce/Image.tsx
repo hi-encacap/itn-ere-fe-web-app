@@ -1,11 +1,11 @@
-import { ICloudflareImageResponse, IMAGE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
+import { IImageResponse, IMAGE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
 import { first, last, sample } from "lodash";
 import Image from "next/image";
 import { HTMLAttributes, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface HomeIntroduceImageProps extends HTMLAttributes<HTMLDivElement> {
-  data: ICloudflareImageResponse[];
+  data: IImageResponse[];
 }
 
 const HomeIntroduceImage = ({ data, className }: HomeIntroduceImageProps) => {

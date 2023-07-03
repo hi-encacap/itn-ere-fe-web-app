@@ -1,9 +1,9 @@
 import {
-  ACBUILDING_SITE_CONFIG_CODE_ENUM,
+  ACB_CONFIG_CODE_ENUM,
   ICategory,
-  ICloudflareImageResponse,
+  IImageResponse,
   IPost,
-  SITE_CONFIG_CODE_ENUM,
+  IWebsiteConfig,
 } from "@encacap-group/common/dist/re";
 import HomeCategory from "./Category/Category";
 import HomeHero from "./Hero/Hero";
@@ -18,32 +18,43 @@ export interface HomeProps {
   projects: IPost[];
   featuredServices: IPost[];
   productCategory: ICategory;
-  siteConfig: Record<string, unknown>;
-  introducePost: IPost;
+  homepageConfigs: IWebsiteConfig[];
 }
 
 const Home = ({
-  siteConfig,
   products,
   services,
   featuredServices,
   projects,
   productCategory,
-  introducePost,
-}: HomeProps) => (
-  <>
-    <HomeHero data={siteConfig[SITE_CONFIG_CODE_ENUM.HOMEPAGE_SLIDER_IMAGE] as ICloudflareImageResponse[]} />
-    <HomeCategory services={featuredServices} productCategory={productCategory} />
-    <HomeIntroduce
-      images={
-        siteConfig[ACBUILDING_SITE_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_IMAGE] as ICloudflareImageResponse[]
-      }
-      data={introducePost}
-    />
-    <HomeProduct data={products} />
-    <HomeService data={services} />
-    <HomeProject data={projects} />
-  </>
-);
+  homepageConfigs,
+}: HomeProps) => {
+  const homepageHeroConfig = homepageConfigs.find(
+    (config) => config.code === ACB_CONFIG_CODE_ENUM.HOMEPAGE_HERO_IMAGE
+  );
+
+  const homeIntroduceImageConfig = homepageConfigs.find(
+    (config) => config.code === ACB_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_IMAGE
+  );
+  const HomeIntroducePost = homepageConfigs.find(
+    (config) => config.code === ACB_CONFIG_CODE_ENUM.HOMEPAGE_INTRODUCE_POST
+  );
+
+  return (
+    <>
+      {homepageHeroConfig && <HomeHero data={homepageHeroConfig.value as unknown as IImageResponse[]} />}
+      <HomeCategory services={featuredServices} productCategory={productCategory} />
+      {homeIntroduceImageConfig && HomeIntroducePost && (
+        <HomeIntroduce
+          images={homeIntroduceImageConfig.value as unknown as IImageResponse[]}
+          data={HomeIntroducePost.value as unknown as IPost}
+        />
+      )}
+      <HomeProduct data={products} />
+      <HomeService data={services} />
+      <HomeProject data={projects} />
+    </>
+  );
+};
 
 export default Home;

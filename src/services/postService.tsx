@@ -67,7 +67,24 @@ const getPostById = async (postId: number): Promise<IPost> => {
   return response.data.data;
 };
 
+const getFeaturedPosts = async (): Promise<IPost> => {
+  const codes = [
+    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE,
+    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE_SCRATCH,
+    ACBUILDING_CATEGORY_CODE_ENUM.CONSTRUCTION_FOAM,
+  ];
+
+  const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH, {
+    params: {
+      codes,
+    },
+  });
+
+  return response.data.data;
+};
+
 export {
+  getFeaturedPosts,
   getPostById,
   getPosts,
   getProducts,

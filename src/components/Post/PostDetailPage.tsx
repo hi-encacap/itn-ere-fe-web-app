@@ -10,7 +10,7 @@ import PostDetail from "./PostDetail";
 export interface PostDetailPageProps extends BasePageProps, PostCategoryProps {
   category: ICategory;
   post: IPost;
-  suggestionCategories: PostCategorySidebarSuggestionItemType[];
+  suggestionCategories?: PostCategorySidebarSuggestionItemType[];
 }
 
 const PostDetailPage = ({
@@ -37,13 +37,18 @@ const PostDetailPage = ({
   };
 
   return (
-    <PostLayout data={category} breadcrumbItems={getCategoryBreadcrumbItems(category)} {...props}>
+    <PostLayout
+      data={category}
+      title={post.title}
+      breadcrumbItems={getCategoryBreadcrumbItems(category)}
+      {...props}
+    >
       <PostDetail
         categories={categories}
         post={post}
         posts={posts}
         suggestionCategories={suggestionCategories}
-        siteConfig={props.siteConfig}
+        siteConfig={props.websiteConfig}
       />
     </PostLayout>
   );

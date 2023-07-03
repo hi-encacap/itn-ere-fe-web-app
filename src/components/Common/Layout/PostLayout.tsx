@@ -10,8 +10,15 @@ export interface CategoryLayoutProps extends LayoutProps {
   breadcrumbItems: Array<LayoutBreadcrumbItemType | boolean>;
 }
 
-const PostLayout = ({ title, head, siteConfig, data, children, breadcrumbItems }: CategoryLayoutProps) => (
-  <Layout head={head} siteConfig={siteConfig}>
+const PostLayout = ({
+  title,
+  head,
+  websiteConfig: siteConfig,
+  data,
+  children,
+  breadcrumbItems,
+}: CategoryLayoutProps) => (
+  <Layout head={head} websiteConfig={siteConfig}>
     <div className="relative">
       <div className="absolute inset-0">
         <Image

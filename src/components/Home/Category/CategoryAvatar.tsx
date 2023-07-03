@@ -1,8 +1,8 @@
-import { ICloudflareImageResponse, IMAGE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
+import { IImageResponse, IMAGE_VARIANT_ENUM, getImageURL } from "@encacap-group/common/dist/re";
 import Image from "next/image";
 
 interface CategoryAvatarProps {
-  image: ICloudflareImageResponse;
+  image: IImageResponse;
   title: string;
 }
 

@@ -1,16 +1,10 @@
 import { IconClose, IconMenu } from "@components/Common/Icon";
 import Logo from "@components/Common/Logo";
-import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { useCallback, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import LayoutHeaderNavbar from "./Navbar";
-import LayoutHeaderSocial from "./Social";
 
-interface LayoutHeaderMobileNavbarProps {
-  config: SiteConfigDataType;
-}
-
-const LayoutHeaderMobileNavbar = ({ config }: LayoutHeaderMobileNavbarProps) => {
+const LayoutHeaderMobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = useCallback(() => {
@@ -38,11 +32,11 @@ const LayoutHeaderMobileNavbar = ({ config }: LayoutHeaderMobileNavbarProps) => 
         </div>
         <div className="flex flex-1 flex-col border-t-2 px-12 py-10">
           <LayoutHeaderNavbar className="flex-1" onClick={handleCloseMenu} />
-          <LayoutHeaderSocial
+          {/* <LayoutHeaderSocial
             config={config}
             className="flex flex-shrink-0 justify-center border-t-2 border-gray-200 pt-10"
             wrapperClassName="w-16 h-16"
-          />
+          /> */}
         </div>
       </div>
     </div>

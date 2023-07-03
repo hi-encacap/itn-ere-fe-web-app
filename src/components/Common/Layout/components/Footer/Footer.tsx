@@ -1,7 +1,7 @@
 import { IconBank, IconLocation, IconMail, IconPhoneRing } from "@components/Common/Icon";
 import Logo from "@components/Common/Logo";
 import { LayoutFooterColorEnum } from "@constants/enums";
-import { ACBUILDING_CATEGORY_CODE_ENUM, SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM, ACB_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { beautyPhoneNumber } from "@utils/helper";
 import dayjs from "dayjs";
@@ -26,9 +26,7 @@ const LayoutFooter = ({ config, color }: LayoutFooterProps) => {
         <div>
           <Logo />
           <div className="mt-4 font-semibold uppercase">{config.website.name as string}</div>
-          <div className="mt-3">
-            Chuyên thi công xây dựng nhà dân dụng, nhà tiền chế, kinh doanh vật liệu gỗ, nhựa, sắt, thép...
-          </div>
+          <div className="mt-3">{config.website.description}</div>
           <LayoutHeaderSocial className="mt-5" config={config} />
         </div>
         <div>
@@ -39,27 +37,25 @@ const LayoutFooter = ({ config, color }: LayoutFooterProps) => {
               <div className="flex h-6 w-6 items-center justify-center">
                 <IconPhoneRing className="w-5" />
               </div>
-              <div>
-                {beautyPhoneNumber(config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone as string)}
-              </div>
+              <div>{beautyPhoneNumber(String(config[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER]))}</div>
             </div>
             <div className="flex space-x-4">
               <div className="flex h-6 w-6 items-center justify-center">
                 <IconMail className="w-6" />
               </div>
-              <div>{config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.email as string}</div>
+              <div>{String(config[ACB_CONFIG_CODE_ENUM.EMAIL_ADDRESS])}</div>
             </div>
             <div className="flex space-x-4">
               <div className="flex h-6 w-6 items-center justify-center">
                 <IconLocation className="mt-1 h-6 w-6 flex-shrink-0" />
               </div>
-              <div>{config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.address as string}</div>
+              <div>{String(config[ACB_CONFIG_CODE_ENUM.ADDRESS])}</div>
             </div>
             <div className="flex space-x-4">
               <div className="flex h-6 w-6 items-center justify-center">
                 <IconBank className="h-5 w-5 flex-shrink-0" />
               </div>
-              <div>{config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.bank as string}</div>
+              <div>{String(config[ACB_CONFIG_CODE_ENUM.BANK_ACCOUNT])}</div>
             </div>
             <div className="flex space-x-4">
               <div className="relative flex h-6 w-6 items-center justify-center overflow-hidden text-xs font-semibold">
@@ -67,7 +63,7 @@ const LayoutFooter = ({ config, color }: LayoutFooterProps) => {
                 TAX
                 <span className="absolute inset-x-0 bottom-0 h-px bg-slate-700" />
               </div>
-              <div>{config[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.tax as string}</div>
+              <div>{String(config[ACB_CONFIG_CODE_ENUM.TAX_NUMBER])}</div>
             </div>
           </div>
         </div>
