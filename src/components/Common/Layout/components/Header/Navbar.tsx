@@ -19,7 +19,7 @@ const LayoutHeaderNavbar = ({ className, onClick }: LayoutHeaderNavbarProps) => 
         Dịch vụ
       </LayoutHeaderNavbarItem>
       <LayoutHeaderNavbarItem href={`/${ACBUILDING_CATEGORY_CODE_ENUM.PROJECT}`}>
-        Công trình thi công
+        Dự án
       </LayoutHeaderNavbarItem>
     </LayoutHeaderNavbarContainer>
     <span className="background-[linear-gradient(to left, #000 10%, rgba(249, 249, 249, 0) 90%)] absolute inset-y-0 right-0 w-8" />

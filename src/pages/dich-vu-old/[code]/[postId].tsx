@@ -20,7 +20,7 @@ const ServiceDetailPage = ({
   service,
   services,
   suggestedProducts,
-  siteConfig,
+  websiteConfig: siteConfig,
   ...props
 }: ServiceDetailPageProps) => {
   const breadcrumbItems: LayoutBreadcrumbItemType[] = useMemo(
@@ -38,7 +38,7 @@ const ServiceDetailPage = ({
       data={service.category}
       title={service.title}
       breadcrumbItems={breadcrumbItems}
-      siteConfig={siteConfig}
+      websiteConfig={siteConfig}
       {...props}
     >
       <ServiceDetail

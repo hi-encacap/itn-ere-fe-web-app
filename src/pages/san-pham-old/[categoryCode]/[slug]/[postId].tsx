@@ -19,7 +19,7 @@ interface ProductDetailPageProps extends BasePageProps {
 const ProductDetailPage = ({
   product,
   relatedProducts,
-  siteConfig,
+  websiteConfig: siteConfig,
   categories,
   ...props
 }: ProductDetailPageProps) => {
@@ -41,7 +41,7 @@ const ProductDetailPage = ({
   );
 
   return (
-    <PostLayout data={product} breadcrumbItems={breadcrumbItems} siteConfig={siteConfig} {...props}>
+    <PostLayout data={product} breadcrumbItems={breadcrumbItems} websiteConfig={siteConfig} {...props}>
       <ProductDetail
         data={product}
         relatedProducts={relatedProducts}

@@ -12,7 +12,7 @@ export interface PostDetailContentProps {
   posts: IPost[];
   post: IPost;
   siteConfig: SiteConfigDataType;
-  suggestionCategories: PostCategorySidebarSuggestionItemType[];
+  suggestionCategories?: PostCategorySidebarSuggestionItemType[];
 }
 
 const PostDetailContent = ({ post, posts, siteConfig, suggestionCategories }: PostDetailContentProps) => {
@@ -52,7 +52,7 @@ const PostDetailContent = ({ post, posts, siteConfig, suggestionCategories }: Po
           ))}
         </div>
       </PostDetailSuggestionsContainer>
-      {suggestionCategories.map(({ category, posts: suggestionPosts }, index) => (
+      {suggestionCategories?.map(({ category, posts: suggestionPosts }, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <PostDetailSuggestionsContainer title={`${category.name} có thể bạn quan tâm`} key={index}>
           <div className="grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-10">
