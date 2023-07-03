@@ -19,7 +19,7 @@ const LayoutHeaderSocial = ({ config, className, wrapperClassName }: LayoutHeade
     <div className={twMerge("space-x-2", className)}>
       {Boolean(config[ACB_CONFIG_CODE_ENUM.ADDRESS]) && (
         <LayoutIconFacebook
-          href={config[ACB_CONFIG_CODE_ENUM.ADDRESS].value as string}
+          href={config[ACB_CONFIG_CODE_ENUM.ADDRESS] as string}
           className={wrapperClassName}
         />
       )}
