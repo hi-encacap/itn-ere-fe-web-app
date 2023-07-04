@@ -1,46 +1,45 @@
 import Layout from "@components/Common/Layout/Layout";
 import Home, { HomeProps } from "@components/Home/Home";
-import { ICloudflareImageResponse } from "@encacap-group/types/dist/re";
+import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
-import {
-  configService,
-  productService,
-  projectService,
-  serviceService,
-  websiteService,
-} from "@services/index";
+import { categoryService, configService, postService } from "@services/index";
+import { getRequestURL } from "@utils/helper";
+import { GetServerSideProps } from "next";
 
-interface MyIndexProps extends BasePageProps, HomeProps {
-  heroImages: ICloudflareImageResponse[];
-}
-
-const MyIndex = (props: MyIndexProps) => (
+const MyIndex = (props: BasePageProps & HomeProps) => (
   <Layout {...props}>
     <Home {...props} />
   </Layout>
 );
 
-export const getServerSideProps = async () => {
-  const [website, siteConfig, heroImages, products, services, projects] = await Promise.all([
-    websiteService.getMyWebsite(),
-    configService.getSiteConfig(),
-    configService.getHeroImages(),
-    productService.getProducts(),
-    serviceService.getServices(),
-    projectService.getProjects(),
-  ]);
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const [websiteConfig, homepageConfigs, products, services, featuredServices, projects, productCategory] =
+    await Promise.all([
+      configService.getCommonWebsiteConfig(),
+      configService.getHomepageConfigs(),
+      postService.getProducts({ limit: 6 }),
+      postService.getServices(),
+      postService.getFeaturedPosts(),
+      postService.getProjects(),
+      categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
+    ]);
 
-  const head = { title: "Trang chủ" };
+  const head = {
+    title: "Trang chủ",
+    requestURL: getRequestURL(req),
+    description: websiteConfig.website.description,
+  };
 
   return {
     props: {
       head,
-      website,
-      siteConfig,
-      heroImages,
+      websiteConfig,
+      homepageConfigs,
       products,
       services,
+      featuredServices,
       projects,
+      productCategory,
     },
   };
 };

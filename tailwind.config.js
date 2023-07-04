@@ -30,7 +30,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
+        sans: ["Gilroy", "Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
       aspectRatio: {
         "video-reverse": "9/16",
@@ -40,6 +40,12 @@ module.exports = {
       },
       boxShadow: {
         center: "0px 0px 24px -100px rgba(0, 0, 0, 0.05)",
+      },
+      lineClamp: {
+        7: "7",
+        8: "8",
+        9: "9",
+        10: "10",
       },
     },
   },

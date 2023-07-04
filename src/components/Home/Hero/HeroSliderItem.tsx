@@ -1,9 +1,9 @@
 import Logo from "@components/Common/Logo";
-import { ICloudflareImageResponse, getImageURL } from "@encacap-group/types/dist/re";
+import { IImageResponse, getImageURL } from "@encacap-group/common/dist/re";
 import Image from "next/image";
 
 interface HomeHeroSliderItemProps {
-  data: ICloudflareImageResponse;
+  data: IImageResponse;
   isPriority: boolean;
 }
 

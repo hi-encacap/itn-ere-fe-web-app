@@ -10,12 +10,12 @@ const LayoutHeaderNavbarContainer = ({
   className,
   children: sidebarItems,
 }: LayoutHeaderNavbarContainerProps) => {
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
   const navbarContainerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const navbarContainerNode = navbarContainerRef.current;
-    const activatedItem = navbarContainerNode?.querySelector<HTMLElement>(`a[href="${pathname}"]`);
+    const activatedItem = navbarContainerNode?.querySelector<HTMLElement>(`a[href="${asPath}"]`);
 
     if (!activatedItem) {
       return;
@@ -27,16 +27,16 @@ const LayoutHeaderNavbarContainer = ({
     navbarContainerNode?.scrollTo({
       left: activatedItemWidth / 2 - (containerWidth ?? 0) / 2,
     });
-  }, [pathname]);
+  }, [asPath]);
 
   return (
     <nav ref={navbarContainerRef} className={className}>
       {Children.map(sidebarItems, (child: ReactElement) => {
         const { href } = child.props;
         if (href === "/") {
-          return cloneElement(child, { isActive: pathname === href });
+          return cloneElement(child, { isActive: asPath === href });
         }
-        return cloneElement(child, { isActive: pathname.includes(href) });
+        return cloneElement(child, { isActive: asPath.startsWith(href) });
       })}
     </nav>
   );

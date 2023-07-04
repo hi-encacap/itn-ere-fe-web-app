@@ -12,7 +12,7 @@ const LayoutHeaderNavbarItem = ({ href, isActive = false, children }: LayoutHead
   <Link
     href={href}
     className={twMerge(
-      "group relative inline-block whitespace-nowrap py-3 md:py-2",
+      "group relative inline-block w-full whitespace-nowrap py-3 text-center text-2xl font-bold md:w-fit md:py-2 md:text-left md:text-base md:font-semibold",
       isActive && "text-encacap-main"
     )}
   >

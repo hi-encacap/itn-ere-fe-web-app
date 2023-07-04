@@ -3,6 +3,7 @@
     "source.fixAll.eslint": true,
     "source.organizeImports": true
   },
+  "prettier.prettierPath": "./node_modules/prettier",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#1b3661",
     "activityBar.background": "#1b3661",
@@ -22,6 +23,5 @@
     "titleBar.inactiveBackground": "#10203999",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.remoteColor": "#102039",
-  "cSpell.words": ["encacap", "swiper"]
+  "cSpell.words": ["ACBUILDING", "encacap", "swiper"]
 }
