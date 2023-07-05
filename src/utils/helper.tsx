@@ -51,6 +51,21 @@ const getPostDetailLink = (data: IPost): string => {
   return `${categoryLink}/${code}/${data.id}`;
 };
 
+/**
+ * @description add `www` to request host if it doesn't have.
+ */
+const addWWWToURL = (url: string) => {
+  const urlObject = new URL(url);
+  const { host } = urlObject;
+
+  if (host.includes("www")) return url;
+
+  urlObject.host = `www.${host}`;
+
+  // Replace last `/` with empty string, because `toString()` method will add `/` to the end of url.
+  return urlObject.toString().replace(/\/$/, "");
+};
+
 const getRequestURL = (req: IncomingMessage) => {
   const rawRequestHost = req.headers.host;
   const requestHostWithWWW = rawRequestHost?.includes("www") ? rawRequestHost : `www.${rawRequestHost}`;
@@ -61,6 +76,7 @@ const getRequestURL = (req: IncomingMessage) => {
 };
 
 export {
+  addWWWToURL,
   beautyMoney,
   beautyPhoneNumber,
   getCategoryPageLink,
