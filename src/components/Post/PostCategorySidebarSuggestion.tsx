@@ -1,6 +1,7 @@
 import { ICategory, IPost } from "@encacap-group/common/dist/re";
 import { getCategoryPageLink } from "@utils/helper";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 import PostCategorySidebarCollapsibleContainer from "./PostCategorySidebarCollapsibleContainer";
 import PostCategorySidebarSuggestionItem from "./PostCategorySidebarSuggestionItem";
 
@@ -25,6 +26,7 @@ const PostCategorySidebarSuggestion = ({
       isCollapsed={isCollapsed}
       title={`${category.name} có thể bạn quan tâm`}
       isResponsive={false}
+      className={twMerge(posts.length < 2 && "hidden")}
     >
       <div className="flex flex-col space-y-4 border-y-2 border-gray-200 py-6">
         {posts.map((item) => (
