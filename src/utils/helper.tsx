@@ -30,14 +30,17 @@ const getProductDetailLink = (product: IPost): string => {
   return `/${parent.code}/${category.code}/${product.code}/${product.id}`;
 };
 
-const getCategoryPageLink = (category: ICategory, parentParam?: ICategory): string => {
-  const parent = (category.parent as ICategory) ?? parentParam;
+const getCategoryPageLink = (category: ICategory): string => {
+  const { code } = category;
+  let { parent } = category;
+  let link = `/${code}`;
 
-  if (parent) {
-    return `/${parent.code}/${category.code}`;
+  while (parent) {
+    link = `/${parent.code}${link}`;
+    parent = parent.parent;
   }
 
-  return `/${category.code}`;
+  return link;
 };
 
 const getPostDetailLink = (data: IPost): string => {
@@ -46,6 +49,21 @@ const getPostDetailLink = (data: IPost): string => {
   const categoryLink = getCategoryPageLink(category);
 
   return `${categoryLink}/${code}/${data.id}`;
+};
+
+/**
+ * @description add `www` to request host if it doesn't have.
+ */
+const addWWWToURL = (url: string) => {
+  const urlObject = new URL(url);
+  const { host } = urlObject;
+
+  if (host.includes("www")) return url;
+
+  urlObject.host = `www.${host}`;
+
+  // Replace last `/` with empty string, because `toString()` method will add `/` to the end of url.
+  return urlObject.toString().replace(/\/$/, "");
 };
 
 const getRequestURL = (req: IncomingMessage) => {
@@ -58,6 +76,7 @@ const getRequestURL = (req: IncomingMessage) => {
 };
 
 export {
+  addWWWToURL,
   beautyMoney,
   beautyPhoneNumber,
   getCategoryPageLink,

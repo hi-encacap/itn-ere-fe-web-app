@@ -1,11 +1,11 @@
 import { LayoutFooterColorEnum } from "@constants/enums";
-import { ICloudflareImageResponse, IPost } from "@encacap-group/common/dist/re";
+import { IImageResponse, IPost } from "@encacap-group/common/dist/re";
 import HomeSectionContainer from "../components/SectionContainer";
 import HomeIntroduceConfession from "./Confession";
 import HomeIntroduceImage from "./Image";
 
 interface HomeIntroduceProps {
-  images: ICloudflareImageResponse[];
+  images: IImageResponse[];
   data: IPost;
 }
 

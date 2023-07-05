@@ -1,11 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
 import HomeProductListItem from "@components/Home/Product/ListItem";
-import {
-  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
-  ICategory,
-  IPost,
-  getImageURL,
-} from "@encacap-group/common/dist/re";
+import { ICategory, IMAGE_VARIANT_ENUM, IPost, getImageURL } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { decode } from "html-entities";
 import Image from "next/image";
@@ -24,7 +19,7 @@ const ProductDetail = ({ data, relatedProducts, siteConfig, categories }: Produc
     <div className="md:col-span-2 lg:col-span-3">
       <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
         <Image
-          src={getImageURL(data.avatar, DEFAULT_CLOUDFLARE_VARIANT_ENUM.PUBLIC)}
+          src={getImageURL(data.avatar, IMAGE_VARIANT_ENUM.PUBLIC)}
           alt={data.title}
           fill
           sizes="100%"

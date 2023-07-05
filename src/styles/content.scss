@@ -75,3 +75,7 @@
     @apply my-4 first:mt-0;
   }
 }
+
+.is-post-sidebar-sticking {
+  @apply pt-10 duration-100;
+}

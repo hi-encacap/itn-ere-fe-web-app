@@ -4,26 +4,26 @@ import Link from "next/link";
 import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface HomeNewsItemContainerProps extends HTMLAttributes<HTMLDivElement> {
+interface PostListItemContainerProps extends HTMLAttributes<HTMLDivElement> {
   data: IPost;
   children: ReactNode;
   imageClassName?: string;
-  href?: string;
+  href: string;
 }
 
-const HomeNewsItemContainer = ({
+const PostListItemContainer = ({
   children,
   className,
   imageClassName,
   data,
   href,
-}: HomeNewsItemContainerProps) => (
+}: PostListItemContainerProps) => (
   <Link
     className={twMerge(
       "group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md shadow-gray-200 duration-100 hover:shadow-gray-300",
       className
     )}
-    href={href || "/"}
+    href={href}
   >
     <div className={twMerge("relative aspect-video w-full flex-shrink-0", imageClassName)}>
       <Image
@@ -38,4 +38,4 @@ const HomeNewsItemContainer = ({
   </Link>
 );
 
-export default HomeNewsItemContainer;
+export default PostListItemContainer;

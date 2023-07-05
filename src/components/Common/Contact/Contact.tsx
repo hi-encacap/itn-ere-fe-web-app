@@ -1,4 +1,4 @@
-import { SITE_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACB_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { beautyPhoneNumber } from "@utils/helper";
 import Image from "next/image";
@@ -40,18 +40,18 @@ const Contact = ({ data, isShowTitle = true, className }: ContactProps) => (
           <div className="mt-1 hidden text-sm md:block">
             <span className="font-semibold">Điện thoại:</span>
             <span className="ml-2">
-              {beautyPhoneNumber(data[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone as string)}
+              {beautyPhoneNumber(data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] as string)}
             </span>
           </div>
         )}
       </div>
       <a
-        href={`tel:${data[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone}`}
+        href={`tel:${data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER]}`}
         className="flex cursor-pointer items-center justify-center space-x-4 rounded-full bg-gray-200 px-6 py-3 duration-100 hover:bg-encacap-main hover:text-white"
       >
         <IconPhoneRing className="w-5" />
         <span className={twMerge("ml-2", !isShowTitle && "md:hidden")}>
-          {beautyPhoneNumber(data[SITE_CONFIG_CODE_ENUM.CONTACT_INFORMATION]?.phone as string)}
+          {beautyPhoneNumber(data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] as string)}
         </span>
       </a>
     </div>

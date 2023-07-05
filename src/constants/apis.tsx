@@ -12,6 +12,7 @@ export const WEBSITE_API_PATH = {
 export const CATEGORY_API_PATH = {
   CATEGORIES_PATH: "v1/public/categories",
   CATEGORY_PATH: (code: string) => `v1/public/categories/${code}`,
+  ROOT_CATEGORIES_PATH: "v1/public/categories/roots",
 };
 
 export const POST_API_PATH = {

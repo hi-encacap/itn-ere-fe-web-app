@@ -15,7 +15,7 @@ const LayoutBreadcrumbItem = ({ data }: LayoutBreadcrumbItemProps) => {
   return (
     <>
       <div className="mx-3 first:hidden">/</div>
-      <Link className="last:text-encacap-main" href={data.href}>
+      <Link className="duration-100 last:text-encacap-main hover:text-encacap-main" href={data.href}>
         {data.name}
       </Link>
     </>

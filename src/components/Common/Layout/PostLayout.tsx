@@ -1,9 +1,4 @@
-import {
-  DEFAULT_CLOUDFLARE_VARIANT_ENUM,
-  ICategory,
-  IPost,
-  getImageURL,
-} from "@encacap-group/common/dist/re";
+import { ICategory, IMAGE_VARIANT_ENUM, IPost, getImageURL } from "@encacap-group/common/dist/re";
 import Image from "next/image";
 import Layout, { LayoutProps } from "./Layout";
 import LayoutBreadcrumb from "./components/Breadcrumb/Breadcrumb";
@@ -15,22 +10,19 @@ export interface CategoryLayoutProps extends LayoutProps {
   breadcrumbItems: Array<LayoutBreadcrumbItemType | boolean>;
 }
 
-const CategoryLayout = ({
+const PostLayout = ({
   title,
   head,
-  siteConfig,
+  websiteConfig: siteConfig,
   data,
   children,
   breadcrumbItems,
 }: CategoryLayoutProps) => (
-  <Layout head={head} siteConfig={siteConfig}>
+  <Layout head={head} websiteConfig={siteConfig}>
     <div className="relative">
       <div className="absolute inset-0">
         <Image
-          src={getImageURL(
-            "thumbnail" in data ? data.thumbnail : data.avatar,
-            DEFAULT_CLOUDFLARE_VARIANT_ENUM.THUMBNAIL
-          )}
+          src={getImageURL(data.avatar, IMAGE_VARIANT_ENUM.THUMBNAIL)}
           alt={"title" in data ? data.title : data.name}
           fill
           sizes="100%"
@@ -51,4 +43,4 @@ const CategoryLayout = ({
   </Layout>
 );
 
-export default CategoryLayout;
+export default PostLayout;
