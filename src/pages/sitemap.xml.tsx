@@ -1,5 +1,5 @@
 import { categoryService, postService } from "@services/index";
-import { getCategoryPageLink, getPostDetailLink } from "@utils/helper";
+import { addWWWToURL, getCategoryPageLink, getPostDetailLink } from "@utils/helper";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 
@@ -35,9 +35,14 @@ const SiteMap = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
-  const homeURL = req.headers.host && `https://${req.headers.host}`;
+  const homeURL = req.headers.host && addWWWToURL(`https://${req.headers.host}`);
 
-  const [categories, posts] = await Promise.all([categoryService.getCategories(), postService.getPosts({})]);
+  const [categories, posts] = await Promise.all([
+    categoryService.getCategories(),
+    postService.getPosts({
+      expand: "category.parent",
+    }),
+  ]);
 
   const categoryItems: SiteMapLinkItemType[] = categories.map((category) => ({
     link: getCategoryPageLink(category),

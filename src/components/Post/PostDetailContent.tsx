@@ -4,6 +4,7 @@ import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { decode } from "html-entities";
 import Image from "next/image";
 import striptags from "striptags";
+import { twMerge } from "tailwind-merge";
 import { PostCategorySidebarSuggestionItemType } from "./PostCategorySidebarSuggestion";
 import PostDetailSuggestionsContainer from "./PostDetailSuggestionContainer";
 import PostListItem from "./PostListItem";
@@ -53,8 +54,12 @@ const PostDetailContent = ({ post, posts, siteConfig, suggestionCategories }: Po
         </div>
       </PostDetailSuggestionsContainer>
       {suggestionCategories?.map(({ category, posts: suggestionPosts }, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <PostDetailSuggestionsContainer title={`${category.name} có thể bạn quan tâm`} key={index}>
+        <PostDetailSuggestionsContainer
+          title={`${category.name} có thể bạn quan tâm`}
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          className={twMerge(suggestionPosts.length < 2 && "hidden")}
+        >
           <div className="grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-10">
             {suggestionPosts.map((item) => (
               <PostListItem data={item} key={item.id} />
