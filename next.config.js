@@ -5,6 +5,12 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "imagedelivery.net"],
   },
+  headers: async () => [
+    {
+      key: "Strict-Transport-Security",
+      value: "max-age=63072000; includeSubDomains; preload",
+    },
+  ],
 };
 
 module.exports = nextConfig;
