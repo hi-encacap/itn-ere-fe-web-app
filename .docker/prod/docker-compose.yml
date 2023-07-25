@@ -1,0 +1,21 @@
+version: "3.9"
+name: encacap-re-acbuilding
+
+services:
+  prod:
+    container_name: encacap-re-acbuilding
+    build:
+      context: ../../.
+      dockerfile: ./.docker/prod/Dockerfile
+      target: prod
+    image: encacap-re-acbuilding
+    ports:
+      - 3021:3021
+    env_file:
+      - ../../.env.production
+    networks:
+      - encacap-re-network
+
+networks:
+  encacap-re-network:
+    driver: bridge

@@ -3,14 +3,8 @@
     "browser": true,
     "node": true
   },
-  "extends": [
-    "next/core-web-vitals",
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript",
-    "prettier",
-    "plugin:react/jsx-runtime"
-  ],
+  "extends": ["next/core-web-vitals", "next", "prettier"],
+  "ignorePatterns": ["**/*.config.js"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -18,7 +12,6 @@
     "arrow-body-style": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/click-events-have-key-events": "off",
-    "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": [
       "error",
       {
@@ -26,7 +19,7 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off"
-  },
-  "ignorePatterns": ["**/*.config.js"]
+  }
 }
