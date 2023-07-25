@@ -2,7 +2,7 @@ version: "3.9"
 name: encacap-re-acbuilding
 
 services:
-  prod:
+  acbuilding:
     container_name: encacap-re-acbuilding
     build:
       context: ../../.
