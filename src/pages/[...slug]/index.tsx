@@ -20,14 +20,15 @@ interface GetDetailPageParam extends GetCategoryPageParam {
 
 interface CategoryOrDetailPageProps extends PostCategoryPageProps, PostDetailPageProps {
   type: "category" | "detail";
+  rootCategory: ICategory;
 }
 
-const PostCategoryOrDetailPage = ({ type, ...props }: CategoryOrDetailPageProps) => {
+const PostCategoryOrDetailPage = ({ type, category, posts, ...props }: CategoryOrDetailPageProps) => {
   if (type === "category") {
-    return <PostCategoryPage {...props} />;
+    return <PostCategoryPage category={category} posts={posts} {...props} />;
   }
 
-  return <PostDetailPage {...props} />;
+  return <PostDetailPage category={category} posts={posts} {...props} />;
 };
 
 const getSuggestionCategory = async (category: ICategory, limit: number) => {
@@ -52,7 +53,7 @@ const getCategoryPageProps = async (
     categoryService.getCategoryByCode(categoryCode),
     postService.getPosts({ categoryCode, expand: "category.parent" }),
     categoryService.getCategoryByCode(rootCategoryCode, {
-      expand: "children, children.parent, children.avatar",
+      expand: "avatar, children, children.parent, children.avatar",
     }),
     categoryService.getRootCategories({
       excludedCodes: [rootCategoryCode],
@@ -70,6 +71,7 @@ const getCategoryPageProps = async (
       head,
       websiteConfig,
       category,
+      rootCategory,
       posts,
       categories: rootCategory.children as ICategory[],
       suggestionCategories,
@@ -115,6 +117,7 @@ const getDetailPageProps = async (
       categories: rootCategory.children as ICategory[],
       suggestionCategories,
       type: "detail",
+      rootCategory,
     },
   };
 };
