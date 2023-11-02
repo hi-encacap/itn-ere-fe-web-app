@@ -5,7 +5,14 @@ export interface PostDetailProps
   extends Pick<PostCategorySidebarProps, "categories">,
     PostDetailContentProps {}
 
-const PostDetail = ({ categories, suggestionCategories, posts, post, siteConfig }: PostDetailProps) => {
+const PostDetail = ({
+  categories,
+  rootCategory,
+  suggestionCategories,
+  posts,
+  post,
+  siteConfig,
+}: PostDetailProps) => {
   return (
     <>
       <PostDetailContent
@@ -13,6 +20,7 @@ const PostDetail = ({ categories, suggestionCategories, posts, post, siteConfig 
         posts={posts}
         siteConfig={siteConfig}
         suggestionCategories={suggestionCategories}
+        rootCategory={rootCategory}
       />
       <PostCategorySidebar
         className="hidden flex-col md:flex"

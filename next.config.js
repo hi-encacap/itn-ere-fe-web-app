@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["res.cloudinary.com", "imagedelivery.net"],
+    domains: ["res.cloudinary.com", "imagedelivery.net", "cdn.shopify.com"],
   },
   headers: async () => [
     {
@@ -19,4 +19,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
