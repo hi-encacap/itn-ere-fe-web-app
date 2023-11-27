@@ -18,4 +18,4 @@ ENV NODE_ENV=production
 COPY --from=builder /usr/src/app/.next ./.next
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 CMD ["pnpm", "start"]
-EXPOSE 3021
+EXPOSE 3011

@@ -10,7 +10,7 @@ services:
       target: prod
     image: encacap-re-acbuilding
     ports:
-      - 3021:3021
+      - 3011:3000
     env_file:
       - ../../.env.production
     environment:
