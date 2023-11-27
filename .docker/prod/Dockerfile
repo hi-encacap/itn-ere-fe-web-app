@@ -17,5 +17,6 @@ FROM base as prod
 ENV NODE_ENV=production
 COPY --from=builder /usr/src/app/.next ./.next
 COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/public ./public
 CMD ["pnpm", "start"]
 EXPOSE 3011
