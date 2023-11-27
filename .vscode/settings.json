@@ -4,24 +4,5 @@
     "source.organizeImports": true
   },
   "prettier.prettierPath": "./node_modules/prettier",
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#1b3661",
-    "activityBar.background": "#1b3661",
-    "activityBar.foreground": "#e7e7e7",
-    "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#c7386f",
-    "activityBarBadge.foreground": "#e7e7e7",
-    "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#1b3661",
-    "statusBar.background": "#102039",
-    "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#1b3661",
-    "statusBarItem.remoteBackground": "#102039",
-    "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#102039",
-    "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#10203999",
-    "titleBar.inactiveForeground": "#e7e7e799"
-  },
   "cSpell.words": ["ACBUILDING", "encacap", "swiper"]
 }
