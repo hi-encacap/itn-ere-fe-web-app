@@ -73,7 +73,7 @@ const getCategoryPageProps = async (
       category,
       rootCategory,
       posts,
-      categories: rootCategory.children as ICategory[],
+      categories: (rootCategory.children as ICategory[]) || [],
       suggestionCategories,
       type: "category",
     },
