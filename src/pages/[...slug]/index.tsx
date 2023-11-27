@@ -114,7 +114,7 @@ const getDetailPageProps = async (
       category,
       posts,
       post,
-      categories: rootCategory.children as ICategory[],
+      categories: (rootCategory.children as ICategory[]) || [],
       suggestionCategories,
       type: "detail",
       rootCategory,
