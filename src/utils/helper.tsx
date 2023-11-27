@@ -1,4 +1,5 @@
 import { ACBUILDING_CATEGORY_CODE_ENUM, ICategory, IPost } from "@encacap-group/common/dist/re";
+import { ProductDataType } from "@interfaces/dataTypes";
 import { IncomingMessage } from "http";
 
 const beautyMoney = (money: number): string => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -43,7 +44,15 @@ const getCategoryPageLink = (category: ICategory): string => {
   return link;
 };
 
-const getPostDetailLink = (data: IPost): string => {
+const getPostDetailLink = (data: IPost | ProductDataType): string => {
+  if (!("code" in data)) {
+    const { category, handle } = data;
+
+    if (!category) return "/";
+
+    return `${getCategoryPageLink(category)}/${handle}/${data.id}`;
+  }
+
   const { category, code } = data;
 
   const categoryLink = getCategoryPageLink(category);
