@@ -14,7 +14,7 @@ services:
     env_file:
       - ../../.env.production
     environment:
-      - NEXT_PUBLIC_RE_ACB_API_URL=http://encacap-re-api:3011
+      - NEXT_PUBLIC_RE_ACB_API_URL=http://encacap-re-api:3000
     networks:
       - encacap-re-network
 
