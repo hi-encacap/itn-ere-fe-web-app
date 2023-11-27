@@ -1,7 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
-import ProductContent from "@components/Product/Content";
 import { ICategory, IPost } from "@encacap-group/common/dist/re";
-import { ProductDataType, SiteConfigDataType } from "@interfaces/dataTypes";
+import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { twMerge } from "tailwind-merge";
 import { PostCategorySidebarSuggestionItemType } from "./PostCategorySidebarSuggestion";
 import PostDetailContentDescription from "./PostDetailContentDescription";
@@ -25,10 +24,7 @@ const PostDetailContent = ({
 }: PostDetailContentProps) => {
   return (
     <div className="md:col-span-2 lg:col-span-3">
-      {"code" in post && <PostDetailContentDescription post={post} />}
-      {"handle" in post && (
-        <ProductContent data={post as unknown as ProductDataType} rootCategory={rootCategory} />
-      )}
+      <PostDetailContentDescription post={post} />
       <PostDetailSuggestionsContainer title="Liên hệ ngay">
         <Contact data={siteConfig} isShowTitle={false} />
       </PostDetailSuggestionsContainer>

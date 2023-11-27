@@ -1,6 +1,7 @@
-import { CATEGORY_GROUP_ENUM, IMAGE_VARIANT_ENUM, IPost, getImageURL } from "@encacap-group/common/dist/re";
+import { CATEGORY_GROUP_ENUM, IImageResponse, IPost } from "@encacap-group/common/dist/re";
 import parse from "html-react-parser";
-import Image from "next/image";
+import { get } from "lodash";
+import PostDetailSlider from "./PostDetailSlider";
 
 interface PostDetailContentDescriptionProps {
   post: IPost;
@@ -9,16 +10,8 @@ interface PostDetailContentDescriptionProps {
 const PostDetailContentDescription = ({ post }: PostDetailContentDescriptionProps) => {
   return (
     <>
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
-        <Image
-          src={getImageURL(post.avatar, IMAGE_VARIANT_ENUM.PUBLIC)}
-          alt={post.title}
-          fill
-          sizes="100%"
-          className="oject-center object-contain"
-        />
-      </div>
-      <div className="pb-6 pt-4 md:pb-8 md:pt-8">
+      <PostDetailSlider data={[post.avatar, ...(get(post, "images", []) as IImageResponse[])]} />
+      <div className="pb-6 pt-4 md:pb-8 md:pt-4">
         <div className="text-encacap-main">{post.category.name}</div>
         <div className="mt-2 text-xl font-semibold md:text-3xl">{post.title}</div>
       </div>
