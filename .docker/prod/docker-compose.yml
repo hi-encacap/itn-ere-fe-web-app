@@ -10,11 +10,11 @@ services:
       target: prod
     image: encacap-re-acbuilding
     ports:
-      - 3011:3000
+      - 3012:3000
     env_file:
       - ../../.env.production
     environment:
-      - NEXT_PUBLIC_RE_ACB_API_URL=http://encacap-re-api:3000
+      - NEXT_PUBLIC_RE_ACB_API_URL=http://encacap-re-api:3011
     networks:
       - encacap-re-network
 
