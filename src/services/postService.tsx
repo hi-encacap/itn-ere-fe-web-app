@@ -4,6 +4,7 @@ import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist
 import axiosInstance from "@utils/axiosInstance";
 
 const getPosts = async (query: IBaseListQuery): Promise<IPost[]> => {
+  console.log(POST_API_PATH.POSTS_PATH);
   const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH, {
     params: query,
   });

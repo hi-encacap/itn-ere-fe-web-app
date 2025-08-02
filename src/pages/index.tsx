@@ -13,7 +13,11 @@ const MyIndex = (props: BasePageProps & HomeProps) => (
 );
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  console.log("getServerSideProps", process.env.NEXT_PUBLIC_RE_ACB_API_URL);
+  console.log(
+    "getServerSideProps",
+    process.env.NEXT_PUBLIC_RE_ACB_API_URL,
+    process.env.NEXT_PUBLIC_RE_ACB_API_KEY
+  );
 
   const [websiteConfig, homepageConfigs, products, services, featuredServices, projects, productCategory] =
     await Promise.all([
