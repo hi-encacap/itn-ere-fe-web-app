@@ -3,11 +3,11 @@ import PostCategorySidebarCollapsibleContainer from "./PostCategorySidebarCollap
 import PostCategorySidebarTreeItem from "./PostCategorySidebarTreeItem";
 
 export interface PostCategorySidebarTreeProps {
-  categories: ICategory[];
+  childrenCategories: ICategory[];
   isCollapsed: boolean;
 }
 
-const PostCategorySidebarTree = ({ categories, isCollapsed }: PostCategorySidebarTreeProps) => {
+const PostCategorySidebarTree = ({ childrenCategories, isCollapsed }: PostCategorySidebarTreeProps) => {
   return (
     <PostCategorySidebarCollapsibleContainer
       isCollapsed={isCollapsed}
@@ -15,7 +15,7 @@ const PostCategorySidebarTree = ({ categories, isCollapsed }: PostCategorySideba
       isResponsive={false}
     >
       <div className="flex flex-col space-y-4 border-t-2 border-gray-200 py-6">
-        {categories.map((item) => (
+        {childrenCategories.map((item) => (
           <PostCategorySidebarTreeItem category={item} key={item.id} level={0} />
         ))}
       </div>

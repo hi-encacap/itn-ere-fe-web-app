@@ -2,11 +2,11 @@ import PostCategorySidebar, { PostCategorySidebarProps } from "./PostCategorySid
 import PostDetailContent, { PostDetailContentProps } from "./PostDetailContent";
 
 export interface PostDetailProps
-  extends Pick<PostCategorySidebarProps, "categories">,
+  extends Pick<PostCategorySidebarProps, "childrenCategories">,
     PostDetailContentProps {}
 
 const PostDetail = ({
-  categories,
+  childrenCategories: categories,
   rootCategory,
   suggestionCategories,
   posts,
@@ -24,7 +24,7 @@ const PostDetail = ({
       />
       <PostCategorySidebar
         className="hidden flex-col md:flex"
-        categories={categories}
+        childrenCategories={categories}
         isCollapsed={false}
         siteConfig={siteConfig}
       />

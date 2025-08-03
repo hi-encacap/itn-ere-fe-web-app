@@ -4,6 +4,7 @@ import { ACBUILDING_CATEGORY_CODE_ENUM, IPost } from "@encacap-group/common/dist
 import axiosInstance from "@utils/axiosInstance";
 
 const getPosts = async (query: IBaseListQuery): Promise<IPost[]> => {
+  console.log(POST_API_PATH.POSTS_PATH);
   const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH, {
     params: query,
   });
@@ -26,10 +27,7 @@ const getProjects = async (query?: IBaseListQuery) => {
 };
 
 const getServices = async (query?: IBaseListQuery) => {
-  return getPosts({
-    ...query,
-    categoryCode: ACBUILDING_CATEGORY_CODE_ENUM.SERVICE,
-  });
+  return getPosts({ ...query });
 };
 
 const getRandomPosts = async (query: IBaseListQuery): Promise<IPost[]> => {
@@ -68,17 +66,7 @@ const getPostById = async (postId: number): Promise<IPost> => {
 };
 
 const getFeaturedPosts = async (): Promise<IPost> => {
-  const codes = [
-    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE,
-    ACBUILDING_CATEGORY_CODE_ENUM.HOUSE_SCRATCH,
-    ACBUILDING_CATEGORY_CODE_ENUM.CONSTRUCTION_FOAM,
-  ];
-
-  const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH, {
-    params: {
-      codes,
-    },
-  });
+  const response = await axiosInstance.get(POST_API_PATH.POSTS_PATH);
 
   return response.data.data;
 };

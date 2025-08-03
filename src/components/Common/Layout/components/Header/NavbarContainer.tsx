@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { Children, ReactElement, cloneElement, useEffect, useRef } from "react";
+import { Children, ReactElement, ReactNode, cloneElement, isValidElement, useEffect, useRef } from "react";
 
 interface LayoutHeaderNavbarContainerProps {
   className?: string;
-  children: ReactElement | ReactElement[];
+  children: ReactNode;
 }
 
 const LayoutHeaderNavbarContainer = ({
@@ -29,14 +29,22 @@ const LayoutHeaderNavbarContainer = ({
     });
   }, [asPath]);
 
+  if (!sidebarItems || !Array.isArray(sidebarItems)) {
+    return null;
+  }
+
   return (
     <nav ref={navbarContainerRef} className={className}>
       {Children.map(sidebarItems, (child: ReactElement) => {
-        const { href } = child.props;
-        if (href === "/") {
-          return cloneElement(child, { isActive: asPath === href });
+        if (!isValidElement(child)) {
+          return null;
         }
-        return cloneElement(child, { isActive: asPath.startsWith(href) });
+
+        const { href } = child.props as Record<string, string>;
+        if (href === "/") {
+          return cloneElement(child, { isActive: asPath === href } as Record<string, boolean>);
+        }
+        return cloneElement(child, { isActive: asPath.startsWith(href) } as Record<string, boolean>);
       })}
     </nav>
   );

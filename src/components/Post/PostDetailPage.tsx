@@ -12,15 +12,17 @@ export interface PostDetailPageProps extends BasePageProps, PostCategoryProps {
   rootCategory: ICategory;
   post: IPost;
   suggestionCategories?: PostCategorySidebarSuggestionItemType[];
+  categories: ICategory[];
 }
 
 const PostDetailPage = ({
   category,
-  categories,
+  childrenCategories,
   posts,
   post,
   suggestionCategories,
   rootCategory,
+  categories,
   ...props
 }: PostDetailPageProps) => {
   const getCategoryBreadcrumbItems = (data: ICategory): LayoutBreadcrumbItemType[] => {
@@ -43,10 +45,11 @@ const PostDetailPage = ({
       data={category}
       title={post.title}
       breadcrumbItems={getCategoryBreadcrumbItems(category)}
+      categories={categories}
       {...props}
     >
       <PostDetail
-        categories={categories}
+        childrenCategories={childrenCategories}
         post={post}
         posts={posts}
         suggestionCategories={suggestionCategories}

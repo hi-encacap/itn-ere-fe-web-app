@@ -17,8 +17,9 @@ const PostLayout = ({
   data,
   children,
   breadcrumbItems,
+  categories = [],
 }: CategoryLayoutProps) => (
-  <Layout head={head} websiteConfig={siteConfig}>
+  <Layout head={head} websiteConfig={siteConfig} categories={categories}>
     <div className="relative">
       <div className="absolute inset-0">
         <Image

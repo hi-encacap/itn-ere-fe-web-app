@@ -4,11 +4,11 @@ import PostDetailSuggestionsContainer from "./PostDetailSuggestionContainer";
 import PostListItem from "./PostListItem";
 
 export interface PostCategoryProps
-  extends Pick<PostCategorySidebarProps, "categories" | "suggestionCategories"> {
+  extends Pick<PostCategorySidebarProps, "childrenCategories" | "suggestionCategories"> {
   posts: IPost[];
 }
 
-const PostCategory = ({ categories, suggestionCategories, posts }: PostCategoryProps) => {
+const PostCategory = ({ childrenCategories, suggestionCategories, posts }: PostCategoryProps) => {
   return (
     <>
       <div className="md:col-span-2 lg:col-span-3">
@@ -34,7 +34,7 @@ const PostCategory = ({ categories, suggestionCategories, posts }: PostCategoryP
       </div>
       <PostCategorySidebar
         className="hidden flex-col md:flex"
-        categories={categories}
+        childrenCategories={childrenCategories}
         isCollapsed={false}
         suggestionCategories={suggestionCategories}
       />
