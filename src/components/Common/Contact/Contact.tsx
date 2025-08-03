@@ -40,7 +40,7 @@ const Contact = ({ data, isShowTitle = true, className }: ContactProps) => (
           <div className="mt-1 hidden text-sm md:block">
             <span className="font-semibold">Điện thoại:</span>
             <span className="ml-2">
-              {beautyPhoneNumber(data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] as string)}
+              {beautyPhoneNumber((data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] ?? "") as string)}
             </span>
           </div>
         )}
@@ -51,7 +51,7 @@ const Contact = ({ data, isShowTitle = true, className }: ContactProps) => (
       >
         <IconPhoneRing className="w-5" />
         <span className={twMerge("ml-2", !isShowTitle && "md:hidden")}>
-          {beautyPhoneNumber(data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] as string)}
+          {beautyPhoneNumber((data[ACB_CONFIG_CODE_ENUM.PHONE_NUMBER] ?? "") as string)}
         </span>
       </a>
     </div>

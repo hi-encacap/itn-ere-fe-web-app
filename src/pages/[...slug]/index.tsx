@@ -48,23 +48,24 @@ const getCategoryPageProps = async (
   { categoryCode, rootCategoryCode }: GetCategoryPageParam,
   req: IncomingMessage
 ) => {
-  const [websiteConfig, category, posts, rootCategory, otherRootCategories] = await Promise.all([
+  const [websiteConfig, category, posts, rootCategory, categories] = await Promise.all([
     configService.getCommonWebsiteConfig(),
     categoryService.getCategoryByCode(categoryCode),
     postService.getPosts({ categoryCode, expand: "category.parent" }),
     categoryService.getCategoryByCode(rootCategoryCode, {
       expand: "avatar, children, children.parent, children.avatar",
     }),
-    categoryService.getRootCategories({
-      excludedCodes: [rootCategoryCode],
-    }),
+    categoryService.getRootCategories(),
   ]);
 
+  const otherRootCategories = categories.filter(
+    (item) => item.code !== rootCategoryCode && item.code !== categoryCode
+  );
   const suggestionCategories = await Promise.all(
     otherRootCategories.map((item) => getSuggestionCategory(item, 5))
   );
 
-  const head = { title: category.name, requestURL: getRequestURL(req), description: category.name };
+  const head = { title: category?.name, requestURL: getRequestURL(req), description: category?.name };
 
   return {
     props: {
@@ -73,7 +74,8 @@ const getCategoryPageProps = async (
       category,
       rootCategory,
       posts,
-      categories: (rootCategory.children as ICategory[]) || [],
+      categories,
+      childrenCategories: (rootCategory?.children as ICategory[]) || [],
       suggestionCategories,
       type: "category",
     },
@@ -84,7 +86,7 @@ const getDetailPageProps = async (
   { categoryCode, postId, rootCategoryCode }: GetDetailPageParam,
   req: IncomingMessage
 ) => {
-  const [websiteConfig, category, posts, post, rootCategory, otherRootCategories] = await Promise.all([
+  const [websiteConfig, category, posts, post, rootCategory, categories] = await Promise.all([
     configService.getCommonWebsiteConfig(),
     categoryService.getCategoryByCode(categoryCode),
     postService.getRandomPosts({ categoryCode: rootCategoryCode, expand: "category.parent", limit: 6 }),
@@ -92,11 +94,12 @@ const getDetailPageProps = async (
     categoryService.getCategoryByCode(rootCategoryCode, {
       expand: "children, children.parent, children.avatar",
     }),
-    categoryService.getRootCategories({
-      excludedCodes: [rootCategoryCode],
-    }),
+    categoryService.getRootCategories(),
   ]);
 
+  const otherRootCategories = categories.filter(
+    (item) => item.code !== rootCategoryCode && item.code !== categoryCode
+  );
   const suggestionCategories = await Promise.all(
     otherRootCategories.map((item) => getSuggestionCategory(item, 6))
   );
@@ -114,10 +117,11 @@ const getDetailPageProps = async (
       category,
       posts,
       post,
-      categories: (rootCategory.children as ICategory[]) || [],
+      childrenCategories: (rootCategory?.children as ICategory[]) || [],
       suggestionCategories,
       type: "detail",
       rootCategory,
+      categories,
     },
   };
 };

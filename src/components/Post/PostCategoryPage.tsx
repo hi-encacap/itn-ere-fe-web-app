@@ -11,7 +11,7 @@ export interface PostCategoryPageProps extends BasePageProps, PostCategoryProps 
 
 const PostCategoryPage = ({
   category,
-  categories,
+  childrenCategories,
   posts,
   suggestionCategories,
   ...props
@@ -33,7 +33,11 @@ const PostCategoryPage = ({
 
   return (
     <PostLayout data={category} breadcrumbItems={getCategoryBreadcrumbItems(category)} {...props}>
-      <PostCategory categories={categories} suggestionCategories={suggestionCategories} posts={posts} />
+      <PostCategory
+        childrenCategories={childrenCategories}
+        suggestionCategories={suggestionCategories}
+        posts={posts}
+      />
     </PostLayout>
   );
 };

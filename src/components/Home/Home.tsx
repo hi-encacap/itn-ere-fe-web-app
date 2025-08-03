@@ -10,25 +10,16 @@ import HomeHero from "./Hero/Hero";
 import HomeIntroduce from "./Introduce/Introduce";
 import HomeProduct from "./Product/Product";
 import HomeProject from "./Project/Project";
-import HomeService from "./Service/Service";
 
 export interface HomeProps {
   products: IPost[];
-  services: IPost[];
   projects: IPost[];
+  categories: ICategory[];
   featuredServices: IPost[];
-  productCategory: ICategory;
   homepageConfigs: IWebsiteConfig[];
 }
 
-const Home = ({
-  products,
-  services,
-  featuredServices,
-  projects,
-  productCategory,
-  homepageConfigs,
-}: HomeProps) => {
+const Home = ({ products, categories, projects, homepageConfigs }: HomeProps) => {
   const homepageHeroConfig = homepageConfigs.find(
     (config) => config.code === ACB_CONFIG_CODE_ENUM.HOMEPAGE_HERO_IMAGE
   );
@@ -43,7 +34,7 @@ const Home = ({
   return (
     <>
       {homepageHeroConfig && <HomeHero data={homepageHeroConfig.value as unknown as IImageResponse[]} />}
-      <HomeCategory services={featuredServices} productCategory={productCategory} />
+      <HomeCategory categories={categories} />
       {homeIntroduceImageConfig && HomeIntroducePost && (
         <HomeIntroduce
           images={homeIntroduceImageConfig.value as unknown as IImageResponse[]}
@@ -51,7 +42,6 @@ const Home = ({
         />
       )}
       <HomeProduct data={products} />
-      <HomeService data={services} />
       <HomeProject data={projects} />
     </>
   );

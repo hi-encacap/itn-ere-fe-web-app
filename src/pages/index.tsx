@@ -1,6 +1,5 @@
 import Layout from "@components/Common/Layout/Layout";
 import Home, { HomeProps } from "@components/Home/Home";
-import { ACBUILDING_CATEGORY_CODE_ENUM } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { categoryService, configService, postService } from "@services/index";
 import { getRequestURL } from "@utils/helper";
@@ -19,15 +18,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     process.env.NEXT_PUBLIC_RE_ACB_API_KEY
   );
 
-  const [websiteConfig, homepageConfigs, products, services, featuredServices, projects, productCategory] =
+  const [websiteConfig, homepageConfigs, products, categories, featuredServices, projects] =
     await Promise.all([
       configService.getCommonWebsiteConfig(),
       configService.getHomepageConfigs(),
       postService.getProducts({ limit: 6 }),
-      postService.getServices(),
+      categoryService.getRootCategories({ expands: ["avatar"] }),
       postService.getFeaturedPosts(),
       postService.getProjects(),
-      categoryService.getCategoryByCode(ACBUILDING_CATEGORY_CODE_ENUM.PRODUCT),
     ]);
 
   const head = {
@@ -42,10 +40,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       websiteConfig,
       homepageConfigs,
       products,
-      services,
+      categories,
       featuredServices,
       projects,
-      productCategory,
     },
   };
 };

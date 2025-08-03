@@ -2351,51 +2351,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"encacap_re_acbuiding@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "encacap_re_acbuiding@workspace:."
-  dependencies:
-    "@commitlint/cli": "npm:^17.6.3"
-    "@commitlint/config-conventional": "npm:^17.6.3"
-    "@encacap-group/common": "npm:^1.8.9"
-    "@icon-park/react": "npm:^1.4.2"
-    "@next/eslint-plugin-next": "npm:^13.4.12"
-    "@reduxjs/toolkit": "npm:^1.9.5"
-    "@types/lodash": "npm:^4.14.194"
-    "@types/node": "npm:20.1.0"
-    "@types/react": "npm:18.2.5"
-    "@types/react-dom": "npm:18.2.4"
-    autoprefixer: "npm:10.4.14"
-    axios: "npm:^1.4.0"
-    dayjs: "npm:^1.11.7"
-    dotenv-cli: "npm:^7.2.1"
-    eslint: "npm:^8.2.0"
-    eslint-config-next: "npm:13.4.1"
-    eslint-config-prettier: "npm:^8.8.0"
-    framer-motion: "npm:^10.12.16"
-    html-entities: "npm:^2.3.5"
-    html-react-parser: "npm:^5.0.4"
-    husky: "npm:^8.0.3"
-    lint-staged: "npm:^13.2.2"
-    lodash: "npm:^4.17.21"
-    next: "npm:13.4.1"
-    postcss: "npm:8.4.23"
-    prettier: "npm:^2.8.8"
-    prettier-plugin-tailwindcss: "npm:^0.2.8"
-    react: "npm:18.2.0"
-    react-dom: "npm:18.2.0"
-    react-redux: "npm:^8.0.5"
-    sass: "npm:^1.62.1"
-    sharp: "npm:^0.32.4"
-    striptags: "npm:^3.2.0"
-    swiper: "npm:^9.2.4"
-    tailwind-merge: "npm:^1.12.0"
-    tailwind-scrollbar: "npm:^3.0.0"
-    tailwindcss: "npm:3.3.2"
-    typescript: "npm:5.0.4"
-  languageName: unknown
-  linkType: soft
-
 "encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
@@ -4081,6 +4036,51 @@ __metadata:
   checksum: 10c0/f7a262808e1b41049ab55f1e9c29af7ec1025a000d243b83edf34ce2416eedd56079b117fa59376bb4a724110690f13aa8427f2ee29a09eec63a7e72367626d0
   languageName: node
   linkType: hard
+
+"itn-ere-fe-web-app@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "itn-ere-fe-web-app@workspace:."
+  dependencies:
+    "@commitlint/cli": "npm:^17.6.3"
+    "@commitlint/config-conventional": "npm:^17.6.3"
+    "@encacap-group/common": "npm:^1.8.9"
+    "@icon-park/react": "npm:^1.4.2"
+    "@next/eslint-plugin-next": "npm:^13.4.12"
+    "@reduxjs/toolkit": "npm:^1.9.5"
+    "@types/lodash": "npm:^4.14.194"
+    "@types/node": "npm:20.1.0"
+    "@types/react": "npm:18.2.5"
+    "@types/react-dom": "npm:18.2.4"
+    autoprefixer: "npm:10.4.14"
+    axios: "npm:^1.4.0"
+    dayjs: "npm:^1.11.7"
+    dotenv-cli: "npm:^7.2.1"
+    eslint: "npm:^8.2.0"
+    eslint-config-next: "npm:13.4.1"
+    eslint-config-prettier: "npm:^8.8.0"
+    framer-motion: "npm:^10.12.16"
+    html-entities: "npm:^2.3.5"
+    html-react-parser: "npm:^5.0.4"
+    husky: "npm:^8.0.3"
+    lint-staged: "npm:^13.2.2"
+    lodash: "npm:^4.17.21"
+    next: "npm:13.4.1"
+    postcss: "npm:8.4.23"
+    prettier: "npm:^2.8.8"
+    prettier-plugin-tailwindcss: "npm:^0.2.8"
+    react: "npm:18.2.0"
+    react-dom: "npm:18.2.0"
+    react-redux: "npm:^8.0.5"
+    sass: "npm:^1.62.1"
+    sharp: "npm:^0.32.4"
+    striptags: "npm:^3.2.0"
+    swiper: "npm:^9.2.4"
+    tailwind-merge: "npm:^1.12.0"
+    tailwind-scrollbar: "npm:^3.0.0"
+    tailwindcss: "npm:3.3.2"
+    typescript: "npm:5.0.4"
+  languageName: unknown
+  linkType: soft
 
 "jackspeak@npm:^3.1.2":
   version: 3.4.3

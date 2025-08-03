@@ -1,18 +1,30 @@
-FROM oven/bun:1 AS base
-WORKDIR /usr/src/app
-COPY package.json bun.lockb next.config.js ./
+FROM node:20-alpine AS base
 
-FROM base AS dependences
-RUN bun install
+WORKDIR /app
 
-FROM base AS builder
-COPY . .
-COPY --from=dependences /usr/src/app/node_modules ./node_modules
-RUN bun run build
+RUN corepack enable
+EXPOSE 20100
 
-FROM base AS production
+
+FROM base AS dependencies
+
+COPY package.json ./
+COPY yarn.lock ./
+COPY .yarnrc.yml ./
+
+RUN yarn install --immutable
+
+
+FROM dependencies AS builder
+
+COPY ./src ./src
+COPY ./public ./public
+COPY ./.yarnrc.yml next.config.js postcss.config.js tailwind.config.js tsconfig.json ./
+
+RUN yarn run build
+
+FROM dependencies AS production
+
 ENV NODE_ENV=production
-COPY --from=builder /usr/src/app/.next ./.next
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/public ./public
-CMD ["bun", "run", "start"]
+
+COPY --from=builder /app .

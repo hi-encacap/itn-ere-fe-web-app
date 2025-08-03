@@ -1,5 +1,5 @@
 import { LayoutFooterColorEnum } from "@constants/enums";
-import { ACB_CONFIG_CODE_ENUM } from "@encacap-group/common/dist/re";
+import { ACB_CONFIG_CODE_ENUM, ICategory } from "@encacap-group/common/dist/re";
 import { BasePageProps } from "@interfaces/baseTypes";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import "@styles/globals.scss";
@@ -12,9 +12,16 @@ export interface LayoutProps extends BasePageProps {
   children: React.ReactNode;
   websiteConfig: SiteConfigDataType;
   footerColor?: LayoutFooterColorEnum;
+  categories?: ICategory[];
 }
 
-const Layout = ({ children, websiteConfig, head, footerColor = LayoutFooterColorEnum.DARK }: LayoutProps) => (
+const Layout = ({
+  children,
+  websiteConfig,
+  head,
+  footerColor = LayoutFooterColorEnum.DARK,
+  categories,
+}: LayoutProps) => (
   <>
     <Head>
       <title>{`${head.title} - ${websiteConfig.website.name}`}</title>
@@ -33,7 +40,7 @@ const Layout = ({ children, websiteConfig, head, footerColor = LayoutFooterColor
       <link rel="canonical" href={head.requestURL} />
     </Head>
 
-    <LayoutHeader />
+    <LayoutHeader categories={categories} />
     {children}
     <LayoutFooter config={websiteConfig} color={footerColor} />
 

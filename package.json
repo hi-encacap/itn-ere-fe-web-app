@@ -1,15 +1,4 @@
 {
-  "name": "encacap_re_acbuiding",
-  "version": "0.1.0",
-  "private": true,
-  "license": "MIT",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "start:dev": "dotenv -e .env.development -- yarn dev",
-    "lint": "next lint"
-  },
   "dependencies": {
     "@encacap-group/common": "^1.8.9",
     "@icon-park/react": "^1.4.2",
@@ -52,5 +41,16 @@
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   },
-  "packageManager": "yarn@4.9.2"
+  "license": "MIT",
+  "name": "itn-ere-fe-web-app",
+  "packageManager": "yarn@4.9.2",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start",
+    "start:dev": "dotenv -e .env.development -- yarn dev"
+  },
+  "version": "0.1.0"
 }

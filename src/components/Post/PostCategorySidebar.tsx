@@ -1,5 +1,6 @@
 import Contact from "@components/Common/Contact/Contact";
 import Search from "@components/Common/Search/Search";
+import { ICategory } from "@encacap-group/common/dist/re";
 import { SiteConfigDataType } from "@interfaces/dataTypes";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
@@ -13,10 +14,11 @@ export interface PostCategorySidebarProps
     PostCategorySidebarTreeProps {
   siteConfig?: SiteConfigDataType;
   suggestionCategories?: PostCategorySidebarSuggestionItemType[];
+  categories?: ICategory[];
 }
 
 const PostCategorySidebar = ({
-  categories,
+  childrenCategories = [],
   className,
   isCollapsed,
   siteConfig,
@@ -27,8 +29,8 @@ const PostCategorySidebar = ({
       <div className="sticky top-10 z-10 flex flex-col space-y-4 bg-white md:space-y-6 lg:space-y-10">
         {siteConfig && <Contact data={siteConfig} />}
         <Search />
-        {Boolean(categories.length) && (
-          <PostCategorySidebarTree categories={categories} isCollapsed={isCollapsed} />
+        {Boolean(childrenCategories.length) && (
+          <PostCategorySidebarTree childrenCategories={childrenCategories} isCollapsed={isCollapsed} />
         )}
         {suggestionCategories?.map((item) => (
           <PostCategorySidebarSuggestion data={item} key={item.category.id} isCollapsed={isCollapsed} />
